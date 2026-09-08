@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogo dei progetti — Atlante digitale della ricerca antropologica comparativa</title>
+  <meta name="description" content="Catalogo dei progetti di ricerca antropologica comparativa: il bacio (sito completo) e sesso, genere e lavoro nella preistoria (progettazione).">
+
+  <!-- Dublin Core, richiesto dalle linee guida del corso nell'head di ogni pagina -->
+  <meta name="DC.title" content="Catalogo dei progetti — Atlante digitale della ricerca antropologica comparativa">
+  <meta name="DC.creator" content="[NOME COGNOME], Università di Bologna">
+  <meta name="DC.subject" content="antropologia comparativa; archeologia; storia della scienza; digital humanities">
+  <meta name="DC.description" content="Pagina di catalogo che elenca i progetti di ricerca comparativa raccolti nell'atlante, con lo stato di implementazione di ciascuno.">
+  <meta name="DC.publisher" content="Progetto d'esame — Digital Humanities e Patrimonio Culturale, Università di Bologna">
+  <meta name="DC.date" content="2026">
+  <meta name="DC.type" content="Collection">
+  <meta name="DC.format" content="text/html">
+  <meta name="DC.language" content="it">
+  <meta name="DC.relation" content="index.html">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-catalogo">
+    <nav class="breadcrumb" aria-label="Percorso di navigazione">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Catalogo dei progetti</li>
+      </ol>
+    </nav>
+    <h1>Catalogo dei progetti</h1>
+    <div id="barra-ricerca-globale"></div>
+    <!-- Sottotitolo riscritto su indicazione dello studente (2026-08-29): parla solo
+         dell'atlante e dei suoi strumenti, non dei singoli progetti (quello resta nella tesi
+         di ciascuna card qui sotto) — per non duplicare a parole quello che le card mostrano
+         già di per sé. -->
+    <p id="tesi-unificante">
+      Mettiamo a vostra disposizione mappe, grafici e altri strumenti pensati per mettere a
+      confronto fonti di natura diversa sullo stesso tema. Verranno così comparate ricerche
+      anche con diverse metodologie, in cui la comparazione non sarà mai una creazione forzata
+      di relazione, permettendo comunque di ampliare la percezione della tematica in esame.
+      Ogni strumento resta utilizzabile sia da solo che insieme agli altri, ed i progetti sono
+      pensati per essere via via arricchiti, restituendo nel tempo un quadro sempre più
+      completo delle varie interpretazioni possibili riguardo singoli temi, permettendo la
+      creazione di un progetto in continuo divenire e capace di aggiornarsi e perfezionarsi.
+    </p>
+
+    <!-- Foto e citazione AAA affiancate sotto il sottotitolo, su indicazione dello studente
+         (prima: due colonne per tutta l'altezza dell'header, con la citazione a fianco anche
+         di titolo e barra di ricerca — ora solo questa riga lo è). Epigrafe AAA 1947, spostata
+         qui per intero da proemio-epigrafi.xml su indicazione dello studente (non condensata,
+         non duplicata: questa è ora la sua unica sede). Fonte TEI: tei/catalogo-epigrafe-aaa1947.xml.
+         Il proemio resta con le tre epigrafi antropologiche (Geertz, Ingold, Hurston) più la
+         citazione epistemologica (Popper). -->
+    <div class="riga-foto-citazione">
+      <figure class="teaser-foto-progetto">
+        <img src="img/venere-willendorf.jpg" alt="Venere di Willendorf, vista frontale">
+        <figcaption>La Venere di Willendorf — icona, e insieme oggetto di dibattito storiografico (idolo di fertilità? autoritratto femminile? nessuna delle due?)</figcaption>
+      </figure>
+
+      <aside class="citazione-laterale" aria-label="Citazione di contesto">
+        <blockquote lang="en">
+          "All peoples do achieve these ends. No two of them, however, do so in exactly the same way. [&hellip;]
+          The individual realizes his personality through his culture, hence respect for individual differences
+          entails a respect for cultural differences."
+        </blockquote>
+        <p class="fonte-citazione">American Anthropological Association, Committee for Human Rights, <cite>Statement on Human Rights</cite>, 1947.</p>
+        <p class="contesto-breve">
+          Nel 1947 l'associazione antropologica statunitense si oppose a una dichiarazione di diritti "universali"
+          in discussione alle Nazioni Unite, temendo un'imposizione di categorie occidentali — posizione già
+          allora dibattuta all'interno della disciplina, non un consenso pacifico. Apre qui il tema del rapporto
+          fra relativismo culturale e giudizio comparativo.
+        </p>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <!-- Legenda degli strumenti (richiesta dallo studente, 2026-09-08): esisteva già come bozza
+         in anteprima-locale/anteprima-catalogo-v1.html (quadratini L/M/T/D/%), mai portata sul
+         sito vero — qui riadattata allo stato reale di oggi, non ricopiata: niente più "T"
+         (Timeline, rimossa da ramo-bacio.html l'8/9) né "D"/tabella (dati.html non è uno
+         strumento di un singolo progetto, resta collegato a parte nel footer), "G" (Grafici) non
+         più "in programma" ma effettivamente costruito. <details>/<summary> nativi, stessa scelta
+         già motivata in index.html — un solo pannello, niente Bootstrap. -->
+    <details class="legenda-strumenti">
+      <summary>Legenda degli strumenti</summary>
+      <p class="nota-legenda-aperta">
+        I quadratini accanto a un progetto indicano in che forma i suoi dati sono consultabili
+        oggi. Un progetto "solo progettazione" non ne ha ancora nessuno.
+      </p>
+      <div class="voce-legenda">
+        <span class="quadratino" aria-hidden="true">L</span>
+        <p><span class="nome-strumento">Lista</span>elenco navigabile delle fonti del progetto, una scheda per fonte.</p>
+      </div>
+      <div class="voce-legenda">
+        <span class="quadratino" aria-hidden="true">M</span>
+        <p><span class="nome-strumento">Mappa</span>distribuzione geografica dei luoghi citati nelle fonti (Leaflet).</p>
+      </div>
+      <div class="voce-legenda">
+        <span class="quadratino" aria-hidden="true">G</span>
+        <p><span class="nome-strumento">Grafici</span>grafici costruiti a runtime dai dati reali di ciascuno studio (torte, dispersione, barre) — non immagini fisse.</p>
+      </div>
+    </details>
+
+    <section id="lista-progetti" aria-label="Elenco dei progetti">
+      <p id="stato-caricamento">Caricamento dei progetti…</p>
+    </section>
+  </main>
+
+  <footer>
+    <p><a href="dati.html">La pagina dei dati</a> — riconciliazione delle autorità esterne (VIAF/ORCID/Wikidata/CDLI) usate in questo atlante.</p>
+    <p class="crediti-immagini">
+      Foto nell'intestazione: <a href="https://commons.wikimedia.org/wiki/File:Venus_of_Willendorf_frontview.jpg">Venere di Willendorf, vista frontale</a>,
+      Wikimedia Commons, licenza <a href="https://creativecommons.org/licenses/by/2.5/deed.en">CC BY 2.5</a>.
+      Autore non indicato sulla pagina del file — attribuzione data come titolo file + fonte, come consentito dalla licenza in assenza di un nome.
+    </p>
+    <p>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna, 2026.</p>
+  </footer>
+
+  <script>
+    // Il catalogo non contiene dati: li legge a runtime da data/progetti.json,
+    // lo stesso indice condiviso che alimenterà anche le viste Lista/Mappa/Timeline
+    // del ramo bacio e la ricerca per marcatura. Un solo dato, più punti di accesso.
+    //
+    // NOTA per chi testa in locale: fetch() di un file locale è bloccato dal
+    // browser se si apre catalogo.html con doppio click (protocollo file://,
+    // CORS). Serve un mini server locale (es. "python3 -m http.server" nella
+    // cartella del progetto, poi aprire http://localhost:8000/catalogo.html)
+    // oppure testarlo direttamente dopo la pubblicazione su GitHub Pages.
+
+    const PAGINE_RAMO = {
+      "bacio": "ramo-bacio.html",
+      "preistoria": "ramo-preistoria.html"
+    };
+
+    const ETICHETTA_STATO = {
+      "sito-interattivo-completo": "Sito interattivo completo",
+      "solo-progettazione": "Solo progettazione — non implementato"
+    };
+
+    // Quali strumenti sono realmente costruiti per ciascun progetto, per i quadratini della
+    // legenda qui sopra — dettaglio di presentazione (come si accede al progetto), non un dato
+    // sul progetto in sé: stesso principio già seguito per NOTA_RAMO in index.html. Da aggiornare
+    // qui se/quando il ramo preistoria verrà costruito (oggi nessuno strumento, solo bibliografia).
+    const STRUMENTI_PROGETTO = {
+      "bacio": [
+        { lettera: "L", nome: "Lista" },
+        { lettera: "M", nome: "Mappa" },
+        { lettera: "G", nome: "Grafici" }
+      ]
+    };
+
+    fetch("data/progetti.json")
+      .then(risposta => {
+        if (!risposta.ok) throw new Error("HTTP " + risposta.status);
+        return risposta.json();
+      })
+      .then(dati => renderizzaCatalogo(dati))
+      .catch(errore => {
+        document.getElementById("stato-caricamento").textContent =
+          "Impossibile caricare il catalogo (" + errore.message + "). " +
+          "Se stai aprendo questo file con un doppio click, ricordati che serve un server locale — vedi il commento nel codice sorgente.";
+      });
+
+    function renderizzaCatalogo(dati) {
+      const contenitore = document.getElementById("lista-progetti");
+      contenitore.innerHTML = ""; // rimuove il messaggio "Caricamento…"
+
+      dati.progetti.forEach(progetto => {
+        // Conteggio dagli item il cui campo "progetto" corrisponde (come già fa
+        // ramo-bacio.html/index.html), non da progetto.item.length: quell'array in
+        // progetti.json era rimasto disallineato dopo l'aggiunta di murray-2016
+        // (4 id elencati, 5 item reali con progetto:"bacio") — bug trovato mentre si
+        // preparava lo schema di architettura per le slide, corretto qui.
+        const nItem = dati.item.filter(it => it.progetto === progetto.id).length;
+        const stato = progetto.stato_implementazione;
+        const completo = stato === "sito-interattivo-completo";
+
+        const card = document.createElement("article");
+        card.className = "card-progetto " + (completo ? "stato-completo" : "stato-progettazione");
+
+        const titolo = document.createElement("h2");
+        titolo.textContent = progetto.nome;
+        card.appendChild(titolo);
+
+        const badge = document.createElement("p");
+        badge.className = "badge badge-stato";
+        badge.textContent = ETICHETTA_STATO[stato] || stato;
+        card.appendChild(badge);
+
+        const conteggio = document.createElement("p");
+        conteggio.className = "conteggio-item";
+        // Il dettaglio "in che forma sono consultabili" non è più qui in prosa: lo dicono i
+        // quadratini subito sotto (v. STRUMENTI_PROGETTO e la legenda in testa alla pagina).
+        conteggio.textContent = completo
+          ? nItem + " item:"
+          : nItem + " citazioni bibliografiche schedate, nessuna pagina interattiva ancora costruita.";
+        card.appendChild(conteggio);
+
+        const strumenti = STRUMENTI_PROGETTO[progetto.id];
+        if (completo && strumenti && strumenti.length > 0) {
+          const gruppo = document.createElement("div");
+          gruppo.className = "gruppo-strumenti";
+          strumenti.forEach(s => {
+            const badge = document.createElement("span");
+            badge.className = "badge-strumento";
+            const quadratino = document.createElement("span");
+            quadratino.className = "quadratino";
+            quadratino.setAttribute("aria-hidden", "true");
+            quadratino.textContent = s.lettera;
+            badge.appendChild(quadratino);
+            badge.appendChild(document.createTextNode(" " + s.nome));
+            gruppo.appendChild(badge);
+          });
+          card.appendChild(gruppo);
+        }
+
+        const tesi = document.createElement("p");
+        tesi.className = "tesi-progetto";
+        tesi.textContent = progetto.tesi_comune;
+        card.appendChild(tesi);
+
+        // Un progetto "solo-progettazione" non ha una pagina di ramo da aprire
+        // (es. ramo-preistoria.html non esiste): niente <a> che punterebbe a un
+        // 404, solo testo — stesso principio dei placeholder in index.html.
+        if (completo && PAGINE_RAMO[progetto.id]) {
+          const link = document.createElement("a");
+          link.href = PAGINE_RAMO[progetto.id];
+          link.className = "link-progetto";
+          link.textContent = "Entra nel progetto →";
+          card.appendChild(link);
+        } else {
+          const nonSelezionabile = document.createElement("p");
+          nonSelezionabile.className = "link-progetto-placeholder";
+          nonSelezionabile.textContent = "Progettazione non ancora consultabile online";
+          card.appendChild(nonSelezionabile);
+        }
+
+        contenitore.appendChild(card);
+      });
+    }
+  </script>
+
+  <script src="ricerca-barra.js"></script>
+</body>
+</html>

@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il bacio — Atlante digitale della ricerca antropologica comparativa</title>
+  <meta name="description" content="Progetto 'Il bacio': cinque fonti di natura diversa (studio etnografico comparativo, survey quantitativo, saggio di sintesi, fonte primaria cuneiforme, riuso dello stesso dataset per una domanda diversa) sullo stesso comportamento umano, in vista Lista, Mappa e Grafici.">
+
+  <!-- Dublin Core, richiesto dalle linee guida del corso nell'head di ogni pagina -->
+  <meta name="DC.title" content="Il bacio — Atlante digitale della ricerca antropologica comparativa">
+  <meta name="DC.creator" content="[NOME COGNOME], Università di Bologna">
+  <meta name="DC.subject" content="antropologia comparativa; bacio romantico-sessuale; Mesopotamia; digital humanities">
+  <meta name="DC.description" content="Pagina del progetto 'il bacio': i cinque item (Jankowiak et al. 2015, Watkins et al. 2019, Arbøll & Rasmussen 2023, Murray et al. 2016/2017, Barton Cylinder) in tre viste sullo stesso indice — Lista, Mappa e Grafici.">
+  <meta name="DC.publisher" content="Progetto d'esame — Digital Humanities e Patrimonio Culturale, Università di Bologna">
+  <meta name="DC.date" content="2026">
+  <meta name="DC.type" content="Collection">
+  <meta name="DC.format" content="text/html">
+  <meta name="DC.language" content="it">
+  <meta name="DC.relation" content="catalogo.html">
+  <meta name="DC.source" content="data/progetti.json">
+
+  <link rel="stylesheet" href="style.css">
+  <!-- Leaflet vendorizzato in lib/leaflet/ (versione 1.9.4, da npm), non caricato da CDN:
+       nessuna dipendenza dalla rete al momento della discussione in aula, e la stessa versione
+       testata resta quella effettivamente usata. -->
+  <link rel="stylesheet" href="lib/leaflet/leaflet.css">
+</head>
+<body>
+
+  <header class="header-ramo">
+    <nav class="breadcrumb" aria-label="Percorso di navigazione">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalogo.html">Catalogo dei progetti</a></li>
+        <li aria-current="page">Il bacio</li>
+      </ol>
+    </nav>
+    <h1>Il bacio</h1>
+      <div id="barra-ricerca-globale"></div>
+    <!-- Didascalia del ramo, scritta insieme allo studente (si era persa in un merge precedente,
+         ripristinata qui su sua segnalazione — v. anche anteprima-locale/anteprima-ramo-bacio-v1.html,
+         dove è nata). Statica, non più presa da tesi_comune in progetti.json: quel campo resta la
+         sintesi in una riga usata nel catalogo, questa è la versione estesa propria di questa pagina. -->
+    <div class="sottotitolo-ramo">
+      <p>
+        Le ricerche raccolte in questo progetto non nascono per confermarsi a vicenda, né vanno
+        lette come prove della stessa tesi, né vogliono essere esaustive dell'argomento. Usano
+        fonti, scale e metodi diversi e quasi incompatibili fra loro, e proprio per questo, messe
+        fianco a fianco, permettono di interrogare un gesto che oggi diamo per scontato. Possiamo
+        notare, con cautela, una sorta di filo rosso che le attraversa: quasi tutte, in modi
+        diversi, legano il bacio romantico-sessuale a una qualche forma di gerarchia o disuguaglianza
+        sociale — la complessità delle società indagate da un lato, la disparità economica fra nazioni
+        dall'altro, la stratificazione di un mondo antico dal terzo. Quel che si vuole mostrare non è
+        la stessa scoperta declinata più volte, ma modi diversi di misurare qualcosa che, nella
+        letteratura, torna a intrecciarsi con lo status — e non solo.
+      </p>
+      <p>
+        <a class="link-scheda-ricerca" href="jankowiak-2015.html">Jankowiak, Volsche e Garcia (2015)</a> hanno analizzato le fonti etnografiche di 168
+        culture — dati eHRAF, campione cross-culturale standard, interviste dirette a etnografi — e
+        hanno trovato il bacio romantico-sessuale attestato in appena il 46% dei casi, un risultato
+        che ha fatto un certo scalpore. Il bacio viene presentato non come un universale umano, ma
+        come un comportamento assente altrove, e più frequente proprio nelle società a maggiore
+        stratificazione sociale. Alcune fonti etnografiche raccontano reazioni di aperto disgusto
+        alla prima osservazione del gesto — i Thonga sudafricani nel 1890, i Trobriandesi che lo
+        giudicavano "insipido e sciocco" — aneddoti che ci teniamo comunque a citare, ma che non
+        sono dati sistematicamente misurati dallo studio. Nello studio pubblicato emergono anche 23
+        culture dubbie, che vengono però conteggiate come assenti: abbiamo voluto mettere in
+        relazione questo dato con la segnalazione di Bååth &amp; Anikin, rendendo il 46% una cifra
+        più relativa, che ha bisogno di ulteriori studi per essere davvero indicativa. Vi rimandiamo
+        agli strumenti messi a disposizione nel sito e alla visione della ricerca, per farvi
+        un'idea autonoma.
+      </p>
+      <p>
+        <a class="link-scheda-ricerca" href="watkins-2019.html">Watkins e Leongómez (2019)</a> spostano lo sguardo sul presente: un survey su 2.379 persone in 13
+        paesi mostra che la frequenza del bacio romantico-sessuale correla con la disuguaglianza
+        economica nazionale (indice Gini, r = 0,67) — si bacia di più dove la forbice sociale è più
+        larga. Una correlazione, non una causa: e un campione fortemente sbilanciato verso il Regno
+        Unito, di cui la lettura deve tenere conto.
+      </p>
+      <p>
+        <a class="link-scheda-ricerca" href="arboll-rasmussen-2023.html">Arbøll e Rasmussen (2023)</a> risalgono infine fino al 2500 a.C.: un testo sumerico, il Barton
+        Cylinder, è la più antica attestazione scritta conosciuta del gesto. Gli autori ne traggono un
+        argomento più ampio — il bacio non si è diffuso da un'unica origine, ma è comparso
+        indipendentemente ovunque le società si siano stratificate — e uno più inquietante: essendo un
+        veicolo di trasmissione per virus come l'herpes simplex, il bacio ha accompagnato, silenzioso,
+        la storia delle malattie umane molto più a lungo di quanto si pensasse.
+      </p>
+      <p>
+        Presentiamo così diversi studi capaci di farci osservare un gesto per noi familiare da
+        diverse angolazioni, che mostrano come ciò che crediamo di conoscere possa sempre celare
+        verità che meritano di essere inseguite con curiosità — buona esplorazione, in vista Lista,
+        Mappa e Grafici qui sotto.
+      </p>
+    </div>
+  </header>
+
+  <!-- Epigrafe di apertura, trasformazione manuale di tei/bacio-epigrafe-barton.xml.
+       Stessa struttura tipo-epigrafe/blockquote/fonte-citazione/didascalia-epigrafe
+       usata in index.html, per coerenza fra le pagine del sito. -->
+  <section id="epigrafe-apertura" aria-label="Epigrafe di apertura">
+    <article class="epigrafe" data-tipo="fonte-primaria">
+      <p class="tipo-epigrafe">Fonte primaria</p>
+      <blockquote lang="sux">ĝiš3 mu-ni-du11 / ne mu-ni-sub5</blockquote>
+      <blockquote lang="en">"he has had intercourse; he has kissed her"</blockquote>
+      <p class="fonte-citazione">
+        Barton Cylinder, col. II, ll. 7-8 (protagonisti secondo l'edizione qui seguita: An e
+        Ninḫursaĝa; altre edizioni attribuiscono l'atto a Enki — l'identificazione resta
+        dibattuta). Cilindro d'argilla sumerico, ca. 2500 a.C. Trascrizione e traduzione:
+        Lisman, J.J.W., "The Barton Cylinder: A Lament for Keš?", <cite>JEOL</cite> 46
+        (2016-2017), pp. 146-169.
+        <a href="https://cdli.earth/P222183">CDLI P222183</a>. Oggetto conservato:
+        <a href="https://collections.penn.museum/collections/object/521698">Penn Museum, CBS 8383</a>.
+      </p>
+      <p class="didascalia-epigrafe">
+        Un testo sumerico di quattromila anni fa attesta il bacio per iscritto — ma anche qui
+        l'interpretazione resta aperta: gli studiosi non concordano su chi baci chi nel testo, né,
+        come si vede più sotto nella vista Mappa, su dove esattamente sia stato ritrovato il
+        cilindro. Anche il dato più antico non è mai un dato grezzo.
+      </p>
+    </article>
+  </section>
+
+  <main>
+    <!-- Pattern ARIA "Tabs" (WAI-ARIA Authoring Practices), non il vecchio gruppo di bottoni
+         aria-pressed: role="tablist" su un contenitore semplice — non <nav>, perché non è un
+         link di navigazione fra pagine, è un widget che scambia il contenuto della stessa
+         pagina — role="tab" con aria-selected + tabindex "roving" (solo il tab attivo è
+         raggiungibile con Tab, gli altri si raggiungono con le frecce, non uno per uno) e
+         role="tabpanel" collegato dal proprio tab via aria-labelledby. Attivazione
+         automatica: la freccia sposta il focus E mostra subito il pannello, come già faceva
+         il click — non introduce un secondo modo di interagire, lo rende accessibile da
+         tastiera. V. mostraVista()/gestisciTastieraTab() più sotto. -->
+    <div class="selettore-viste" role="tablist" aria-label="Seleziona vista">
+      <button type="button" id="tab-lista" class="btn-vista" role="tab" data-vista="lista" aria-selected="true" aria-controls="vista-lista" tabindex="0">Lista</button>
+      <button type="button" id="tab-mappa" class="btn-vista" role="tab" data-vista="mappa" aria-selected="false" aria-controls="vista-mappa" tabindex="-1">Mappa</button>
+      <button type="button" id="tab-grafici" class="btn-vista" role="tab" data-vista="grafici" aria-selected="false" aria-controls="vista-grafici" tabindex="-1">Grafici</button>
+    </div>
+    <!-- Terza vista "Timeline" rimossa (2026-09-08, decisione dello studente): le linee guida del
+         corso chiedono solo almeno UN metodo di accesso attivo sulla pagina raccolta/catalogo
+         (lista, card, mappa, linea del tempo sono elencati come esempi equivalenti, non un elenco
+         obbligatorio) — già coperto da Lista e Mappa qui sopra. Motivo di merito, non solo di
+         conformità: i 5 item di questo ramo sono comparazioni sincroniche (stesso comportamento,
+         popolazioni diverse), non fonti che documentano un'evoluzione nel tempo del bacio — un
+         asse "periodo storico rappresentato vs anno di pubblicazione" rispondeva a una domanda che
+         questi dati non pongono. L'ipotesi resta valida per un progetto futuro diverso (il "bacio"
+         o altri come catalogo di ricerche comparabili, se un domani includesse fonti realmente
+         diacroniche) — da descrivere nelle slide di progettazione come possibile ampliamento, non
+         da implementare qui. V. anche il quadratino "T" tenuto nella legenda dell'anteprima del
+         catalogo (anteprima-locale/anteprima-catalogo-v1.html) per lo stesso motivo. -->
+
+    <section id="vista-lista" class="vista" role="tabpanel" aria-labelledby="tab-lista" tabindex="0">
+      <p id="stato-caricamento">Caricamento degli item&hellip;</p>
+    </section>
+
+    <section id="vista-mappa" class="vista" role="tabpanel" aria-labelledby="tab-mappa" tabindex="0" hidden>
+      <div class="disclaimer-mappa">
+        <strong>Scelta editoriale dichiarata:</strong> il livello "Jankowiak et al. 2015" qui sotto
+        segue l'interpretazione di Bååth &amp; Anikin, non la ricodifica binaria pubblicata
+        nell'articolo — i 23 casi che il paper classifica come "assente" ma che il dato originale
+        etichettava come "sconosciuto" restano qui marcati come dubbi, non come "assente". È una
+        scelta nostra, motivata dal voler dare il beneficio del dubbio dove la fonte stessa non era
+        certa — non un dato più corretto in assoluto. Dettagli e fonti nella
+        <a href="jankowiak-2015.html#critica-baath">scheda di Jankowiak et al.</a>
+      </div>
+      <div class="controlli-mappa">
+        <button type="button" class="btn-legenda" id="btn-legenda-mappa" aria-expanded="false" aria-controls="pannello-legenda-mappa">
+          Come si legge questa mappa &#9662;
+        </button>
+      </div>
+      <div class="pannello-legenda" id="pannello-legenda-mappa" hidden></div>
+      <div id="mappa" role="img" aria-label="Mappa interattiva del bacio romantico-sessuale cross-culturale"></div>
+      <p class="nota-vista">
+        Due livelli fra loro alternativi, non sommabili (v. il controllo in alto a destra sulla
+        mappa): <strong>Jankowiak et al. 2015</strong> — 164 delle 168 culture del campione,
+        risoluzione singola cultura, coordinate lette da Bååth &amp; Anikin e salvate punto per
+        punto in <code>progetti.json</code> — e <strong>Watkins et al. 2019</strong> — 13 nazioni
+        contemporanee, risoluzione nazione, dato di frequenza autoriportata via survey online, non
+        una codifica etnografica di presenza/assenza: due modi diversi di guardare allo stesso
+        fenomeno, non due dati comparabili punto per punto. Due overlay indipendenti, sempre
+        visibili qualunque livello sia attivo: <strong>Arbøll &amp; Rasmussen 2023</strong>
+        (Mesopotamia, macro-regione) e il <strong>Barton Cylinder</strong> (Nippur, sito puntuale
+        con margine di dubbio dichiarato dalla stessa CDLI — v. la sua scheda). V.
+        <a href="docs/modello-dati.md">modello-dati.md</a> per il dettaglio dei limiti di certezza
+        di ciascun dato geografico. Le coordinate di Watkins, Arbøll &amp; Rasmussen e Barton
+        Cylinder vengono invece da un dizionario nome&rarr;centroide qui in JS: non sono un dato
+        salvato in <code>progetti.json</code>, solo un dettaglio di resa cartografica.
+      </p>
+    </section>
+
+    <!-- Vista Grafici: aggiunta dopo bozza collaborativa con lo studente
+         (bozza-grafici-ramo-bacio.html, discussa e approvata via artifact separato).
+         Tre grafici, uno per ricerca con dato numerico proprio — Arbøll & Rasmussen resta
+         senza, saggio argomentativo senza dataset (v. sua scheda). Colori coerenti con la
+         Mappa qui sopra: stessi --accent/--clay/--dubbio per i tre stati di Jankowiak. -->
+    <section id="vista-grafici" class="vista" role="tabpanel" aria-labelledby="tab-grafici" tabindex="0" hidden>
+      <p class="nota-vista">
+        Dati reali da <code>data/progetti.json</code> e <code>data/jankowiak-risultati.json</code>,
+        calcolati qui a runtime (nessun conteggio o retta di regressione ricopiato a mano) — v.
+        anche le schede dei singoli item per il dettaglio di ciascuna fonte.
+      </p>
+      <div class="grafici-griglia">
+
+        <!-- ============ JANKOWIAK: due torte a confronto ============ -->
+        <div class="grafici-card">
+          <h2>Jankowiak, Volsche &amp; Garcia (2015) — due letture a confronto</h2>
+          <p class="grafici-fonte">
+            A sinistra il dato aggregato pubblicato nell'articolo (168 culture). A destra la
+            rianalisi che alimenta la vista Mappa qui sopra: 164 delle stesse culture,
+            geolocalizzate dal widget di Bååth &amp; Anikin (2015) — la critica pubblicata al
+            dato di Jankowiak et al. (v. <a href="jankowiak-2015.html#critica-baath">scheda di Jankowiak</a>).
+          </p>
+          <div class="grafici-coppia-torte" id="coppia-torte-jankowiak">
+            <p class="grafici-nota-caricamento">Calcolo in corso&hellip;</p>
+          </div>
+          <ul class="grafici-legenda">
+            <li><span class="grafici-pallino" style="background:var(--accent)"></span> Presente / attestato</li>
+            <li><span class="grafici-pallino" style="background:var(--clay)"></span> Assente / non attestato</li>
+            <li><span class="grafici-pallino" style="background:var(--dubbio)"></span> Dubbio (ricodificato da "sconosciuto", solo rianalisi)</li>
+          </ul>
+          <p class="grafici-nota">
+            Le due percentuali sono vicine (circa il 46% in entrambe le letture) ma nascono da
+            fonti diverse e da un campione di dimensione diversa (168 contro 164): non sono lo
+            stesso identico numero. La rianalisi aggiunge la categoria "dubbio", assente nella
+            pubblicazione originale — la nostra scelta dichiarata di non forzare in "assente" i
+            23 casi che il dato grezzo classificava come "sconosciuto".
+          </p>
+        </div>
+
+        <!-- ============ WATKINS: spiegazione GINI + scatter ============ -->
+        <div class="grafici-card">
+          <h2>Watkins &amp; Leongómez (2019)</h2>
+          <p class="grafici-fonte">
+            13 paesi, 2.379 rispondenti — frequenza media del bacio (autovalutazione 0&ndash;100)
+            per indice GINI nazionale. Stessi 13 valori dei pallini di questo studio sulla Mappa.
+          </p>
+          <div class="grafici-spiega-gini">
+            <strong>Cos'è l'indice GINI?</strong> Misura quanto è concentrato il reddito in un
+            paese, da 0 (redistribuzione perfetta) a 100 (un solo individuo possiede tutto il
+            reddito nazionale). Non misura la povertà assoluta, ma la disuguaglianza relativa.
+            Nel campione di questi 13 paesi va da 25,0 (Repubblica Ceca) a 53,5 (Colombia) — la
+            scala di colore sotto il grafico segue lo stesso indice: più scuro, più diseguale.
+          </div>
+          <svg class="grafici-svg-scatter" id="grafici-scatter-watkins" viewBox="0 0 320 230" role="img"
+               aria-label="Grafico a dispersione: frequenza del bacio per indice GINI, 13 paesi"></svg>
+          <div class="grafici-legenda-gini">
+            <span>GINI basso</span><span class="grafici-rampa-gini"></span><span>GINI alto</span>
+          </div>
+          <p class="grafici-nota" id="grafici-nota-regressione">Calcolo della retta di regressione in corso&hellip;</p>
+        </div>
+
+        <!-- ============ MURRAY ET AL.: barre verticali ============ -->
+        <div class="grafici-card">
+          <h2>Murray, Fessler, Kerry, White &amp; Marin (2016/2017)</h2>
+          <p class="grafici-fonte">
+            Riusa lo stesso campione di 168 culture di Jankowiak et al. (2015) per una domanda
+            diversa: la minaccia storica di patogeni predice quanto bacio romantico una cultura
+            tollera? Statistica aggregata dalla pubblicazione stessa — non è stato cercato il
+            dato di prevalenza patogeni per singola cultura (v. <a href="murray-2016.html">scheda dell'item</a>).
+          </p>
+          <div class="grafici-barre-murray" role="img" aria-label="Bacio romantico presente nel 63% delle culture a bassa prevalenza storica di patogeni, contro il 42% di quelle ad alta prevalenza">
+            <div class="grafici-colonna-murray">
+              <div class="grafici-barra-verticale" style="height:63%; background:var(--accent)"></div>
+              <p class="grafici-valore-murray">63%</p>
+              <p class="grafici-etichetta-murray">Prevalenza patogeni<br><strong>bassa</strong></p>
+            </div>
+            <div class="grafici-colonna-murray">
+              <div class="grafici-barra-verticale" style="height:42%; background:var(--clay)"></div>
+              <p class="grafici-valore-murray">42%</p>
+              <p class="grafici-etichetta-murray">Prevalenza patogeni<br><strong>alta</strong></p>
+            </div>
+          </div>
+          <p class="grafici-nota">
+            Percentuale di culture (sulle 168 del campione Jankowiak) in cui il bacio romantico è
+            presente, per livello storico di minaccia da patogeni. Effetto pubblicato: B = &minus;0,79,
+            p = 0,01. Limiti dichiarati dagli stessi autori: disegno correlazionale non causale,
+            misure descritte come "crude and noisy", nessun controllo per variabili terze — v.
+            scheda dell'item per il dettaglio completo.
+          </p>
+        </div>
+
+      </div>
+      <p class="nota-vista">
+        Arbøll &amp; Rasmussen (2023) resta senza un grafico proprio: è un saggio argomentativo
+        senza dataset originale, nessun numero da mostrare (stesso motivo già nella sua scheda).
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna, 2026.</p>
+  </footer>
+
+  <script src="lib/leaflet/leaflet.js"></script>
+  <script>
+    // Stessa architettura dati di catalogo.html: un solo indice condiviso (progetti.json),
+    // filtrato qui sui soli item del progetto "bacio". NOTA per chi testa in locale: come in
+    // catalogo.html, serve un server locale (python3 -m http.server), non funziona con file://.
+
+    // AGGIORNATO — con murray-2016.html tutti e 5 gli item del ramo hanno ormai una scheda
+    // propria (metadati caricati da progetti.json; il Barton Cylinder ha in più il testo TEI
+    // integrale). Il registro sotto resta comunque necessario: il titolo in Lista diventa link
+    // cliccabile solo per gli item presenti qui, non per costruzione automatica del nome file.
+    const PAGINE_ITEM = {
+      "barton-cylinder": "barton-cylinder.html",
+      "jankowiak-2015": "jankowiak-2015.html",
+      "watkins-2019": "watkins-2019.html",
+      "arboll-rasmussen-2023": "arboll-rasmussen-2023.html",
+      "murray-2016": "murray-2016.html",
+      "lee-devore-1968": "lee-devore-1968.html",
+      "gero-conkey-1991": "gero-conkey-1991.html",
+      "hedenstierna-jonson-2017": "hedenstierna-jonson-2017.html",
+      "price-et-al-2019": "price-et-al-2019.html",
+      "haas-et-al-2020": "haas-et-al-2020.html",
+      "moilanen-et-al-2022": "moilanen-et-al-2022.html",
+      "harari-2014": "harari-2014.html",
+      "graeber-wengrow-2021": "graeber-wengrow-2021.html"
+    };
+
+    const TIPO_RISORSA_ETICHETTA = {
+      "studio-primario": "Studio primario",
+      "saggio-di-sintesi": "Saggio di sintesi",
+      "volume-curato": "Volume curato",
+      "fonte-primaria-testuale": "Fonte primaria testuale",
+      "poster-multimediale": "Poster multimediale"
+    };
+
+    const LINK_ETICHETTA = {
+      "doi": "DOI", "cdli": "CDLI", "museo": "Museo",
+      "deposito-dati": "Dati", "isbn": "ISBN",
+      "rivista": "Rivista", "ente-dati": "Ente dati", "testo-integrale": "Testo integrale libero"
+    };
+
+    // Dizionario nome-area -> centroide [lat, lon]. Solo un dettaglio di rendering per la
+    // vista Mappa (v. modello-dati.md): il dato che conta è il nome del luogo in
+    // aree_geografiche, verificato per ciascun item; queste coordinate sono un'approssimazione
+    // cartografica (capitale per i 13 paesi di Watkins; centroide indicativo per le due
+    // macro-regioni/siti di Arbøll & Rasmussen e del Barton Cylinder). AGGIORNATO: le 8 vecchie
+    // macro-regioni di Jankowiak 2015 sono state rimosse da qui — quell'item ora salva lat/lng
+    // punto per punto in aree_geografiche (164 singole culture, non più macro-regioni), letti
+    // direttamente in disegnaLivelloJankowiak() invece che tramite questo dizionario.
+    const CENTROIDI = {
+      "Regno Unito": [51.5074, -0.1278],
+      "Colombia": [4.7110, -74.0721],
+      "Brasile": [-15.7939, -47.8828],
+      "Cile": [-33.4489, -70.6693],
+      "Australia": [-35.2809, 149.1300],
+      "Polonia": [52.2297, 21.0122],
+      "Francia": [48.8566, 2.3522],
+      "Nigeria": [9.0765, 7.3986],
+      "Germania": [52.5200, 13.4050],
+      "Repubblica Ceca": [50.0755, 14.4378],
+      "Stati Uniti": [38.9072, -77.0369],
+      "Italia": [41.9028, 12.4964],
+      "India": [28.6139, 77.2090],
+      "Mesopotamia (Iraq e Siria attuali)": [33.0, 44.0],
+      "Nippur (mod. Nuffar)": [32.1264, 45.2334]
+    };
+
+    let TUTTI_ITEM_BACIO = [];
+    let mappaLeaflet = null;
+    let layerJankowiak = null;
+    let layerWatkins = null;
+    let layerMesopotamia = null;
+    let layerBarton = null;
+    let nomeLivelloMappaAttivo = "Jankowiak et al. 2015 (interpretazione Bååth &amp; Anikin)";
+
+    fetch("data/progetti.json")
+      .then(risposta => {
+        if (!risposta.ok) throw new Error("HTTP " + risposta.status);
+        return risposta.json();
+      })
+      .then(dati => inizializza(dati))
+      .catch(errore => {
+        document.getElementById("stato-caricamento").textContent =
+          "Impossibile caricare i dati (" + errore.message + "). " +
+          "Se stai aprendo questo file con un doppio click, serve un server locale — vedi il commento nel codice sorgente.";
+      });
+
+    function inizializza(dati) {
+      // La didascalia del ramo (.sottotitolo-ramo nell'header) è ora statica, scritta a mano —
+      // non più presa da tesi_comune qui a runtime, v. commento nell'HTML sopra.
+      TUTTI_ITEM_BACIO = dati.item.filter(it => it.progetto === "bacio");
+
+      renderizzaLista(TUTTI_ITEM_BACIO);
+
+      document.querySelectorAll(".btn-vista").forEach(bottone => {
+        bottone.addEventListener("click", () => mostraVista(bottone.dataset.vista, true));
+      });
+      document.querySelector(".selettore-viste").addEventListener("keydown", gestisciTastieraTab);
+      collegaControlliLegendaMappa();
+      renderizzaVistaGrafici();
+    }
+
+    function mostraVista(nomeVista, spostaFocus) {
+      document.querySelectorAll(".vista").forEach(sezione => {
+        sezione.hidden = sezione.id !== "vista-" + nomeVista;
+      });
+      document.querySelectorAll(".btn-vista").forEach(bottone => {
+        const attiva = bottone.dataset.vista === nomeVista;
+        // aria-selected (non aria-pressed): questo è un tab di un tablist, non un
+        // pulsante a due stati indipendente — la semantica corretta del pattern ARIA Tabs.
+        bottone.setAttribute("aria-selected", attiva ? "true" : "false");
+        // tabindex "roving": solo il tab attivo è nella sequenza di Tab della pagina, gli
+        // altri si raggiungono con le frecce — altrimenti Tab dovrebbe attraversare tutti
+        // e tre i bottoni uno per uno, contro la convenzione ARIA per i tablist.
+        bottone.tabIndex = attiva ? 0 : -1;
+        bottone.classList.toggle("vista-attiva", attiva);
+        if (attiva && spostaFocus) bottone.focus();
+      });
+      // La mappa Leaflet va inizializzata/ridimensionata solo quando il contenitore
+      // diventa visibile: costruirla su un div con display:none produce un riquadro grigio.
+      if (nomeVista === "mappa") {
+        if (!mappaLeaflet) {
+          inizializzaMappa();
+        } else {
+          mappaLeaflet.invalidateSize();
+        }
+      }
+    }
+
+    // Frecce sinistra/destra (con avvolgimento a inizio/fine lista) + Home/End: pattern
+    // standard WAI-ARIA APG per un tablist orizzontale. Attivazione automatica — la freccia
+    // sposta il focus E attiva subito quella vista, non serve premere Invio in più.
+    function gestisciTastieraTab(ev) {
+      const tab = document.querySelectorAll(".btn-vista");
+      const indiceAttuale = Array.from(tab).findIndex(b => b === document.activeElement);
+      if (indiceAttuale === -1) return;
+
+      let nuovoIndice = null;
+      if (ev.key === "ArrowRight") nuovoIndice = (indiceAttuale + 1) % tab.length;
+      else if (ev.key === "ArrowLeft") nuovoIndice = (indiceAttuale - 1 + tab.length) % tab.length;
+      else if (ev.key === "Home") nuovoIndice = 0;
+      else if (ev.key === "End") nuovoIndice = tab.length - 1;
+      else return;
+
+      ev.preventDefault();
+      mostraVista(tab[nuovoIndice].dataset.vista, true);
+    }
+
+    function renderizzaLista(item) {
+      const contenitore = document.getElementById("vista-lista");
+      contenitore.innerHTML = "";
+
+      item.forEach(it => {
+        const card = document.createElement("article");
+        card.className = "card-item";
+
+        const titolo = document.createElement("h2");
+        if (PAGINE_ITEM[it.id]) {
+          const linkTitolo = document.createElement("a");
+          linkTitolo.href = PAGINE_ITEM[it.id];
+          linkTitolo.textContent = it.titolo;
+          titolo.appendChild(linkTitolo);
+        } else {
+          titolo.textContent = it.titolo;
+        }
+        card.appendChild(titolo);
+
+        const tipo = document.createElement("p");
+        tipo.className = "badge badge-tipo-risorsa";
+        tipo.textContent = TIPO_RISORSA_ETICHETTA[it.tipo_risorsa] || it.tipo_risorsa;
+        card.appendChild(tipo);
+
+        if (it.autori && it.autori.length > 0) {
+          const autori = document.createElement("p");
+          autori.className = "autori-item";
+          it.autori.forEach((autore, i) => {
+            const link = document.createElement("a");
+            link.href = autore.ref;
+            link.textContent = autore.nome;
+            autori.appendChild(link);
+            if (i < it.autori.length - 1) autori.appendChild(document.createTextNode("; "));
+          });
+          card.appendChild(autori);
+        } else if (it.nota_autori) {
+          const notaAutori = document.createElement("p");
+          notaAutori.className = "autori-item";
+          notaAutori.textContent = it.nota_autori;
+          card.appendChild(notaAutori);
+        }
+
+        if (it.periodo_da !== null && it.periodo_da !== undefined) {
+          const periodo = document.createElement("p");
+          periodo.className = "periodo-item";
+          const daText = formattaAnno(it.periodo_da);
+          const aText = formattaAnno(it.periodo_a);
+          periodo.textContent = daText === aText ? "Periodo: " + daText : "Periodo: " + daText + " – " + aText;
+          if (it.nota_periodo) periodo.title = it.nota_periodo;
+          card.appendChild(periodo);
+        }
+
+        if (it.marcature && it.marcature.length > 0) {
+          const marcature = document.createElement("p");
+          marcature.className = "marcature-item";
+          it.marcature.forEach(m => {
+            const b = document.createElement("a");
+            b.href = "ricerca.html?marcatura=" + encodeURIComponent(m);
+            b.className = "badge badge-marcatura";
+            b.textContent = m;
+            marcature.appendChild(b);
+          });
+          card.appendChild(marcature);
+        }
+
+        if (it.link_riferimento && it.link_riferimento.length > 0) {
+          const linkContenitore = document.createElement("p");
+          linkContenitore.className = "link-riferimento-item";
+          it.link_riferimento.forEach(lr => {
+            const link = document.createElement("a");
+            link.href = lr.url.startsWith("isbn:") ? "https://openlibrary.org/isbn/" + lr.url.replace("isbn:", "") : lr.url;
+            link.className = "link-progetto link-piccolo";
+            link.textContent = LINK_ETICHETTA[lr.tipo] || lr.tipo;
+            linkContenitore.appendChild(link);
+          });
+          card.appendChild(linkContenitore);
+        }
+
+        contenitore.appendChild(card);
+      });
+    }
+
+    function formattaAnno(anno) {
+      return anno < 0 ? Math.abs(anno) + " a.C." : String(anno) + " d.C.";
+    }
+
+    // -------------------- Vista Mappa: due livelli + due overlay --------------------
+    // Sostituisce il vecchio livello unico con filtro a checkbox indipendenti: ora un solo
+    // L.control.layers con due basemap fra loro esclusive ("livelli", radio — Jankowiak/Bååth
+    // e Watkins) e due overlay indipendenti sempre disponibili qualunque livello sia attivo
+    // (Arbøll & Rasmussen, Barton Cylinder) — stesso meccanismo (addLayersControl) usato da
+    // Bååth nella sua mappa originale, non un pattern inventato qui. Colori come esadecimali
+    // fissi, non variabili CSS: gli attributi SVG che Leaflet imposta sui marker non risolvono
+    // le custom property — limite noto, non un errore.
+    // AGGIORNATO (R1, 2026-09-08): non più in scala di grigi. Tre colori distinguibili per i
+    // tre stati di Jankowiak (stessi --accent/--clay/--dubbio del resto del sito, qui come
+    // esadecimali fissi per il motivo sopra), e un vero gradiente continuo per Watkins invece
+    // delle tre fasce discrete di prima — il colore resta codifica del dato, non decorazione,
+    // ma ora distinguibile a colpo d'occhio come richiesto.
+    const COLORE_PRESENTE = "#2e4057";  // --accent
+    const COLORE_ASSENTE = "#a6693b";   // --clay
+    const COLORE_DUBBIO = "#8a7a2e";    // --dubbio
+
+    // Gradiente continuo fra --clay-wash (GINI più basso del campione) e --clay (GINI più
+    // alto), calcolato sui valori minimo/massimo effettivi dei 13 paesi — non una scala
+    // arbitraria 0-100: stesso principio già usato nella bozza dei Grafici.
+    const GINI_MIN_CAMPIONE = 25.0;  // Repubblica Ceca, valore più basso dei 13 paesi
+    const GINI_MAX_CAMPIONE = 53.5;  // Colombia, valore più alto dei 13 paesi
+    function coloreWatkinsGini(gini) {
+      const t = Math.max(0, Math.min(1, (gini - GINI_MIN_CAMPIONE) / (GINI_MAX_CAMPIONE - GINI_MIN_CAMPIONE)));
+      const c1 = [241, 226, 211];   // clay-wash
+      const c2 = [166, 105, 59];    // clay
+      const rgb = c1.map((c, i) => Math.round(c + (c2[i] - c) * t));
+      return "rgb(" + rgb.join(",") + ")";
+    }
+
+    // Jankowiak: coordinate lette punto per punto da progetti.json (area.lat/area.lng), non più
+    // da CENTROIDI — v. commento sopra il dizionario CENTROIDI.
+    function disegnaLivelloJankowiak(it) {
+      const layer = L.layerGroup();
+      if (!it || !it.aree_geografiche) return layer;
+      it.aree_geografiche.forEach(area => {
+        if (area.lat === undefined || area.lng === undefined) return; // niente coordinate: non disegnato, non inventato
+        let fill, testoStato, dash = null;
+        if (area.presenza_bacio === true) {
+          fill = COLORE_PRESENTE;
+          testoStato = "bacio romantico-sessuale presente nel campione";
+        } else if (area.presenza_bacio === false) {
+          fill = COLORE_ASSENTE;
+          testoStato = "bacio romantico-sessuale assente nel campione";
+        } else {
+          fill = COLORE_DUBBIO;
+          dash = "2,2";
+          testoStato = "dato originale: sconosciuto — pubblicato come \"assente\" nell'articolo, qui lasciato dubbio (v. disclaimer sopra la mappa)";
+        }
+        const marker = L.circleMarker([area.lat, area.lng], {
+          radius: 5, color: "#222", fillColor: fill,
+          fillOpacity: area.presenza_bacio === false ? 1 : 0.85,
+          weight: 1, dashArray: dash
+        });
+        let popup = "<strong>" + area.nome + "</strong><br>" + testoStato;
+        if (area.ricodificato_da_unknown) {
+          popup += "<br><em>Uno dei 23 casi ricodificati da \"sconosciuto\" a \"assente\" nella pubblicazione — qui mostrato con l'interpretazione di Bååth &amp; Anikin.</em>";
+        }
+        if (PAGINE_ITEM[it.id]) popup += "<br><a href=\"" + PAGINE_ITEM[it.id] + "\">Vedi la scheda di Jankowiak et al. &rarr;</a>";
+        marker.bindPopup(popup);
+        marker.addTo(layer);
+      });
+      return layer;
+    }
+
+    // Watkins: coordinate da CENTROIDI (nome nazione -> capitale), come già faceva il vecchio
+    // meccanismo a livello unico. Dimensione del punto = N rispondenti; colore = GINI nazionale.
+    function disegnaLivelloWatkins(it) {
+      const layer = L.layerGroup();
+      if (!it || !it.aree_geografiche) return layer;
+      it.aree_geografiche.forEach(area => {
+        const coord = CENTROIDI[area.nome];
+        if (!coord) return; // paese senza centroide noto: non disegnato, non inventato
+        const marker = L.circleMarker(coord, {
+          radius: 4 + Math.sqrt(area.n) / 3, color: "#222",
+          fillColor: coloreWatkinsGini(area.gini), fillOpacity: 0.85, weight: 1
+        });
+        const popup = "<strong>" + area.nome + "</strong><br>N = " + area.n +
+          "<br>Frequenza media del bacio (autovalutazione 0&ndash;100): " + area.kiss_freq_medio +
+          "<br>GINI (disuguaglianza economica): " + area.gini +
+          "<br>GDP pro capite (USD, CIA World Factbook): " + area.gdp.toLocaleString("it-IT") +
+          (PAGINE_ITEM[it.id] ? "<br><a href=\"" + PAGINE_ITEM[it.id] + "\">Vedi la scheda di Watkins et al. &rarr;</a>" : "");
+        marker.bindPopup(popup);
+        marker.addTo(layer);
+      });
+      return layer;
+    }
+
+    // Overlay indipendenti (Arbøll & Rasmussen, Barton Cylinder): un solo punto ciascuno,
+    // sempre visibile qualunque livello sia attivo — non un'interpretazione alternativa dello
+    // stesso dato, ma un riferimento a parte. Marker cavo e tratteggiato, per segnalare
+    // visivamente "area o sito con margine di dubbio", non un dato puntuale certo.
+    function disegnaOverlaySingolo(it, nomeArea, notaPopup) {
+      if (!it) return null;
+      const coord = CENTROIDI[nomeArea];
+      if (!coord) return null; // area senza centroide noto: non disegnata, non inventata
+      const layer = L.layerGroup();
+      const marker = L.circleMarker(coord, {
+        radius: 6, color: "#222", fillColor: "#fff", fillOpacity: 0.9, weight: 2, dashArray: "4,3"
+      });
+      let popup = "<strong>" + it.titolo + "</strong><br>" + nomeArea;
+      if (notaPopup) popup += "<br><em>" + notaPopup + "</em>";
+      if (PAGINE_ITEM[it.id]) popup += "<br><a href=\"" + PAGINE_ITEM[it.id] + "\">Vedi la scheda &rarr;</a>";
+      marker.bindPopup(popup);
+      marker.addTo(layer);
+      return layer;
+    }
+
+    const LEGENDE_MAPPA = {
+      "Jankowiak et al. 2015 (interpretazione Bååth &amp; Anikin)":
+        "<h4>Livello: Jankowiak et al. 2015 — interpretazione di Bååth &amp; Anikin</h4>" +
+        "<p>164 delle 168 culture del campione. Ogni punto è una singola cultura, non una macro-regione.</p>" +
+        "<div class=\"voce-legenda\"><span class=\"pallino-legenda\" style=\"background:#2e4057\"></span> bacio romantico-sessuale presente nel campione</div>" +
+        "<div class=\"voce-legenda\"><span class=\"pallino-legenda\" style=\"background:#a6693b\"></span> assente nel campione (dato originale concorde con la pubblicazione)</div>" +
+        "<div class=\"voce-legenda\"><span class=\"pallino-legenda\" style=\"background:#8a7a2e;border-style:dashed\"></span> dato originale \"sconosciuto\", pubblicato come \"assente\" — qui lasciato dubbio (23 casi, v. disclaimer sopra la mappa)</div>",
+      "Watkins et al. 2019 (13 nazioni)":
+        "<h4>Livello: Watkins et al. 2019</h4>" +
+        "<p>13 nazioni contemporanee, campione survey (2.379 rispondenti) — non le stesse 168 culture tradizionali di Jankowiak: un dato di frequenza autoriportata, non una codifica etnografica di presenza/assenza. Colore = indice GINI nazionale (disuguaglianza economica, gradiente continuo fra i valori minimo e massimo del campione — non fasce discrete); dimensione = numero di rispondenti nel paese.</p>" +
+        "<div class=\"voce-legenda\"><span class=\"pallino-legenda\" style=\"background:linear-gradient(90deg,#f1e2d3,#a6693b);width:2.5rem;border-radius:3px\"></span> GINI 25,0 (Rep. Ceca) &rarr; 53,5 (Colombia)</div>"
+    };
+
+    function aggiornaLegendaMappa() {
+      const pannello = document.getElementById("pannello-legenda-mappa");
+      if (!pannello) return;
+      pannello.innerHTML = LEGENDE_MAPPA[nomeLivelloMappaAttivo] || "";
+    }
+
+    // Bottone/pannello legenda: presenti nell'HTML statico fin dal caricamento della pagina,
+    // indipendenti dall'inizializzazione (lazy) della mappa Leaflet — collegati qui, non dentro
+    // inizializzaMappa(), così funzionano anche prima che l'utente apra per la prima volta la
+    // scheda Mappa.
+    function collegaControlliLegendaMappa() {
+      const bottone = document.getElementById("btn-legenda-mappa");
+      const pannello = document.getElementById("pannello-legenda-mappa");
+      if (!bottone || !pannello) return;
+      bottone.addEventListener("click", () => {
+        const apri = pannello.hidden;
+        pannello.hidden = !apri;
+        bottone.setAttribute("aria-expanded", String(apri));
+        bottone.textContent = apri ? "Come si legge questa mappa ▴" : "Come si legge questa mappa ▾";
+        if (apri) aggiornaLegendaMappa();
+      });
+    }
+
+    function inizializzaMappa() {
+      mappaLeaflet = L.map("mappa").setView([15, 10], 2);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap contributors"
+      }).addTo(mappaLeaflet);
+
+      const jankowiak = TUTTI_ITEM_BACIO.find(it => it.id === "jankowiak-2015");
+      const watkins = TUTTI_ITEM_BACIO.find(it => it.id === "watkins-2019");
+      const arboll = TUTTI_ITEM_BACIO.find(it => it.id === "arboll-rasmussen-2023");
+      const barton = TUTTI_ITEM_BACIO.find(it => it.id === "barton-cylinder");
+
+      layerJankowiak = disegnaLivelloJankowiak(jankowiak);
+      layerWatkins = disegnaLivelloWatkins(watkins);
+      layerMesopotamia = disegnaOverlaySingolo(arboll, "Mesopotamia (Iraq e Siria attuali)",
+        "area, non un sito puntuale — non collegata ai due livelli sopra: è una fonte testuale antica, non un dato quantitativo comparabile.");
+      layerBarton = disegnaOverlaySingolo(barton, "Nippur (mod. Nuffar)",
+        "sito puntuale con margine di dubbio dichiarato dalla stessa CDLI — v. la sua scheda per il dettaglio.");
+
+      // Livello iniziale ed entrambi gli overlay vanno aggiunti alla mappa PRIMA di costruire
+      // il controllo: altrimenti la loro checkbox nasce spuntata solo alla prossima
+      // interazione (comportamento di Leaflet legato all'ordine di chiamata, verificato).
+      layerJankowiak.addTo(mappaLeaflet);
+      if (layerMesopotamia) layerMesopotamia.addTo(mappaLeaflet);
+      if (layerBarton) layerBarton.addTo(mappaLeaflet);
+
+      const overlay = {};
+      if (layerMesopotamia) overlay["Arbøll &amp; Rasmussen 2023 (Mesopotamia)"] = layerMesopotamia;
+      if (layerBarton) overlay["Barton Cylinder (Nippur)"] = layerBarton;
+
+      L.control.layers(
+        {
+          "Jankowiak et al. 2015 (interpretazione Bååth &amp; Anikin)": layerJankowiak,
+          "Watkins et al. 2019 (13 nazioni)": layerWatkins
+        },
+        overlay,
+        { collapsed: false }
+      ).addTo(mappaLeaflet);
+
+      aggiornaLegendaMappa();
+      mappaLeaflet.on("baselayerchange", e => {
+        nomeLivelloMappaAttivo = e.name;
+        aggiornaLegendaMappa();
+      });
+    }
+
+    // -------------------- Vista Grafici --------------------
+    // Popolata a runtime dai dati già in memoria (TUTTI_ITEM_BACIO, da progetti.json) più un
+    // secondo file — data/jankowiak-risultati.json — per il conteggio pubblicato (168/77): un
+    // dato diverso dai 164 punti della Mappa, non riducibile a un conteggio su aree_geografiche
+    // (v. nota_geografica dell'item per la spiegazione). Nessun conteggio o retta di
+    // regressione scritto a mano: tutto calcolato qui dal dato grezzo già caricato.
+
+    function renderizzaVistaGrafici() {
+      renderizzaTorteJankowiak();
+      disegnaScatterWatkinsGrafici();
+    }
+
+    function renderizzaTorteJankowiak() {
+      const contenitore = document.getElementById("coppia-torte-jankowiak");
+      if (!contenitore) return;
+
+      const jankowiak = TUTTI_ITEM_BACIO.find(it => it.id === "jankowiak-2015");
+      if (!jankowiak || !jankowiak.aree_geografiche) {
+        contenitore.innerHTML = "<p class=\"grafici-nota-caricamento\">Dato non disponibile.</p>";
+        return;
+      }
+      // Conteggio dei 164 punti mappati, dallo stesso dato usato per la vista Mappa — non un
+      // numero ricopiato a mano.
+      let presente = 0, assente = 0, dubbio = 0;
+      jankowiak.aree_geografiche.forEach(area => {
+        if (area.presenza_bacio === true) presente++;
+        else if (area.presenza_bacio === false) assente++;
+        else dubbio++;
+      });
+      const totaleRianalisi = presente + assente + dubbio;
+
+      fetch("data/jankowiak-risultati.json")
+        .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+        .then(datiPubblicati => {
+          const g = datiPubblicati.dato_globale;
+          contenitore.innerHTML =
+            costruisciTortaSVG(g.culture_con_bacio_romantico_attestato, g.culture_totali_campionate - g.culture_con_bacio_romantico_attestato, 0,
+              [["var(--accent)", g.culture_con_bacio_romantico_attestato], ["var(--clay)", g.culture_totali_campionate - g.culture_con_bacio_romantico_attestato]],
+              g.percentuale + "%", "attestato",
+              "Dato pubblicato", g.culture_totali_campionate + " culture, intero campione") +
+            costruisciTortaSVG(presente, assente, dubbio,
+              [["var(--accent)", presente], ["var(--clay)", assente], ["var(--dubbio)", dubbio]],
+              Math.round(presente / totaleRianalisi * 100) + "%", "presente",
+              "Rianalisi Bååth &amp; Anikin", totaleRianalisi + " culture geolocalizzate (vista Mappa)");
+        })
+        .catch(errore => {
+          contenitore.innerHTML = "<p class=\"grafici-nota-caricamento\">Impossibile calcolare il grafico (" + errore.message + ").</p>";
+        });
+    }
+
+    // Costruisce una torta SVG a N segmenti via stroke-dasharray/dashoffset sulla circonferenza
+    // di un cerchio di raggio 52 — stessa tecnica usata nella bozza discussa con lo studente.
+    // segmenti: array di [colore, valore]; ignora i valori a 0 (es. "dubbio" nel dato pubblicato).
+    function costruisciTortaSVG(v1, v2, v3, segmenti, testoCentro, sottotestoCentro, etichetta, sottoetichetta) {
+      const raggio = 52;
+      const circonferenza = 2 * Math.PI * raggio;
+      const totale = segmenti.reduce((s, seg) => s + seg[1], 0);
+      let cerchi = "";
+      let percorso = 0;
+      segmenti.forEach(([colore, valore]) => {
+        if (valore <= 0) return;
+        const lunghezza = valore / totale * circonferenza;
+        cerchi += "<circle cx=\"75\" cy=\"75\" r=\"" + raggio + "\" fill=\"none\" stroke=\"" + colore + "\" stroke-width=\"30\" " +
+          "stroke-dasharray=\"" + lunghezza.toFixed(2) + " " + (circonferenza - lunghezza).toFixed(2) + "\" " +
+          "stroke-dashoffset=\"" + (-percorso).toFixed(2) + "\" transform=\"rotate(-90 75 75)\"></circle>";
+        percorso += lunghezza;
+      });
+      return "<div class=\"grafici-torta-unita\">" +
+        "<svg width=\"140\" height=\"140\" viewBox=\"0 0 150 150\" role=\"img\" aria-label=\"" + etichetta + ": " + sottoetichetta + "\">" +
+        cerchi +
+        "<circle cx=\"75\" cy=\"75\" r=\"37\" fill=\"var(--surface)\"></circle>" +
+        "<text x=\"75\" y=\"71\" text-anchor=\"middle\" font-family=\"var(--font-mono)\" font-size=\"18\" fill=\"var(--ink)\" font-weight=\"600\">" + testoCentro + "</text>" +
+        "<text x=\"75\" y=\"86\" text-anchor=\"middle\" font-family=\"var(--font-sans)\" font-size=\"8\" fill=\"var(--ink-faint)\">" + sottotestoCentro + "</text>" +
+        "</svg>" +
+        "<p class=\"grafici-etichetta-torta\">" + etichetta + "<span>" + sottoetichetta + "</span></p>" +
+        "</div>";
+    }
+
+    // Regressione lineare (minimi quadrati) calcolata qui dal dato grezzo — non un valore
+    // ricopiato dalla scheda dell'item (che lo mostra già calcolato allo stesso modo).
+    function regressioneLineare(punti) {
+      const n = punti.length;
+      const sommaX = punti.reduce((s, p) => s + p.x, 0);
+      const sommaY = punti.reduce((s, p) => s + p.y, 0);
+      const sommaXY = punti.reduce((s, p) => s + p.x * p.y, 0);
+      const sommaX2 = punti.reduce((s, p) => s + p.x * p.x, 0);
+      const slope = (n * sommaXY - sommaX * sommaY) / (n * sommaX2 - sommaX * sommaX);
+      const intercept = (sommaY - slope * sommaX) / n;
+      return { slope, intercept };
+    }
+
+    function disegnaScatterWatkinsGrafici() {
+      const svg = document.getElementById("grafici-scatter-watkins");
+      const notaRegressione = document.getElementById("grafici-nota-regressione");
+      if (!svg) return;
+      const watkins = TUTTI_ITEM_BACIO.find(it => it.id === "watkins-2019");
+      if (!watkins || !watkins.aree_geografiche || watkins.aree_geografiche.length === 0) {
+        if (notaRegressione) notaRegressione.textContent = "Dato non disponibile.";
+        return;
+      }
+      const paesi = watkins.aree_geografiche;
+      const ns = "http://www.w3.org/2000/svg";
+      const W = 320, H = 230;
+      const margine = { top: 10, right: 14, bottom: 30, left: 30 };
+      const larghezzaPlot = W - margine.left - margine.right;
+      const altezzaPlot = H - margine.top - margine.bottom;
+
+      const giniValori = paesi.map(p => p.gini);
+      const freqValori = paesi.map(p => p.kiss_freq_medio);
+      const giniMin = Math.min(...giniValori), giniMax = Math.max(...giniValori);
+      const freqMin = Math.min(...freqValori), freqMax = Math.max(...freqValori);
+      // Margine del 10% su entrambi gli assi, cosi i punti estremi non toccano il bordo.
+      const giniPad = (giniMax - giniMin) * 0.1, freqPad = (freqMax - freqMin) * 0.1;
+      const gMinAsse = giniMin - giniPad, gMaxAsse = giniMax + giniPad;
+      const fMinAsse = freqMin - freqPad, fMaxAsse = freqMax + freqPad;
+
+      function sx(g) { return margine.left + (g - gMinAsse) / (gMaxAsse - gMinAsse) * larghezzaPlot; }
+      function sy(f) { return margine.top + altezzaPlot - (f - fMinAsse) / (fMaxAsse - fMinAsse) * altezzaPlot; }
+      function el(tag, attrs) {
+        const e = document.createElementNS(ns, tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+      }
+
+      svg.innerHTML = "";
+      // Assi
+      svg.appendChild(el("line", { x1: margine.left, x2: margine.left, y1: margine.top, y2: H - margine.bottom, stroke: "var(--ink-faint)" }));
+      svg.appendChild(el("line", { x1: margine.left, x2: W - margine.right, y1: H - margine.bottom, y2: H - margine.bottom, stroke: "var(--ink-faint)" }));
+      const titoloX = el("text", { x: margine.left + larghezzaPlot / 2, y: H - 4, "text-anchor": "middle", "font-family": "var(--font-sans)", "font-size": "10.5", fill: "var(--ink-soft)", "font-weight": "600" });
+      titoloX.textContent = "Indice GINI (disuguaglianza economica)";
+      svg.appendChild(titoloX);
+      const titoloY = el("text", { x: -(margine.top + altezzaPlot / 2), y: 11, "text-anchor": "middle", transform: "rotate(-90)", "font-family": "var(--font-sans)", "font-size": "10.5", fill: "var(--ink-soft)", "font-weight": "600" });
+      titoloY.textContent = "Frequenza bacio (0–100)";
+      svg.appendChild(titoloY);
+
+      // Retta di regressione, calcolata sopra da regressioneLineare() sui 13 punti reali.
+      const punti = paesi.map(p => ({ x: p.gini, y: p.kiss_freq_medio }));
+      const regr = regressioneLineare(punti);
+      const y1 = regr.slope * gMinAsse + regr.intercept, y2 = regr.slope * gMaxAsse + regr.intercept;
+      svg.appendChild(el("line", { x1: sx(gMinAsse), y1: sy(y1), x2: sx(gMaxAsse), y2: sy(y2), stroke: "var(--accent)", "stroke-width": "1.4", "stroke-dasharray": "5,3", opacity: "0.75" }));
+
+      paesi.forEach(p => {
+        const cx = sx(p.gini), cy = sy(p.kiss_freq_medio);
+        const r = 3 + Math.sqrt(p.n) / 9;
+        svg.appendChild(el("circle", { cx, cy, r, fill: coloreWatkinsGini(p.gini), stroke: "var(--surface)", "stroke-width": "1" }));
+        svg.appendChild(el("text", { x: cx, y: cy + r + 8, "text-anchor": "middle", "font-family": "var(--font-sans)", "font-size": "8.6", fill: "var(--ink-soft)" })).textContent = p.iso2 || "";
+      });
+
+      // Coefficiente di correlazione di Pearson, calcolato qui — non ricopiato dalla scheda.
+      const mediaX = giniValori.reduce((a, b) => a + b, 0) / giniValori.length;
+      const mediaY = freqValori.reduce((a, b) => a + b, 0) / freqValori.length;
+      let numeratore = 0, sqX = 0, sqY = 0;
+      paesi.forEach(p => {
+        numeratore += (p.gini - mediaX) * (p.kiss_freq_medio - mediaY);
+        sqX += (p.gini - mediaX) ** 2;
+        sqY += (p.kiss_freq_medio - mediaY) ** 2;
+      });
+      const r = numeratore / Math.sqrt(sqX * sqY);
+
+      if (notaRegressione) {
+        notaRegressione.innerHTML = "Retta di regressione calcolata qui sui " + paesi.length +
+          " punti: y = " + regr.slope.toFixed(3) + "&middot;GINI + " + regr.intercept.toFixed(1) +
+          ". Coefficiente di correlazione calcolato: r = " + r.toFixed(3) +
+          " (pubblicato dagli autori: r&nbsp;=&nbsp;0,67 — v. <a href=\"watkins-2019.html\">scheda dell'item</a> per la verifica). " +
+          "Una correlazione moderata-forte su " + paesi.length + " paesi, non una prova di causa.";
+      }
+    }
+
+  </script>
+
+  <script src="ricerca-barra.js"></script>
+</body>
+</html>

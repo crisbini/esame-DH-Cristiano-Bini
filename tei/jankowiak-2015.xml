@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="studio-jankowiak2015" xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Is the Romantic–Sexual Kiss a Near Human Universal?</title>
+        <author>
+          <persName ref="http://viaf.org/viaf/66561888">Jankowiak, William</persName>
+        </author>
+        <author>
+          <persName ref="http://viaf.org/viaf/17156917093554791254 https://orcid.org/0000-0002-0549-1318">Volsche, Shelly</persName>
+        </author>
+        <author>
+          <persName ref="http://viaf.org/viaf/264060878 https://orcid.org/0000-0002-5198-4578">Garcia, Justin R.</persName>
+        </author>
+        <respStmt>
+          <resp>scheda di studio codificata per il progetto "Atlante digitale della ricerca antropologica comparativa"</resp>
+          <name>[NOME COGNOME], Università di Bologna</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>American Anthropological Association / Wiley</publisher>
+        <date when="2015">2015</date>
+        <idno type="DOI">10.1111/aman.12286</idno>
+        <availability status="restricted">
+          <p>Articolo originale ad accesso riservato (Wiley/AnthroSource). Questa scheda non riproduce il testo dell'articolo: riporta solo i metadati bibliografici e il dato aggregato pubblicato nell'abstract/risultati, citato per estratto a fini di studio.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl>
+          Jankowiak, W., Volsche, S., Garcia, J. R. (2015). "Is the Romantic–Sexual Kiss a Near Human Universal?"
+          <title level="j">American Anthropologist</title>, 117(3), 535–539.
+          <idno type="DOI">10.1111/aman.12286</idno>
+        </bibl>
+        <ref target="https://anthrosource.onlinelibrary.wiley.com/journal/15481433" type="rivista">American Anthropologist (AnthroSource/Wiley)</ref>
+        <ref target="https://hraf.yale.edu/resources/library-information/ehraf-world-cultures-library-info/" type="ente-dati">eHRAF World Cultures (Yale HRAF)</ref>
+        <p rend="unità-di-analisi">Unità di analisi: <term>cultura</term> (dato etnografico di presenza/assenza del bacio romantico-sessuale). Scala: culturale/comparativa, non individuale.</p>
+        <p rend="metodologia">Campione: 168 culture, così composte — 128 da eHRAF World Cultures (Yale HRAF), 27 dal Standard Cross-Cultural Sample, 13 da corrispondenza diretta con 88 etnografi. Il bacio romantico-sessuale risulta attestato in 77 delle 168 culture (46%).</p>
+        <p rend="nota-di-accesso">
+          <note type="editoriale">Nota metodologica del progetto (non dell'articolo originale): l'Università di Bologna non risulta tra gli enti convenzionati a eHRAF World Cultures; questa scheda e il file dei risultati collegato (<ref target="../data/jankowiak-risultati.json">jankowiak-risultati.json</ref>) usano perciò
+          <emph>esclusivamente il dato aggregato pubblicato dagli autori</emph> (percentuale globale e macro-aree geografiche nominate nel testo), mai una ricodifica delle fonti primarie eHRAF. Conseguenza dichiarata: la mappa del progetto ha risoluzione macro-regionale, non per singola cultura.</note>
+        </p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Scheda di studio (solo teiHeader, nessun elemento &lt;text&gt;): descrive la pubblicazione, non i dati di risultato. I record puntuali usati per la mappa Leaflet sono nel JSON collegato, non qui — si veda modello-dati.md per la motivazione di questa separazione.</p>
+      </projectDesc>
+      <editorialDecl>
+        <p>Sottoinsieme TEI Lite. Standard di codifica del progetto per questo nodo: TEI (questa scheda) + Dublin Core (record complessivo del sito) + JSON (risultati). Nomi di persona normalizzati con attributo @ref a VIAF.</p>
+      </editorialDecl>
+    </encodingDesc>
+    <profileDesc>
+      <settingDesc>
+        <listPlace>
+          <head>Macro-regioni documentate nel testo dell'articolo (5 delle 8 mostrate sulla mappa del progetto — le altre 3, Nuova Guinea/Asia settentrionale/Nord America, vengono da fonte HRAF secondaria non incrociata, v. nota-di-accesso sopra e jankowiak-2015.html): QID Wikidata identici a quelli già usati in data/jankowiak-risultati.json, non ricercati una seconda volta.</head>
+          <place>
+            <placeName ref="https://www.wikidata.org/wiki/Q7204">Medio Oriente</placeName>
+          </place>
+          <place>
+            <placeName ref="https://www.wikidata.org/wiki/Q48">Asia</placeName>
+          </place>
+          <place>
+            <placeName ref="https://www.wikidata.org/wiki/Q132959">Africa subsahariana</placeName>
+          </place>
+          <place>
+            <placeName ref="https://www.wikidata.org/wiki/Q2841453">Amazzonia</placeName>
+            <note>Tre entità Wikidata simili esistono per "Amazzonia" (Q2841453, Q130183, Q16489635): scelta Q2841453 come la più diretta, ma senza aver potuto leggere la descrizione completa della pagina per disambiguare con certezza — limite già dichiarato in data/jankowiak-risultati.json, riportato qui per coerenza anziché nascosto.</note>
+          </place>
+          <place>
+            <placeName ref="https://www.wikidata.org/wiki/Q27611">America Centrale</placeName>
+          </place>
+        </listPlace>
+      </settingDesc>
+      <textClass>
+        <keywords scheme="#vocabolario-marcature-progetto">
+          <term ref="https://www.wikidata.org/wiki/Q621368">cross-cultural studies</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-08-29" who="#claude">Creazione della scheda: autori normalizzati via VIAF (verificati manualmente dallo studente), dato aggregato confermato (46%, 77/168), nota di accesso eHRAF esplicitata.</change>
+      <change when="2026-08-30" who="#claude">Aggiunti collegamenti tipizzati a rivista (AnthroSource/Wiley) ed ente-dati (eHRAF/Yale HRAF), su richiesta dello studente di marcare esplicitamente ogni riferimento collegabile a enti e riviste esterne.</change>
+      <change when="2026-08-30" who="#claude">Aggiunto profileDesc/settingDesc/listPlace con placeName a QID Wikidata per le 5 macro-regioni documentate nel testo — riconciliazione geografica, prima presente solo in JSON/HTML, ora anche nel codice XML come richiesto dalle linee guida del corso. Riusati gli stessi QID già verificati in jankowiak-risultati.json, incluso il limite dichiarato su Amazzonia.</change>
+      <change when="2026-09-02" who="#claude">Aggiunto profileDesc/textClass/keywords con il termine Wikidata per la marcatura con corrispondenza reale (comparazione-interculturale). Le altre due marcature di questo item (fonte-aggregata, genere-e-corpo) non hanno un corrispondente esterno difendibile — dichiarato in data/progetti.json → vocabolario_marcature, non forzato qui.</change>
+    </revisionDesc>
+  </teiHeader>
+</TEI>

@@ -1,0 +1,10 @@
+# Anteprima locale superata: uno screenshot statico di ramo-bacio.html salvato il 30/08,
+# prima di gran parte del lavoro di questa sessione (barra di ricerca, breadcrumb, tab ARIA,
+# badge unificati...). Tenuto sul disco per lo studente, escluso dal repository perché
+# pubblicarlo su GitHub Pages accanto al sito vero creerebbe due versioni disallineate
+# raggiungibili entrambe da un link pubblico.
+anteprima-locale/
+
+# File di sistema comuni, non specifici di questo progetto.
+.DS_Store
+Thumbs.db

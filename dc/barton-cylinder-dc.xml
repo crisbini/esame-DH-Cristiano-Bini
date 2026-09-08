@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  File DC/XML autonomo per l'item "Barton Cylinder", richiesto esplicitamente dalle linee guida
+  del corso ("un file XML/DC autonomo e linkato, oltre ai tag DC nell'head della pagina HTML").
+
+  Schema: OAI-DC (Open Archives Initiative, Simple Dublin Core), lo standard usato per
+  l'interscambio di metadati Dublin Core in ambito bibliotecario/digitale — root oai_dc:dc
+  che importa i 15 elementi Simple DC dal namespace ufficiale DCMI. Non un formato inventato:
+  http://www.openarchives.org/OAI/2.0/oai_dc.xsd (schema OAI-DC) importa
+  http://dublincore.org/schemas/xmls/simpledc20021212.xsd (schema DCMI Simple DC).
+
+  I valori dei singoli elementi non sono nuovi dati: sono la stessa informazione già presente
+  come <meta name="DC.xxx"> nell'head di barton-cylinder.html, qui solo restituita in un file
+  XML autonomo e verificabile a sé, come richiesto — un solo dato, due formati di esposizione,
+  mai una duplicazione silenziosa (stesso principio del resto del progetto, v. docs/modello-dati.md).
+-->
+<oai_dc:dc
+    xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/
+                         http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+
+  <dc:title>Barton Cylinder — Atlante digitale della ricerca antropologica comparativa</dc:title>
+  <dc:creator>[NOME COGNOME], Università di Bologna</dc:creator>
+  <dc:subject>Sumeri</dc:subject>
+  <dc:subject>Mesopotamia</dc:subject>
+  <dc:subject>letteratura cuneiforme</dc:subject>
+  <dc:subject>bacio</dc:subject>
+  <dc:subject>Ninḫursaĝa</dc:subject>
+  <dc:description>Scheda dell'item Barton Cylinder: fonte primaria testuale sumerica, ca. 2500 a.C., col testo TEI a pieno delle colonne I-II.</dc:description>
+  <dc:publisher>Progetto d'esame — Digital Humanities e Patrimonio Culturale, Università di Bologna</dc:publisher>
+  <dc:date>2026</dc:date>
+  <dc:type>Text</dc:type>
+  <dc:format>text/html</dc:format>
+  <dc:language>it</dc:language>
+  <dc:relation>ramo-bacio.html</dc:relation>
+  <dc:source>tei/barton-cylinder-testo.xml</dc:source>
+  <dc:identifier>https://cdli.earth/artifacts/222183</dc:identifier>
+  <dc:coverage>Mesopotamia; ca. 2500 a.C.</dc:coverage>
+
+</oai_dc:dc>

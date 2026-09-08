@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="catalogo-epigrafe-aaa1947" xml:lang="it">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Catalogo dei progetti — epigrafe laterale: AAA, Statement on Human Rights (1947)</title>
+        <author>[NOME COGNOME], Università di Bologna</author>
+        <respStmt>
+          <resp>codifica TEI e selezione dell'epigrafe</resp>
+          <name>[NOME COGNOME]</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna</publisher>
+        <date when="2026">2026</date>
+        <availability status="free">
+          <p>Materiale prodotto per finalità didattiche. La citazione riportata è tratta da opera di terzi, indicata in &lt;bibl&gt; qui sotto; nessun diritto è rivendicato su di essa.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Trascritta dall'edizione indicata in &lt;bibl&gt; qui sotto. Questa epigrafe si trovava in precedenza nel file <ref target="proemio-epigrafi.xml">proemio-epigrafi.xml</ref>, fra le voci antropologiche del proemio generale: è stata spostata qui, per intero (non condensata, non duplicata), su indicazione dello studente, perché il tema — relativismo culturale contro pretese di universalità — è risultato più pertinente nel punto in cui si sceglie fra le due indagini comparative (catalogo dei progetti) che nella cornice epistemologica generale del proemio.</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Testo autonomo (non parte dei teiHeader di studio, né del file proemio-epigrafi.xml), pensato per essere trasformato in HTML e mostrato "in alto a lato" nella pagina catalogo.html, accanto alla tesi unificante dei due progetti — non impilata come le epigrafi del proemio, ma affiancata, a segnalare che qui è un rimando puntuale, non l'apertura di un intero percorso di lettura.</p>
+      </projectDesc>
+      <editorialDecl>
+        <p>Sottoinsieme TEI Lite. Stessa struttura &lt;cit&gt;/&lt;quote&gt;/&lt;bibl&gt;/&lt;note type="didascalia"&gt; usata in proemio-epigrafi.xml e in bacio-epigrafe-barton.xml, per coerenza di codifica fra i file di epigrafe del progetto. L'attributo @type="dichiarazione-disciplinare" su &lt;cit&gt; classifica la natura della fonte: non un'opera teorica individuale, ma una presa di posizione ufficiale di un'associazione scientifica.</p>
+      </editorialDecl>
+    </encodingDesc>
+    <revisionDesc>
+      <change when="2026-08-29" who="#claude">Estratta da proemio-epigrafi.xml e collocata in file proprio, su indicazione dello studente, per aprire il catalogo dei progetti anziché il proemio generale.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="epigraphs">
+        <cit type="dichiarazione-disciplinare" xml:id="epigrafe-aaa1947">
+          <quote xml:lang="en">"All peoples do achieve these ends. No two of them, however, do so in exactly the same way. [&#8230;] The individual realizes his personality through his culture, hence respect for individual differences entails a respect for cultural differences."</quote>
+          <bibl>American Anthropological Association, Committee for Human Rights, <title level="m">Statement on Human Rights</title>, 1947.</bibl>
+          <note type="didascalia">Nel 1947 l'associazione antropologica statunitense si oppose a una dichiarazione di diritti "universali" in discussione alle Nazioni Unite, temendo un'imposizione di categorie occidentali — posizione già allora dibattuta all'interno della disciplina, non un consenso pacifico. Apre qui il tema del rapporto fra relativismo culturale e giudizio comparativo.</note>
+        </cit>
+      </div>
+    </body>
+  </text>
+</TEI>

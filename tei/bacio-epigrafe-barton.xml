@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="bacio-epigrafe-barton" xml:lang="it">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Progetto "Il bacio" — epigrafe di apertura: il Barton Cylinder</title>
+        <author>[NOME COGNOME], Università di Bologna</author>
+        <respStmt>
+          <resp>codifica TEI e selezione dell'epigrafe</resp>
+          <name>[NOME COGNOME]</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna</publisher>
+        <date when="2026">2026</date>
+        <availability status="free">
+          <p>Materiale prodotto per finalità didattiche. La trascrizione/traduzione riportata è citazione da opera di terzi, indicata in &lt;bibl&gt;; nessun diritto è rivendicato su di essa.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Trascritta/tradotta dall'edizione indicata in &lt;bibl&gt; qui sotto. Questa epigrafe apriva in precedenza il file <ref target="proemio-epigrafi.xml">proemio-epigrafi.xml</ref>: è stata spostata qui perché fonte primaria del solo progetto "il bacio", non del proemio generale dell'atlante (che resta comune a entrambi i rami, bacio e preistoria).</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Testo autonomo (non parte dei teiHeader di studio Jankowiak/Watkins/Arbøll), pensato per essere trasformato in HTML e mostrato in cima alla pagina del progetto "il bacio", subito dopo l'accesso dal catalogo.</p>
+      </projectDesc>
+      <editorialDecl>
+        <p>Sottoinsieme TEI Lite. Stessa struttura &lt;cit&gt;/&lt;quote&gt;/&lt;bibl&gt;/&lt;note type="didascalia"&gt; usata in proemio-epigrafi.xml, per coerenza di codifica tra i due file.</p>
+      </editorialDecl>
+    </encodingDesc>
+    <revisionDesc>
+      <change when="2026-08-29" who="#claude">Estratta da proemio-epigrafi.xml e collocata in file proprio, su indicazione dello studente, per aprire la scheda del progetto bacio anziché il proemio generale.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="epigraphs">
+        <cit type="fonte-primaria" xml:id="epigrafe-barton">
+          <quote xml:lang="sux">ĝiš3 mu-ni-du11 / ne mu-ni-sub5</quote>
+          <quote xml:lang="en">"he has had intercourse; he has kissed her"</quote>
+          <bibl>
+            Barton Cylinder, col. II, ll. 7-8 (protagonisti secondo l'edizione qui seguita: An e Ninḫursaĝa; altre edizioni attribuiscono l'atto a Enki — l'identificazione resta dibattuta). Cilindro d'argilla sumerico, ca. 2500 a.C. Trascrizione e traduzione: Lisman, J.J.W., "The Barton Cylinder: A Lament for Keš?", <title level="j">JEOL</title> 46 (2016-2017), pp. 146-169.
+            <ref target="https://cdli.earth/P222183" type="cdli">CDLI P222183</ref>.
+            Oggetto conservato: <ref target="https://collections.penn.museum/collections/object/521698" type="museum">Penn Museum, CBS 8383</ref>.
+          </bibl>
+          <note type="didascalia">Un testo sumerico di quattromila anni fa attesta il bacio per iscritto — ma anche qui l'interpretazione resta aperta: gli studiosi non concordano su chi baci chi nel testo. Anche il dato più antico non è mai un dato grezzo.</note>
+        </cit>
+      </div>
+    </body>
+  </text>
+</TEI>

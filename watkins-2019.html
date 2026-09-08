@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Watkins et al. (2019) — Atlante digitale della ricerca antropologica comparativa</title>
+  <meta name="description" content="Scheda dell'item Watkins et al. (2019), 'National income inequality predicts cultural variation in mouth to mouth kissing': metadati e grafico a dispersione GINI × frequenza del bacio.">
+
+  <!-- Dublin Core, richiesto dalle linee guida del corso nell'head di ogni pagina -->
+  <meta name="DC.title" content="National income inequality predicts cultural variation in mouth to mouth kissing — Watkins et al. (2019)">
+  <meta name="DC.creator" content="[NOME COGNOME], Università di Bologna">
+  <meta name="DC.subject" content="Antropologia comparativa; bacio romantico-sessuale; disuguaglianza economica; survey cross-culturale">
+  <meta name="DC.description" content="Scheda dell'item Watkins et al. (2019): studio primario, survey su 2.379 partecipanti in 13 paesi, con grafico a dispersione GINI × frequenza del bacio ricalcolato da dato individuale aperto.">
+  <meta name="DC.publisher" content="Progetto d'esame — Digital Humanities e Patrimonio Culturale, Università di Bologna">
+  <meta name="DC.date" content="2026">
+  <meta name="DC.type" content="Text">
+  <meta name="DC.format" content="text/html">
+  <meta name="DC.language" content="it">
+  <meta name="DC.relation" content="ramo-bacio.html">
+  <meta name="DC.source" content="tei/watkins-2019.xml">
+  <meta name="DC.identifier" content="https://doi.org/10.1038/s41598-019-43267-7">
+  <meta name="DC.coverage" content="dato presente/recente, 13 paesi, 6 continenti">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-item">
+    <nav class="breadcrumb" aria-label="Percorso di navigazione">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalogo.html">Catalogo dei progetti</a></li>
+        <li><a href="ramo-bacio.html">Il bacio</a></li>
+        <li aria-current="page">National income inequality predicts cultural variation in mouth to mouth kissing</li>
+      </ol>
+    </nav>
+    <h1>National income inequality predicts cultural variation in mouth to mouth kissing</h1>
+      <div id="barra-ricerca-globale"></div>
+    <p class="sottotitolo-item">Watkins et al. (2019) — studio primario, survey quantitativo, N = 2.379, 13 paesi</p>
+  </header>
+
+  <main>
+    <!-- Metadati: caricati da data/progetti.json, stesso principio delle altre pagine item. -->
+    <section id="metadati-item" aria-label="Metadati dell'item">
+      <p id="stato-caricamento-metadati">Caricamento dei metadati&hellip;</p>
+    </section>
+
+    <section id="risultati-item" aria-label="Grafico a dispersione">
+      <h2>Disuguaglianza di reddito e frequenza del bacio</h2>
+      <p>
+        Watkins e Leongómez chiedono se la disuguaglianza economica di un paese predica quanto
+        spesso, in media, chi ci vive dichiara di baciare romanticamente il proprio o la propria
+        partner. Trovano una correlazione positiva moderata-forte (r = 0,67): nei paesi più
+        diseguali (indice GINI più alto) il bacio romantico-sessuale risulta, in media, più
+        frequente nel campione — non meno, come un'intuizione ingenua sulla "disuguaglianza come
+        privazione" potrebbe far pensare. È una correlazione fra paesi su un dato aggregato, non
+        fra individui: non dice quale singola persona baci di più, e — dati osservazionali, non un
+        esperimento — non dimostra che l'una causi l'altra. Il grafico sotto mostra i 13 punti da
+        cui questo 0,67 viene calcolato.
+      </p>
+      <p class="nota-vista">
+        Ogni punto è un paese: in ascissa l'indice GINI (disuguaglianza di reddito, valori più alti
+        = più disuguaglianza), in ordinata la frequenza auto-riportata del bacio romantico
+        (percentuale). Correlazione riportata dagli autori: r = 0,67. I 13 valori sono ricalcolati
+        dal dato individuale grezzo del deposito OSF (osf.io/pbqwm, N = 2.379, filtro
+        <code>Ex_Cross==0</code>) e verificati per coincidenza a due decimali con la tabella
+        aggregata già pubblicata dagli stessi autori nello stesso deposito — non un dato preso
+        per buono senza controllo incrociato. Fonte:
+        <a href="tei/watkins-2019.xml">tei/watkins-2019.xml</a>, dato di dettaglio in
+        <a href="data/watkins-risultati.json">data/watkins-risultati.json</a>.
+      </p>
+      <div class="grafico-scatter" id="contenitore-scatter" aria-label="Grafico a dispersione GINI per frequenza del bacio, 13 paesi">
+        <p>Caricamento del grafico&hellip;</p>
+      </div>
+      <p class="nota-vista">
+        Il grafico è costruito qui direttamente in SVG dal dato JSON (nessuna libreria esterna): la
+        scala di entrambi gli assi è lineare fra il valore minimo e massimo osservato nei 13 paesi,
+        non fra 0 e il massimo teorico — scelta che rende leggibile la dispersione reale invece di
+        schiacciarla in un angolo del grafico.
+      </p>
+    </section>
+
+    <!-- Richiesto dalle linee guida del corso: aside per navigazione contestuale item correlati. -->
+    <aside id="item-correlati" aria-label="Item correlati">
+      <h2>Item correlati</h2>
+      <p>Caricamento&hellip;</p>
+    </aside>
+  </main>
+
+  <footer>
+    <p>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna, 2026.</p>
+  </footer>
+
+  <script>
+    fetch("data/progetti.json")
+      .then(risposta => {
+        if (!risposta.ok) throw new Error("HTTP " + risposta.status);
+        return risposta.json();
+      })
+      .then(dati => {
+        renderizzaMetadati(dati.item.find(it => it.id === "watkins-2019"));
+        renderizzaCorrelati(dati.item, dati.item.find(it => it.id === "watkins-2019"));
+      })
+      .catch(errore => {
+        document.getElementById("stato-caricamento-metadati").textContent =
+          "Impossibile caricare i metadati (" + errore.message + "). " +
+          "Se stai aprendo questo file con un doppio click, serve un server locale.";
+      });
+
+    fetch("data/watkins-risultati.json")
+      .then(risposta => {
+        if (!risposta.ok) throw new Error("HTTP " + risposta.status);
+        return risposta.json();
+      })
+      .then(dati => renderizzaScatter(dati.paesi))
+      .catch(errore => {
+        document.getElementById("contenitore-scatter").innerHTML =
+          "<p>Impossibile caricare il grafico (" + errore.message + ").</p>";
+      });
+
+    // Stessa mappa usata in preistoria-render.js: un solo vocabolario per l'etichetta "Tipo di
+    // risorsa" in tutto il sito, letto da it.tipo_risorsa invece di scritto a mano — coerenza
+    // trovata testando le pagine: qui prima c'era una stringa fissa, disallineabile dal dato.
+    const TIPO_RISORSA_ETICHETTA = {
+      "studio-primario": "Studio primario",
+      "saggio-di-sintesi": "Saggio di sintesi",
+      "volume-curato": "Volume curato",
+      "fonte-primaria-testuale": "Fonte primaria testuale",
+      "poster-multimediale": "Poster multimediale"
+    };
+    const LINK_ETICHETTA = { "doi": "DOI", "deposito-dati": "Dati", "rivista": "Rivista" };
+
+    // Stesso registro d'item già usato in ramo-bacio.html e dati.html.
+    const PAGINE_ITEM = {
+      "barton-cylinder": "barton-cylinder.html",
+      "jankowiak-2015": "jankowiak-2015.html",
+      "watkins-2019": "watkins-2019.html",
+      "arboll-rasmussen-2023": "arboll-rasmussen-2023.html",
+      "murray-2016": "murray-2016.html",
+      "lee-devore-1968": "lee-devore-1968.html",
+      "gero-conkey-1991": "gero-conkey-1991.html",
+      "hedenstierna-jonson-2017": "hedenstierna-jonson-2017.html",
+      "price-et-al-2019": "price-et-al-2019.html",
+      "haas-et-al-2020": "haas-et-al-2020.html",
+      "moilanen-et-al-2022": "moilanen-et-al-2022.html",
+      "harari-2014": "harari-2014.html",
+      "graeber-wengrow-2021": "graeber-wengrow-2021.html"
+    };
+
+    // Nomi brevi per le etichette dei nodi del grafo sotto — i titoli completi (v. PAGINE_ITEM)
+    // sono troppo lunghi per stare in un cerchio di 30px. Duplicato per pagina come il resto.
+    const ETICHETTA_BREVE_GRAFO = {
+      "jankowiak-2015": "Jankowiak 2015",
+      "watkins-2019": "Watkins 2019",
+      "arboll-rasmussen-2023": "Arbøll & Rasmussen 2023",
+      "murray-2016": "Murray et al. 2016/17",
+      "barton-cylinder": "Barton Cylinder"
+    };
+
+    // Grafo SVG dei correlati: nodo centrale = questa scheda, satelliti = item correlati
+    // (curati + marcatura condivisa). Layout fisso a cerchio, non un motore fisico: con al
+    // più 4 satelliti in questo ramo è sufficiente e resta verificabile a colpo d'occhio.
+    // Complemento visivo alla lista testuale sotto, non un sostituto: il "motivo" di ciascuna
+    // relazione resta leggibile lì anche senza SVG (screen reader, JS disabilitato).
+    function disegnaGrafoCorrelati(tuttiItem, curati, automatici) {
+      if (curati.length + automatici.length === 0) return null;
+      const NS = "http://www.w3.org/2000/svg";
+      const cx = 130, cy = 110, raggio = 72;
+      const satelliti = curati.map(c => ({ id: c.id, tipo: "curato" }))
+        .concat(automatici.map(x => ({ id: x.id, tipo: "automatico" })));
+      const n = satelliti.length;
+      satelliti.forEach((s, i) => {
+        const angolo = -Math.PI / 2 + (2 * Math.PI * i / n);
+        s.x = cx + raggio * Math.cos(angolo);
+        s.y = cy + raggio * Math.sin(angolo);
+      });
+
+      const svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("viewBox", "0 0 260 230");
+      svg.setAttribute("class", "svg-grafo-correlati");
+      svg.setAttribute("role", "img");
+      svg.setAttribute("aria-label", "Grafo delle relazioni con gli item correlati — il dettaglio testuale di ciascuna relazione è nell'elenco qui sotto");
+
+      satelliti.forEach(s => {
+        const linea = document.createElementNS(NS, "line");
+        linea.setAttribute("x1", cx); linea.setAttribute("y1", cy);
+        linea.setAttribute("x2", s.x); linea.setAttribute("y2", s.y);
+        linea.setAttribute("class", "arco-grafo arco-grafo--" + s.tipo);
+        svg.appendChild(linea);
+      });
+
+      const nodoCentro = document.createElementNS(NS, "circle");
+      nodoCentro.setAttribute("cx", cx); nodoCentro.setAttribute("cy", cy); nodoCentro.setAttribute("r", 20);
+      nodoCentro.setAttribute("class", "nodo-grafo nodo-grafo--centro");
+      svg.appendChild(nodoCentro);
+      // Due righe via <tspan>, non una sola: "Questa scheda" su un'unica riga è più largo
+      // del cerchio (r=20) ed esce sul fondo bianco della pagina, dove il testo bianco
+      // sparisce — bug reale trovato allo screenshot di verifica, non solo un'ipotesi.
+      const testoCentro = document.createElementNS(NS, "text");
+      testoCentro.setAttribute("x", cx);
+      testoCentro.setAttribute("text-anchor", "middle");
+      testoCentro.setAttribute("class", "etichetta-nodo-grafo etichetta-nodo-grafo--centro");
+      const rigaCentro1 = document.createElementNS(NS, "tspan");
+      rigaCentro1.setAttribute("x", cx); rigaCentro1.setAttribute("y", cy - 3);
+      rigaCentro1.textContent = "Questa";
+      const rigaCentro2 = document.createElementNS(NS, "tspan");
+      rigaCentro2.setAttribute("x", cx); rigaCentro2.setAttribute("y", cy + 9);
+      rigaCentro2.textContent = "scheda";
+      testoCentro.appendChild(rigaCentro1);
+      testoCentro.appendChild(rigaCentro2);
+      svg.appendChild(testoCentro);
+
+      satelliti.forEach(s => {
+        const relato = tuttiItem.find(x => x.id === s.id);
+        const link = document.createElementNS(NS, "a");
+        link.setAttribute("href", PAGINE_ITEM[s.id] || "#");
+        link.setAttribute("class", "link-nodo-grafo");
+
+        const nodo = document.createElementNS(NS, "circle");
+        nodo.setAttribute("cx", s.x); nodo.setAttribute("cy", s.y); nodo.setAttribute("r", 15);
+        nodo.setAttribute("class", "nodo-grafo nodo-grafo--" + s.tipo);
+        const tit = document.createElementNS(NS, "title");
+        tit.textContent = relato ? relato.titolo : s.id;
+        nodo.appendChild(tit);
+        link.appendChild(nodo);
+
+        const testo = document.createElementNS(NS, "text");
+        testo.setAttribute("x", s.x);
+        testo.setAttribute("y", s.y + (s.y >= cy ? 28 : -22));
+        testo.setAttribute("text-anchor", "middle");
+        testo.setAttribute("class", "etichetta-nodo-grafo");
+        testo.textContent = ETICHETTA_BREVE_GRAFO[s.id] || (relato ? relato.titolo : s.id);
+        link.appendChild(testo);
+
+        svg.appendChild(link);
+      });
+
+      return svg;
+    }
+
+    // Due criteri, tenuti visibilmente distinti: (1) item.correlati, curato a mano in
+    // progetti.json — solo relazioni verificate; (2) marcatura condivisa, calcolato qui a
+    // runtime. V. il commento più esteso in barton-cylinder.html (stessa funzione, duplicata
+    // per pagina come il resto delle piccole utility di questo progetto).
+    function renderizzaCorrelati(tuttiItem, it) {
+      const contenitore = document.getElementById("item-correlati");
+      if (!contenitore || !it) return;
+      contenitore.innerHTML = "";
+
+      const titolo = document.createElement("h2");
+      titolo.textContent = "Item correlati";
+      contenitore.appendChild(titolo);
+
+      const idGiaCitati = new Set((it.correlati || []).map(c => c.id));
+      const curatiValidi = (it.correlati || []).filter(c => tuttiItem.some(x => x.id === c.id));
+
+      const perMarcatura = tuttiItem.filter(x =>
+        x.id !== it.id &&
+        !idGiaCitati.has(x.id) &&
+        x.progetto === it.progetto &&
+        (x.marcature || []).some(m => (it.marcature || []).includes(m))
+      );
+
+      const grafo = disegnaGrafoCorrelati(tuttiItem, curatiValidi, perMarcatura);
+      if (grafo) {
+        contenitore.appendChild(grafo);
+        const legenda = document.createElement("p");
+        legenda.className = "legenda-grafo-correlati";
+        legenda.innerHTML =
+          '<span><span class="campione-linea"></span>relazione curata (citazione o stessa famiglia di studio)</span>' +
+          '<span><span class="campione-linea campione-linea--automatico"></span>solo marcatura condivisa (automatico)</span>';
+        contenitore.appendChild(legenda);
+      }
+
+      const ul = document.createElement("ul");
+      curatiValidi.forEach(c => {
+        const relato = tuttiItem.find(x => x.id === c.id);
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = PAGINE_ITEM[relato.id] || "#";
+        a.textContent = relato.titolo;
+        li.appendChild(a);
+        const p = document.createElement("p");
+        p.className = "nota-correlato";
+        p.textContent = c.motivo;
+        li.appendChild(p);
+        ul.appendChild(li);
+      });
+      contenitore.appendChild(ul);
+
+      const notaAutomatica = document.createElement("p");
+      notaAutomatica.className = "nota-vista";
+      if (perMarcatura.length > 0) {
+        notaAutomatica.textContent = "Altri item collegati per marcatura condivisa: ";
+        perMarcatura.forEach((x, i) => {
+          const a = document.createElement("a");
+          a.href = PAGINE_ITEM[x.id] || "#";
+          a.textContent = x.titolo;
+          notaAutomatica.appendChild(a);
+          if (i < perMarcatura.length - 1) notaAutomatica.appendChild(document.createTextNode("; "));
+        });
+      } else {
+        notaAutomatica.textContent = "Nessun altro collegamento per marcatura condivisa, con i dati attuali del ramo — criterio calcolato automaticamente, non un elenco vuoto per errore.";
+      }
+      contenitore.appendChild(notaAutomatica);
+    }
+
+    function formattaAnno(anno) {
+      return anno < 0 ? Math.abs(anno) + " a.C." : String(anno) + " d.C.";
+    }
+
+    function renderizzaMetadati(it) {
+      const contenitore = document.getElementById("metadati-item");
+      contenitore.innerHTML = "";
+
+      const dl = document.createElement("dl");
+      dl.className = "metadati-lista";
+
+      // Accetta anche un nodo DOM (non solo testo) come valore: serve per le Marcature,
+      // rese come badge cliccabili invece che testo unito da " · " — stesso principio già
+      // usato in preistoria-render.js (funzione aggiungi()), qui applicato anche alle 4
+      // pagine item del ramo bacio per coerenza di interfaccia in tutto il sito.
+      function aggiungiCoppia(termine, valoreOTesto) {
+        if (!valoreOTesto) return;
+        const dt = document.createElement("dt");
+        dt.textContent = termine;
+        const dd = document.createElement("dd");
+        if (typeof valoreOTesto === "string") {
+          dd.textContent = valoreOTesto;
+        } else {
+          dd.appendChild(valoreOTesto);
+        }
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      }
+
+      aggiungiCoppia("Tipo di risorsa", TIPO_RISORSA_ETICHETTA[it.tipo_risorsa] || it.tipo_risorsa);
+      if (it.autori && it.autori.length > 0) {
+        const dt = document.createElement("dt");
+        dt.textContent = "Autori";
+        const dd = document.createElement("dd");
+        it.autori.forEach((autore, i) => {
+          const link = document.createElement("a");
+          link.href = autore.ref;
+          link.textContent = autore.nome;
+          dd.appendChild(link);
+          if (i < it.autori.length - 1) dd.appendChild(document.createTextNode("; "));
+        });
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      }
+      aggiungiCoppia("Periodo", formattaAnno(it.periodo_da));
+      aggiungiCoppia("Nota sul periodo", it.nota_periodo);
+      if (it.aree_geografiche && it.aree_geografiche.length > 0) {
+        aggiungiCoppia("Paesi (v. grafico sotto per il dettaglio)", it.aree_geografiche.map(a => a.nome).join("; "));
+      }
+      aggiungiCoppia("Nota geografica", it.nota_geografica);
+      if (it.marcature && it.marcature.length > 0) {
+        const contenitoreMarcature = document.createElement("span");
+        contenitoreMarcature.className = "marcature-item";
+        it.marcature.forEach(m => {
+          const b = document.createElement("a");
+          b.href = "ricerca.html?marcatura=" + encodeURIComponent(m);
+          b.className = "badge badge-marcatura";
+          b.textContent = m;
+          contenitoreMarcature.appendChild(b);
+        });
+        aggiungiCoppia("Marcature", contenitoreMarcature);
+      }
+
+      contenitore.appendChild(dl);
+
+      if (it.link_riferimento && it.link_riferimento.length > 0) {
+        const linkContenitore = document.createElement("p");
+        linkContenitore.className = "link-riferimento-item";
+        it.link_riferimento.forEach(lr => {
+          const link = document.createElement("a");
+          link.href = lr.url;
+          link.className = "link-progetto link-piccolo";
+          link.textContent = LINK_ETICHETTA[lr.tipo] || lr.tipo;
+          linkContenitore.appendChild(link);
+        });
+        contenitore.appendChild(linkContenitore);
+      }
+    }
+
+    // Grafico a dispersione in SVG puro: nessuna libreria, scala lineare calcolata a mano.
+    // Documentato qui perché è il pezzo di codice più "tecnico" di questa pagina, utile
+    // da poter spiegare all'orale riga per riga.
+    function renderizzaScatter(paesi) {
+      const contenitore = document.getElementById("contenitore-scatter");
+      contenitore.innerHTML = "";
+
+      const larghezza = 640, altezza = 420;
+      const margine = { sopra: 20, sotto: 50, sinistra: 55, destra: 20 };
+      const areaX0 = margine.sinistra, areaX1 = larghezza - margine.destra;
+      const areaY0 = altezza - margine.sotto, areaY1 = margine.sopra; // areaY0 in basso (GINI/Kiss basso), areaY1 in alto
+
+      const giniValori = paesi.map(p => p.gini);
+      const kissValori = paesi.map(p => p.kiss_freq);
+      // Margine del 5% sui minimi/massimi osservati, non 0..max: altrimenti i 13 punti,
+      // tutti compresi fra 25 e 54 di GINI, si schiaccerebbero in un angolo del grafico.
+      function estendi(min, max) {
+        const margine = (max - min) * 0.08 || 1;
+        return { min: min - margine, max: max + margine };
+      }
+      const giniScala = estendi(Math.min(...giniValori), Math.max(...giniValori));
+      const kissScala = estendi(Math.min(...kissValori), Math.max(...kissValori));
+
+      function scalaX(v) { return areaX0 + (v - giniScala.min) / (giniScala.max - giniScala.min) * (areaX1 - areaX0); }
+      function scalaY(v) { return areaY0 + (v - kissScala.min) / (kissScala.max - kissScala.min) * (areaY1 - areaY0); }
+
+      const NS = "http://www.w3.org/2000/svg";
+      const svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("viewBox", "0 0 " + larghezza + " " + altezza);
+      svg.setAttribute("class", "svg-scatter");
+      svg.setAttribute("role", "img");
+
+      function creaLinea(x1, y1, x2, y2, classe) {
+        const l = document.createElementNS(NS, "line");
+        l.setAttribute("x1", x1); l.setAttribute("y1", y1);
+        l.setAttribute("x2", x2); l.setAttribute("y2", y2);
+        l.setAttribute("class", classe);
+        svg.appendChild(l);
+      }
+      function creaTesto(x, y, testo, classe, ancora) {
+        const t = document.createElementNS(NS, "text");
+        t.setAttribute("x", x); t.setAttribute("y", y);
+        t.setAttribute("class", classe);
+        if (ancora) t.setAttribute("text-anchor", ancora);
+        t.textContent = testo;
+        svg.appendChild(t);
+      }
+
+      // Assi
+      creaLinea(areaX0, areaY0, areaX1, areaY0, "asse-scatter");
+      creaLinea(areaX0, areaY0, areaX0, areaY1, "asse-scatter");
+
+      // 5 tick per asse, valori reali (non arrotondati a numeri "tondi": più onesto sul dato)
+      for (let i = 0; i <= 4; i++) {
+        const vx = giniScala.min + (giniScala.max - giniScala.min) * i / 4;
+        const x = scalaX(vx);
+        creaLinea(x, areaY0, x, areaY0 + 5, "tick-scatter");
+        creaTesto(x, areaY0 + 18, vx.toFixed(0), "etichetta-asse-scatter", "middle");
+
+        const vy = kissScala.min + (kissScala.max - kissScala.min) * i / 4;
+        const y = scalaY(vy);
+        creaLinea(areaX0 - 5, y, areaX0, y, "tick-scatter");
+        creaTesto(areaX0 - 9, y + 3, vy.toFixed(0), "etichetta-asse-scatter", "end");
+      }
+
+      creaTesto((areaX0 + areaX1) / 2, altezza - 8, "Indice GINI (disuguaglianza di reddito)", "titolo-asse-scatter", "middle");
+      const etichettaY = document.createElementNS(NS, "text");
+      etichettaY.setAttribute("x", -((areaY0 + areaY1) / 2));
+      etichettaY.setAttribute("y", 14);
+      etichettaY.setAttribute("class", "titolo-asse-scatter");
+      etichettaY.setAttribute("text-anchor", "middle");
+      etichettaY.setAttribute("transform", "rotate(-90)");
+      etichettaY.textContent = "Frequenza del bacio romantico (%)";
+      svg.appendChild(etichettaY);
+
+      // Punti + etichette paese
+      paesi.forEach(p => {
+        const x = scalaX(p.gini), y = scalaY(p.kiss_freq);
+
+        const cerchio = document.createElementNS(NS, "circle");
+        cerchio.setAttribute("cx", x); cerchio.setAttribute("cy", y);
+        cerchio.setAttribute("r", 5);
+        cerchio.setAttribute("class", "punto-scatter");
+
+        const titolo = document.createElementNS(NS, "title");
+        titolo.textContent = p.paese + " — GINI " + p.gini + ", bacio " + p.kiss_freq.toFixed(1) + "%, N=" + p.n;
+        cerchio.appendChild(titolo);
+        svg.appendChild(cerchio);
+
+        creaTesto(x + 7, y - 7, p.paese, "etichetta-punto-scatter");
+      });
+
+      contenitore.appendChild(svg);
+    }
+  </script>
+
+  <script src="ricerca-barra.js"></script>
+</body>
+</html>

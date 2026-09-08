@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La pagina dei dati — Atlante digitale della ricerca antropologica comparativa</title>
+  <meta name="description" content="Tabella di riconciliazione delle autorità esterne (VIAF, ORCID, Wikidata, CDLI) usate nell'atlante, con il livello di certezza dichiarato per ciascun identificativo.">
+
+  <!-- Dublin Core, richiesto dalle linee guida del corso nell'head di ogni pagina -->
+  <meta name="DC.title" content="La pagina dei dati — Atlante digitale della ricerca antropologica comparativa">
+  <meta name="DC.creator" content="[NOME COGNOME], Università di Bologna">
+  <meta name="DC.subject" content="controllo di autorità; VIAF; ORCID; Wikidata; CDLI; digital humanities">
+  <meta name="DC.description" content="Tabella di riconciliazione: ogni persona e ogni area geografica dell'atlante collegata al proprio identificativo di autorità esterno, con il livello di certezza della verifica dichiarato esplicitamente.">
+  <meta name="DC.publisher" content="Progetto d'esame — Digital Humanities e Patrimonio Culturale, Università di Bologna">
+  <meta name="DC.date" content="2026">
+  <meta name="DC.type" content="Dataset">
+  <meta name="DC.format" content="text/html">
+  <meta name="DC.language" content="it">
+  <meta name="DC.relation" content="catalogo.html">
+  <meta name="DC.source" content="data/progetti.json">
+
+  <!-- Bootstrap vendorizzato in lib/bootstrap/ (v. 5.3.8, da npm), non caricato da CDN — stesso
+       principio già seguito per Leaflet in ramo-bacio.html. Un CDN (es. jsdelivr, che ospita la
+       build ufficiale) resterebbe un'alternativa valida e più semplice per un progetto finito e
+       ben collegato a enti fidati: qui la scelta locale serve a non dipendere dalla rete durante
+       la discussione in aula, con la stessa versione testata. Caricato PRIMA di style.css: il
+       nostro CSS, che arriva dopo nella cascata, vince sugli stessi selettori di elemento
+       (body, a, tabelle) dove li ridefinisce — Bootstrap resta usato solo per i componenti che
+       non abbiamo scritto a mano (Accordion, Tooltip), non per il resto dell'aspetto del sito,
+       ancora deliberatamente "strutturale non estetico" come dichiarato in cima a style.css. -->
+  <link rel="stylesheet" href="lib/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-item">
+    <nav class="breadcrumb" aria-label="Percorso di navigazione">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">La pagina dei dati</li>
+      </ol>
+    </nav>
+    <h1>La pagina dei dati</h1>
+      <div id="barra-ricerca-globale"></div>
+    <p class="sottotitolo-item">Riconciliazione delle autorità esterne — persone (VIAF/ORCID/Wikidata), luoghi e culture (Wikidata), il Barton Cylinder (CDLI)</p>
+  </header>
+
+  <main>
+    <p class="nota-vista">
+      Questa pagina non aggiunge nessun dato nuovo: rilegge <a href="data/progetti.json">data/progetti.json</a>
+      (più i due file di Risultati per Jankowiak e Watkins) e mostra, in un unico posto, a quale identificativo
+      esterno è collegata ogni persona e ogni area geografica dell'atlante — con il livello di certezza con cui
+      quel collegamento è stato verificato, dichiarato esplicitamente invece di lasciarlo implicito. È lo stesso
+      principio del "livello interpretativo" già discusso per i dati osservazionali (v.
+      <code>docs/modello-architetturale.md</code>), applicato qui al controllo di autorità.
+    </p>
+
+    <!-- Accordion Bootstrap reale (data-bs-toggle/collapse, non un dettaglio scritto a mano),
+         vendorizzato in lib/bootstrap/ — v. commento nell'head. Le quattro sezioni restano
+         indipendenti (niente data-bs-parent comune): aprire/chiudere Luoghi non chiude Persone,
+         una variante "sempre aperta" più adatta a una pagina di consultazione con quattro
+         tabelle di riferimento — nascondere tutto tranne una sezione per volta avrebbe
+         complicato il confronto fra tabelle senza un vantaggio reale. Tutte e quattro aperte di
+         default: la pagina resta scorribile "as-is" come prima, il collassare è un'opzione per
+         chi vuole ridurre lo scroll, non lo stato di partenza — non nascondiamo dati dietro un
+         click in più. Gli id delle sezioni (persone, luoghi, altre-autorita, soggetti) restano
+         invariati: li usa solo il markup, il JS sotto non li tocca. -->
+    <div class="accordion" id="accordion-dati">
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="intestazione-persone">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collassa-persone" aria-expanded="true" aria-controls="collassa-persone">
+            Persone
+          </button>
+        </h2>
+        <div id="collassa-persone" class="accordion-collapse collapse show" aria-labelledby="intestazione-persone">
+          <div class="accordion-body" id="persone" aria-label="Persone">
+      <p class="nota-vista">
+        18 persone, su entrambi i rami del progetto. Dove un identificativo VIAF/ORCID non è stato reperito
+        (soprattutto per autori di monografie meno recenti, non sempre coperti da questi registri), è stato
+        sostituito con un QID Wikidata — dichiarato come tale, non presentato come equivalente.
+      </p>
+      <table class="tabella-risultati" id="tabella-persone">
+        <caption>Autori con un identificativo di autorità esterno, entrambi i rami</caption>
+        <thead>
+          <tr><th scope="col">Nome</th><th scope="col">Identificativo</th><th scope="col">Livello di certezza</th><th scope="col">Compare in</th></tr>
+        </thead>
+        <tbody id="corpo-tabella-persone">
+          <tr><td colspan="4">Caricamento&hellip;</td></tr>
+        </tbody>
+      </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="intestazione-luoghi">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collassa-luoghi" aria-expanded="true" aria-controls="collassa-luoghi">
+            Luoghi e aree culturali
+          </button>
+        </h2>
+        <div id="collassa-luoghi" class="accordion-collapse collapse show" aria-labelledby="intestazione-luoghi">
+          <div class="accordion-body" id="luoghi" aria-label="Luoghi e aree culturali">
+      <p class="nota-vista">
+        Le 8 macro-regioni di Jankowiak (2015) e i 13 paesi di Watkins et al. (2019), con il rispettivo QID
+        Wikidata dove esiste. Le 3 macro-regioni non nominate nel testo dell'articolo di Jankowiak (v.
+        <a href="jankowiak-2015.html">la sua pagina item</a> per il dettaglio) non hanno un QID assegnato in
+        questo progetto — non perché non esista in Wikidata, ma perché non è stato ancora cercato con lo stesso
+        rigore riservato alle altre voci di questa tabella: dichiarato come lavoro non fatto, non come dato mancante
+        per caso.
+      </p>
+
+      <h3>Macro-regioni — Jankowiak, Volsche &amp; Garcia (2015)</h3>
+      <table class="tabella-risultati" id="tabella-jankowiak-luoghi">
+        <thead>
+          <tr><th scope="col">Macro-regione</th><th scope="col">QID Wikidata</th><th scope="col">Fonte della regione</th></tr>
+        </thead>
+        <tbody id="corpo-tabella-jankowiak-luoghi">
+          <tr><td colspan="3">Caricamento&hellip;</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Paesi — Watkins et al. (2019)</h3>
+      <table class="tabella-risultati" id="tabella-watkins-luoghi">
+        <thead>
+          <tr><th scope="col">Paese</th><th scope="col">QID Wikidata</th><th scope="col">N nel campione</th></tr>
+        </thead>
+        <tbody id="corpo-tabella-watkins-luoghi">
+          <tr><td colspan="3">Caricamento&hellip;</td></tr>
+        </tbody>
+      </table>
+
+      <p class="nota-vista">
+        <strong>Mesopotamia e Nippur</strong> (Barton Cylinder, Arbøll &amp; Rasmussen) non hanno un QID Wikidata
+        assegnato in questo progetto: per queste due voci l'autorità di riferimento usata è un'altra — CDLI, il
+        registro specialistico per i reperti cuneiformi, più pertinente di un gazetteer generico per un sito
+        archeologico puntuale. V. la tabella sotto.
+      </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="intestazione-altre-autorita">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collassa-altre-autorita" aria-expanded="true" aria-controls="collassa-altre-autorita">
+            Altre fonti di autorità: il Barton Cylinder
+          </button>
+        </h2>
+        <div id="collassa-altre-autorita" class="accordion-collapse collapse show" aria-labelledby="intestazione-altre-autorita">
+          <div class="accordion-body" id="altre-autorita" aria-label="Altre fonti di autorità esterne">
+      <p class="nota-vista">
+        Il Barton Cylinder non è un'opera con un autore identificabile: l'autorità di riferimento qui non è
+        una persona né un gazetteer geografico, ma il registro specialistico che cataloga il reperto stesso.
+      </p>
+      <table class="tabella-risultati" id="tabella-cdli">
+        <thead>
+          <tr><th scope="col">Registro</th><th scope="col">Identificativo</th></tr>
+        </thead>
+        <tbody id="corpo-tabella-cdli">
+          <tr><td colspan="2">Caricamento&hellip;</td></tr>
+        </tbody>
+      </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="intestazione-soggetti">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collassa-soggetti" aria-expanded="true" aria-controls="collassa-soggetti">
+            Soggetti e concetti (marcature)
+          </button>
+        </h2>
+        <div id="collassa-soggetti" class="accordion-collapse collapse show" aria-labelledby="intestazione-soggetti">
+          <div class="accordion-body" id="soggetti" aria-label="Soggetti e concetti">
+      <p class="nota-vista">
+        Le 34 <code>marcature</code> uniche usate nell'atlante (entrambi i rami), riconciliate — dove esiste una
+        corrispondenza difendibile — con un concetto Wikidata reale, verificato incrociando titolo e descrizione
+        su più fonti indipendenti (non aprendo direttamente <code>wikidata.org</code>, non raggiungibile con gli
+        strumenti di verifica disponibili in questa sessione). Non tutte le marcature sono soggetti generalizzabili:
+        alcune sono etichette di navigazione interne al progetto, altre nomi di luogo (da riconciliare come
+        <code>placeName</code>, non qui) — dichiarato caso per caso invece di forzare tutto sullo stesso vocabolario.
+        Dato in <a href="data/progetti.json">data/progetti.json</a> → <code>vocabolario_marcature</code>.
+      </p>
+      <table class="tabella-risultati" id="tabella-soggetti">
+        <caption>Riconciliazione delle marcature con un'autorità esterna (Wikidata)</caption>
+        <thead>
+          <tr><th scope="col">Marcatura</th><th scope="col">Stato</th><th scope="col">Corrispondenza esterna</th><th scope="col">Nota</th></tr>
+        </thead>
+        <tbody id="corpo-tabella-soggetti">
+          <tr><td colspan="4">Caricamento&hellip;</td></tr>
+        </tbody>
+      </table>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna, 2026.</p>
+  </footer>
+
+  <!-- bootstrap.bundle.min.js include Popper: serve per posizionare i Tooltip (v. sotto), non
+       solo per il Collapse dell'Accordion sopra. Caricato prima dello script della pagina,
+       che chiama bootstrap.Tooltip/bootstrap.Collapse. -->
+  <script src="lib/bootstrap/bootstrap.bundle.min.js"></script>
+  <script>
+    // Etichette leggibili per il campo "verifica" (v. data/progetti.json, campo strutturato
+    // aggiunto apposta per questa pagina — prima esisteva solo come prosa in
+    // docs/preistoria-bibliografia-normalizzata.md e nei revisionDesc dei TEI del ramo bacio).
+    const ETICHETTA_VERIFICA = {
+      "doppia-fonte-o-istituzionale": "Doppia fonte indipendente o fonte istituzionale diretta",
+      "confermato-dallo-studente": "Confermato manualmente dallo studente",
+      "standard-non-incrociato": "Trovato su registro standard (VIAF/ORCID/OpenLibrary), non ulteriormente incrociato",
+      "wikidata-sostitutivo": "Nessun VIAF/ORCID reperito — Wikidata come alternativa dichiarata",
+      "da-riverificare": "Fonte singola, da riverificare — lavoro ancora aperto"
+    };
+
+    const LINK_ETICHETTA_CDLI = { "cdli": "CDLI", "museo": "Penn Museum", "rivista": "Rivista (Lisman, JEOL)" };
+
+    // Le 3 macro-regioni di Jankowiak aggiunte da HRAF, non nominate nel testo dell'articolo —
+    // stessa lista già usata in ramo-bacio.html per la nota nel popup della mappa. Qui serve
+    // solo per marcare la colonna "Fonte della regione" in modo coerente con quella pagina.
+    const AREE_JANKOWIAK_NON_NEL_TESTO = ["Nuova Guinea", "Asia settentrionale", "Nord America"];
+
+    Promise.all([
+      fetch("data/progetti.json").then(r => { if (!r.ok) throw new Error("HTTP " + r.status + " su progetti.json"); return r.json(); }),
+      fetch("data/jankowiak-risultati.json").then(r => { if (!r.ok) throw new Error("HTTP " + r.status + " su jankowiak-risultati.json"); return r.json(); }),
+      fetch("data/watkins-risultati.json").then(r => { if (!r.ok) throw new Error("HTTP " + r.status + " su watkins-risultati.json"); return r.json(); })
+    ]).then(([progetti, jankowiak, watkins]) => {
+      renderizzaPersone(progetti.item);
+      renderizzaLuoghiJankowiak(progetti.item.find(it => it.id === "jankowiak-2015"), jankowiak.regioni);
+      renderizzaLuoghiWatkins(watkins.paesi);
+      renderizzaCDLI(progetti.item.find(it => it.id === "barton-cylinder"));
+      renderizzaSoggetti(progetti.vocabolario_marcature);
+    }).catch(errore => {
+      document.getElementById("corpo-tabella-persone").innerHTML =
+        "<tr><td colspan=\"4\">Impossibile caricare i dati (" + errore.message + "). " +
+        "Se stai aprendo questo file con un doppio click, serve un server locale.</td></tr>";
+    });
+
+    function tipoIdentificativo(url) {
+      if (url.includes("viaf.org")) return "VIAF";
+      if (url.includes("orcid.org")) return "ORCID";
+      if (url.includes("wikidata.org")) return "Wikidata";
+      return "altro";
+    }
+
+    function renderizzaPersone(item) {
+      // Dedup per ref: una persona può comparire in più item (es. Hedenstierna-Jonson,
+      // co-autrice sia di hedenstierna-jonson-2017 sia di price-et-al-2019) — un solo
+      // identificativo, più punti di accesso, stesso principio del resto del progetto.
+      const persone = new Map();
+      item.forEach(it => {
+        (it.autori || []).forEach(autore => {
+          if (!autore.ref) return;
+          if (!persone.has(autore.ref)) {
+            persone.set(autore.ref, {
+              nome: autore.nome,
+              ref: autore.ref,
+              verifica: autore.verifica,
+              nota_verifica: autore.nota_verifica,
+              compareIn: []
+            });
+          }
+          persone.get(autore.ref).compareIn.push(it);
+        });
+      });
+
+      const corpo = document.getElementById("corpo-tabella-persone");
+      corpo.innerHTML = "";
+      Array.from(persone.values())
+        .sort((a, b) => a.nome.localeCompare(b.nome))
+        .forEach(p => {
+          const riga = document.createElement("tr");
+
+          const cellaNome = document.createElement("td");
+          cellaNome.textContent = p.nome;
+          riga.appendChild(cellaNome);
+
+          const cellaId = document.createElement("td");
+          const link = document.createElement("a");
+          link.href = p.ref;
+          link.textContent = tipoIdentificativo(p.ref);
+          cellaId.appendChild(link);
+          riga.appendChild(cellaId);
+
+          const cellaVerifica = document.createElement("td");
+          cellaVerifica.textContent = ETICHETTA_VERIFICA[p.verifica] || p.verifica || "—";
+          // Tooltip Bootstrap invece del solo attributo title nativo: title da solo non è
+          // raggiungibile da tastiera né dai touch screen (nessun hover reale su mobile) — il
+          // componente Tooltip lo rende utilizzabile anche lì, tramite focus/tap sull'elemento
+          // (data-bs-toggle="tooltip"), non solo al passaggio del mouse. Richiede
+          // l'inizializzazione esplicita più sotto: creare l'attributo non basta, Bootstrap non
+          // ascolta automaticamente elementi aggiunti al DOM dopo il caricamento della pagina.
+          if (p.nota_verifica) {
+            cellaVerifica.setAttribute("tabindex", "0");
+            cellaVerifica.setAttribute("data-bs-toggle", "tooltip");
+            cellaVerifica.setAttribute("data-bs-placement", "top");
+            cellaVerifica.setAttribute("title", p.nota_verifica);
+          }
+          riga.appendChild(cellaVerifica);
+
+          const cellaItem = document.createElement("td");
+          p.compareIn.forEach((it, i) => {
+            // barton-cylinder non compare mai qui: non ha autori (testo anonimo).
+            if (PAGINE_ITEM[it.id]) {
+              const a = document.createElement("a");
+              a.href = PAGINE_ITEM[it.id] || "#";
+              a.textContent = it.titolo;
+              cellaItem.appendChild(a);
+            } else {
+              const span = document.createElement("span");
+              span.textContent = it.titolo + " (ramo preistoria, non ancora online)";
+              cellaItem.appendChild(span);
+            }
+            if (i < p.compareIn.length - 1) cellaItem.appendChild(document.createElement("br"));
+          });
+          riga.appendChild(cellaItem);
+
+          corpo.appendChild(riga);
+        });
+
+      // I Tooltip Bootstrap non si attivano da soli sugli elementi con data-bs-toggle="tooltip"
+      // aggiunti dopo il caricamento della pagina (a differenza del Collapse dell'Accordion, che
+      // legge gli attributi data-bs-* anche su markup dinamico): vanno istanziati esplicitamente,
+      // uno per elemento — qui, dopo aver popolato la tabella.
+      document.querySelectorAll('#tabella-persone [data-bs-toggle="tooltip"]').forEach(el => new bootstrap.Tooltip(el));
+    }
+
+    // Stesso registro usato in ramo-bacio.html: qui serve solo per linkare "Compare in"
+    // alle pagine item già costruite del ramo bacio.
+    const PAGINE_ITEM = {
+      "barton-cylinder": "barton-cylinder.html",
+      "jankowiak-2015": "jankowiak-2015.html",
+      "watkins-2019": "watkins-2019.html",
+      "arboll-rasmussen-2023": "arboll-rasmussen-2023.html",
+      "murray-2016": "murray-2016.html",
+      "lee-devore-1968": "lee-devore-1968.html",
+      "gero-conkey-1991": "gero-conkey-1991.html",
+      "hedenstierna-jonson-2017": "hedenstierna-jonson-2017.html",
+      "price-et-al-2019": "price-et-al-2019.html",
+      "haas-et-al-2020": "haas-et-al-2020.html",
+      "moilanen-et-al-2022": "moilanen-et-al-2022.html",
+      "harari-2014": "harari-2014.html",
+      "graeber-wengrow-2021": "graeber-wengrow-2021.html"
+    };
+
+    function renderizzaLuoghiJankowiak(itemJankowiak, regioniDocumentate) {
+      const corpo = document.getElementById("corpo-tabella-jankowiak-luoghi");
+      corpo.innerHTML = "";
+
+      const qidPerNome = {};
+      regioniDocumentate.forEach(r => { qidPerNome[r.nome] = r.area_wikidata; });
+
+      itemJankowiak.aree_geografiche.forEach(area => {
+        const riga = document.createElement("tr");
+
+        const cellaNome = document.createElement("td");
+        cellaNome.textContent = area.nome;
+        riga.appendChild(cellaNome);
+
+        const cellaQid = document.createElement("td");
+        const qid = qidPerNome[area.nome];
+        if (qid) {
+          const a = document.createElement("a");
+          a.href = qid;
+          a.textContent = qid.split("/").pop();
+          cellaQid.appendChild(a);
+        } else {
+          cellaQid.textContent = "non assegnato";
+        }
+        riga.appendChild(cellaQid);
+
+        const cellaFonte = document.createElement("td");
+        cellaFonte.textContent = AREE_JANKOWIAK_NON_NEL_TESTO.includes(area.nome)
+          ? "Aggiunta da HRAF (fonte secondaria)"
+          : "Nominata nel testo dell'articolo";
+        riga.appendChild(cellaFonte);
+
+        corpo.appendChild(riga);
+      });
+    }
+
+    function renderizzaLuoghiWatkins(paesi) {
+      const corpo = document.getElementById("corpo-tabella-watkins-luoghi");
+      corpo.innerHTML = "";
+      paesi.forEach(p => {
+        const riga = document.createElement("tr");
+
+        const cellaNome = document.createElement("td");
+        cellaNome.textContent = p.paese;
+        riga.appendChild(cellaNome);
+
+        const cellaQid = document.createElement("td");
+        const a = document.createElement("a");
+        a.href = p.area_wikidata;
+        a.textContent = p.area_wikidata.split("/").pop();
+        cellaQid.appendChild(a);
+        riga.appendChild(cellaQid);
+
+        const cellaN = document.createElement("td");
+        cellaN.textContent = p.n;
+        riga.appendChild(cellaN);
+
+        corpo.appendChild(riga);
+      });
+    }
+
+    function renderizzaCDLI(itemBarton) {
+      const corpo = document.getElementById("corpo-tabella-cdli");
+      corpo.innerHTML = "";
+      (itemBarton.link_riferimento || []).forEach(lr => {
+        const riga = document.createElement("tr");
+        const cellaRegistro = document.createElement("td");
+        cellaRegistro.textContent = LINK_ETICHETTA_CDLI[lr.tipo] || lr.tipo;
+        riga.appendChild(cellaRegistro);
+        const cellaId = document.createElement("td");
+        const a = document.createElement("a");
+        a.href = lr.url;
+        a.textContent = lr.url;
+        cellaId.appendChild(a);
+        riga.appendChild(cellaId);
+        corpo.appendChild(riga);
+      });
+    }
+
+    // Etichette leggibili per "stato" — v. data/progetti.json → vocabolario_marcature.
+    // Quattro stati distinti, non due (trovato/non trovato): distinguere "nessuna corrispondenza
+    // difendibile" da "non è un soggetto" evita di far sembrare un limite di ricerca ciò che è
+    // in realtà una scelta di categoria (etichetta interna o toponimo).
+    const ETICHETTA_STATO_SOGGETTO = {
+      "corrispondenza-trovata": "Corrispondenza trovata",
+      "corrispondenza-trovata-composita": "Corrispondenza trovata (tag composto, spezzato in due)",
+      "nessuna-corrispondenza-difendibile": "Nessuna corrispondenza difendibile",
+      "non-applicabile-etichetta-interna": "Non applicabile — etichetta interna di progetto",
+      "non-applicabile-luogo": "Non applicabile — è un toponimo, non un soggetto"
+    };
+
+    function renderizzaSoggetti(vocabolario) {
+      const corpo = document.getElementById("corpo-tabella-soggetti");
+      corpo.innerHTML = "";
+      Object.keys(vocabolario).sort().forEach(marcatura => {
+        const voce = vocabolario[marcatura];
+        const riga = document.createElement("tr");
+
+        const cellaMarcatura = document.createElement("td");
+        cellaMarcatura.textContent = marcatura;
+        riga.appendChild(cellaMarcatura);
+
+        const cellaStato = document.createElement("td");
+        cellaStato.textContent = ETICHETTA_STATO_SOGGETTO[voce.stato] || voce.stato;
+        riga.appendChild(cellaStato);
+
+        const cellaCorrispondenza = document.createElement("td");
+        if (voce.stato === "corrispondenza-trovata" && voce.uri) {
+          const a = document.createElement("a");
+          a.href = voce.uri;
+          a.textContent = voce.etichetta + " (" + voce.uri.split("/").pop() + ")";
+          cellaCorrispondenza.appendChild(a);
+        } else if (voce.stato === "corrispondenza-trovata-composita" && voce.componenti) {
+          voce.componenti.forEach((c, i) => {
+            const a = document.createElement("a");
+            a.href = c.uri;
+            a.textContent = c.etichetta + " (" + c.uri.split("/").pop() + ")";
+            cellaCorrispondenza.appendChild(a);
+            if (i < voce.componenti.length - 1) cellaCorrispondenza.appendChild(document.createElement("br"));
+          });
+        } else {
+          cellaCorrispondenza.textContent = "—";
+        }
+        riga.appendChild(cellaCorrispondenza);
+
+        const cellaNota = document.createElement("td");
+        cellaNota.textContent = voce.nota || "";
+        riga.appendChild(cellaNota);
+
+        corpo.appendChild(riga);
+      });
+    }
+  </script>
+
+  <script src="ricerca-barra.js"></script>
+</body>
+</html>

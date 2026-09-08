@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="proemio-epigrafi" xml:lang="it">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Atlante digitale della ricerca antropologica comparativa — Proemio: un principio di metodo e tre voci sulla variabilità culturale</title>
+        <author>[NOME COGNOME], Università di Bologna</author>
+        <respStmt>
+          <resp>codifica TEI e selezione delle epigrafi</resp>
+          <name>[NOME COGNOME]</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna</publisher>
+        <date when="2026">2026</date>
+        <availability status="free">
+          <p>Materiale prodotto per finalità didattiche. Le epigrafi riportate sono citazioni da opere di terzi, indicate in ciascun elemento &lt;bibl&gt;; nessun diritto è rivendicato su di esse.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>Le epigrafi (una citazione epistemologica + tre antropologiche) sono trascritte/tradotte dalle edizioni indicate in ciascun &lt;bibl&gt; qui sotto; si veda anche il documento <ref target="../docs/modello-dati.md">modello-dati.md</ref> per il quadro metodologico completo. Due epigrafi in precedenza qui sono state spostate altrove, per motivi diversi: il Barton Cylinder in apertura della scheda del progetto "il bacio" (<ref target="bacio-epigrafe-barton.xml">bacio-epigrafe-barton.xml</ref>), perché fonte primaria di quel singolo caso di studio, non del progetto nel suo complesso; l'AAA Statement on Human Rights (1947) nel catalogo dei progetti (<ref target="catalogo-epigrafe-aaa1947.xml">catalogo-epigrafe-aaa1947.xml</ref>), su indicazione dello studente, perché il tema — relativismo culturale contro pretese di universalità — è risultato più pertinente nel punto in cui si sceglie fra le due indagini comparative che nel proemio generale.</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Questo file raccoglie, in un unico luogo codificato in TEI, le citazioni che aprono index.html: il principio epistemologico di metodo (Popper) più tre voci antropologiche, seguite da un pulsante di accesso al catalogo dei progetti (bacio; preistoria — quest'ultimo in sola progettazione). Non fa parte dei nodi di studio del ramo bacio (Jankowiak/Watkins/Arbøll/Barton): è un testo autonomo, pensato per essere trasformato in HTML (via XSLT o lettura diretta in JS) e mostrato nella pagina iniziale, prima del catalogo. La scelta di codificarlo in TEI anziché scriverlo direttamente in HTML è deliberata: dimostra che anche testo "editoriale" e non solo le schede bibliografiche degli studi può essere trattato come dato strutturato, coerente con l'uso di TEI richiesto dal corso.</p>
+      </projectDesc>
+      <editorialDecl>
+        <p>Sottoinsieme TEI Lite. Ogni epigrafe è un elemento &lt;cit&gt; contenente una o più &lt;quote&gt; (l'originale in lingua, se non italiano/inglese, marcato con @xml:lang; e/o la traduzione) e un &lt;bibl&gt; con la citazione bibliografica completa. L'attributo @type su &lt;cit&gt; classifica la natura della fonte (epistemologia, dichiarazione-disciplinare, teoria, manifesto-contemporaneo, fonte-primaria-riflessività), per rendere esplicito — anche qui — il principio di distinguere tipi di fonte invece di trattarle come equivalenti. Ogni &lt;cit&gt; porta anche un &lt;note type="didascalia"&gt;: testo redazionale nostro, dichiaratamente distinto dalla fonte citata, che spiega perché quella voce è qui e — dove serve — ne segnala i limiti (es. il contesto storico controverso dello Statement AAA 1947). Il paragrafo di apertura (&lt;p type="cornice-progetto"&gt;) è interamente redazionale: non è una citazione, è la cornice interpretativa del progetto, e va tenuto visivamente distinto dalle epigrafi in fase di trasformazione HTML.</p>
+      </editorialDecl>
+    </encodingDesc>
+    <revisionDesc>
+      <change when="2026-08-29" who="#claude">Creazione del file: cinque epigrafi verificate (Barton Cylinder, AAA 1947, Geertz 1973, Benedict 1946, Ingold 2018).</change>
+      <change when="2026-08-29" who="#claude">Revisione su indicazione dello studente: rimossa l'epigrafe Benedict (scartata); spostato il Barton Cylinder in file separato (bacio-epigrafe-barton.xml), in cima alla scheda del progetto bacio; aggiunta l'epigrafe epistemologica (Popper 1963) con cornice di progetto redazionale; aggiunta l'epigrafe Hurston 1935 (verificata su testo primario); scartata la candidatura Mead 1928 per assenza di una citazione verificabile da fonte primaria attribuibile a lei stessa (la sola frase reperita nel testo appartiene alla prefazione di Boas, non a Mead). Aggiunte didascalie redazionali a ciascuna epigrafe.</change>
+      <change when="2026-08-29" who="#claude">Spostata l'epigrafe AAA Statement on Human Rights (1947) nel catalogo dei progetti (catalogo-epigrafe-aaa1947.xml), su indicazione dello studente. Il proemio resta con tre epigrafi antropologiche (Geertz, Ingold, Hurston) più la citazione epistemologica.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="epigraphs">
+
+        <p type="cornice-progetto" xml:lang="it">La scienza comparata costruisce ipotesi, le sottopone a verifica, le rivede quando i dati non tornano, e talvolta le smentisce del tutto. Vale per l'antropologia quanto per l'archeologia — lo si vedrà scorrendo le schede di questo atlante, tanto nel progetto sul bacio quanto in quello, qui presentato solo in fase di progettazione, su sesso genere e lavoro nella preistoria.</p>
+
+        <cit type="epistemologia" xml:id="epigrafe-popper">
+          <quote xml:lang="en">"Science must begin with myths, and with the criticism of myths."</quote>
+          <bibl>Popper, K. R., <title level="m">Conjectures and Refutations: The Growth of Scientific Knowledge</title>, Routledge &amp; Kegan Paul, London, 1963, cap. 1 "Science: Conjectures and Refutations", sez. VII. (Nessun numero di pagina: le edizioni Routledge hanno impaginazioni diverse tra loro; capitolo e sezione sono il riferimento stabile.)</bibl>
+          <note type="didascalia">Il principio che regge questo atlante: la comparazione costruisce ipotesi, le sottopone a verifica, talvolta le smentisce. Vale per l'antropologia quanto per l'archeologia — lo si vedrà scorrendo le schede.</note>
+        </cit>
+
+        <cit type="teoria" xml:id="epigrafe-geertz">
+          <quote xml:lang="en">"Believing, with Max Weber, that man is an animal suspended in webs of significance he himself has spun, I take culture to be those webs."</quote>
+          <bibl>Geertz, C., "Thick Description: Toward an Interpretive Theory of Culture", in <title level="m">The Interpretation of Cultures</title>, Basic Books, 1973, cap. 1.</bibl>
+          <note type="didascalia">L'antropologia interpretativa di Geertz legge la cultura come sistema di significati da decifrare, non da misurare: il polo opposto, dentro la stessa disciplina, rispetto agli approcci quantitativo-comparativi (Jankowiak, Watkins) che il sito presenta. La tensione è voluta, non un'incoerenza.</note>
+        </cit>
+
+        <cit type="manifesto-contemporaneo" xml:id="epigrafe-ingold">
+          <quote xml:lang="en">"We refuse to accept that human life can be sliced into layers, of body, mind and society, or that its study can be divided between biologists, psychologists and sociologists. Anthropology's subject is humanity unsliced."</quote>
+          <bibl>Ingold, T., <title level="m">Anthropology: Why It Matters</title>, Polity, 2018.</bibl>
+          <note type="didascalia">Un manifesto disciplinare recente: l'antropologia rifiuta di dividere l'umano in corpo, mente, società. Premessa condivisa da entrambi i rami del progetto, l'unico esplicitamente contemporaneo tra le voci qui riunite.</note>
+        </cit>
+
+        <cit type="fonte-primaria-riflessività" xml:id="epigrafe-hurston">
+          <quote xml:lang="en">"Then I had to have the spy-glass of Anthropology to look through at that."</quote>
+          <bibl>Hurston, Z. N., <title level="m">Mules and Men</title> (prefazione di Franz Boas), J. B. Lippincott, Philadelphia, 1935, Introduzione.</bibl>
+          <note type="didascalia">Hurston, antropologa afroamericana allieva di Boas, racconta il proprio ritorno da ricercatrice nella comunità in cui era cresciuta: la "lente" disciplinare non sostituisce l'appartenenza, la affianca. Introduce il tema, ricorrente nel progetto, di chi guarda e da dove guarda (cfr. le note editoriali su eHRAF e OSF nelle schede Jankowiak/Watkins).</note>
+        </cit>
+
+      </div>
+    </body>
+  </text>
+</TEI>

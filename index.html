@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atlante digitale della ricerca antropologica comparativa — Proemio</title>
+  <meta name="description" content="Proemio: un principio di metodo (Popper) e tre voci sulla variabilità culturale (Geertz, Ingold, Hurston), cornice epistemologica dell'atlante, seguito dalla mappa dell'intera struttura del progetto.">
+
+  <!-- Dublin Core, richiesto dalle linee guida del corso nell'head di ogni pagina -->
+  <meta name="DC.title" content="Atlante digitale della ricerca antropologica comparativa — Proemio">
+  <meta name="DC.creator" content="[NOME COGNOME], Università di Bologna">
+  <meta name="DC.subject" content="antropologia; epistemologia della scienza; relativismo culturale; digital humanities">
+  <meta name="DC.description" content="Pagina di apertura dell'atlante: cornice interpretativa redazionale, una citazione epistemologica (Popper) e tre epigrafi antropologiche (Geertz, Ingold, Hurston), seguite dalla mappa dell'intera architettura del progetto (entrambi i rami, con placeholder dichiarati per le parti non ancora costruite).">
+  <meta name="DC.publisher" content="Progetto d'esame — Digital Humanities e Patrimonio Culturale, Università di Bologna">
+  <meta name="DC.date" content="2026">
+  <meta name="DC.type" content="Text">
+  <meta name="DC.format" content="text/html">
+  <meta name="DC.language" content="it">
+  <meta name="DC.relation" content="catalogo.html">
+  <meta name="DC.source" content="tei/proemio-epigrafi.xml">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Trasformazione manuale (non XSLT) di tei/proemio-epigrafi.xml: un <p type="cornice-progetto">
+       redazionale + quattro <cit>, ciascuno con @type, <quote>, <bibl> e <note type="didascalia">.
+       L'AAA Statement on Human Rights (1947), in precedenza qui, è stato spostato per intero
+       in catalogo.html, su indicazione dello studente — v. tei/catalogo-epigrafe-aaa1947.xml
+       e la nota in revisionDesc del file TEI per il razionale. -->
+
+  <header>
+    <h1>Atlante digitale della ricerca antropologica comparativa</h1>
+      <div id="barra-ricerca-globale"></div>
+    <p class="cornice-redazionale">
+      Questo atlante vuole permettere il raggiungimento di conoscenze nuove tramite studi e
+      ricerche comparate su tematiche comuni. Saranno quindi disponibili vari strumenti per
+      permettere di fruire al meglio varie interpretazioni su medesimo argomento. La scienza
+      comparata costruisce ipotesi, le sottopone a verifica, le rivede quando i dati non tornano,
+      e talvolta le smentisce del tutto. Così procede anche la scienza con un atteggiamento
+      critico e rigoroso, che però non deve spaventarci, ma aprire le ali della nostra curiosità.
+      Buona navigazione.
+    </p>
+  </header>
+
+  <main>
+    <section id="epigrafi" aria-label="Epigrafi di apertura">
+
+      <div class="lista-epigrafi">
+
+      <article class="epigrafe epigrafe-con-foto" data-tipo="epistemologia">
+        <img class="epigrafe-foto" src="img/prometeo-fuoco.jpg" alt="Heinrich Füger, Prometeo porta il fuoco all'umanità, 1817">
+        <div class="epigrafe-corpo">
+          <p class="tipo-epigrafe">Epistemologia</p>
+          <blockquote lang="en">
+            "Science must begin with myths, and with the criticism of myths."
+          </blockquote>
+          <p class="fonte-citazione">Popper, K. R., <cite>Conjectures and Refutations: The Growth of Scientific Knowledge</cite>, Routledge &amp; Kegan Paul, London, 1963, cap. 1 "Science: Conjectures and Refutations", sez. VII.</p>
+          <p class="didascalia-epigrafe">
+            Il principio che regge questo atlante: la comparazione costruisce ipotesi, le sottopone a
+            verifica, talvolta le smentisce. Vale per l'antropologia quanto per l'archeologia — lo si
+            vedrà scorrendo le schede.
+          </p>
+        </div>
+      </article>
+
+      <article class="epigrafe epigrafe-con-foto epigrafe-invertita" data-tipo="teoria">
+        <img class="epigrafe-foto" src="img/arte-rupestre.jpg" alt="Fotografia di arte rupestre, &quot;Охота на зверя&quot; (Caccia alla belva)">
+        <div class="epigrafe-corpo">
+          <p class="tipo-epigrafe">Teoria</p>
+          <blockquote lang="en">
+            "Believing, with Max Weber, that man is an animal suspended in webs of significance he
+            himself has spun, I take culture to be those webs."
+          </blockquote>
+          <p class="fonte-citazione">Geertz, C., "Thick Description: Toward an Interpretive Theory of Culture", in <cite>The Interpretation of Cultures</cite>, Basic Books, 1973, cap. 1.</p>
+          <p class="didascalia-epigrafe">
+            L'antropologia interpretativa di Geertz legge la cultura come sistema di significati da
+            decifrare, non da misurare: il polo opposto, dentro la stessa disciplina, rispetto agli
+            approcci quantitativo-comparativi (Jankowiak, Watkins) che il sito presenta. La tensione è
+            voluta, non un'incoerenza.
+          </p>
+        </div>
+      </article>
+
+      </div>
+
+      <p class="azione-principale">
+        <a href="catalogo.html" class="link-progetto">Vai al catalogo dei progetti &rarr;</a>
+      </p>
+
+      <div class="lista-epigrafi">
+
+      <article class="epigrafe" data-tipo="manifesto-contemporaneo">
+        <p class="tipo-epigrafe">Manifesto contemporaneo</p>
+        <blockquote lang="en">
+          "We refuse to accept that human life can be sliced into layers, of body, mind and society,
+          or that its study can be divided between biologists, psychologists and sociologists.
+          Anthropology's subject is humanity unsliced."
+        </blockquote>
+        <p class="fonte-citazione">Ingold, T., <cite>Anthropology: Why It Matters</cite>, Polity, 2018.</p>
+        <p class="didascalia-epigrafe">
+          Un manifesto disciplinare recente: l'antropologia rifiuta di dividere l'umano in corpo,
+          mente, società. Premessa condivisa dai vari progetti che verranno presentati.
+        </p>
+      </article>
+
+      <article class="epigrafe" data-tipo="fonte-primaria-riflessivita">
+        <p class="tipo-epigrafe">Fonte primaria, riflessività</p>
+        <blockquote lang="en">
+          "Then I had to have the spy-glass of Anthropology to look through at that."
+        </blockquote>
+        <p class="fonte-citazione">Hurston, Z. N., <cite>Mules and Men</cite> (prefazione di Franz Boas), J. B. Lippincott, Philadelphia, 1935, Introduzione.</p>
+        <p class="didascalia-epigrafe">
+          Hurston, antropologa afroamericana allieva di Boas, racconta il proprio ritorno da
+          ricercatrice nella comunità in cui era cresciuta: la "lente" disciplinare non sostituisce
+          l'appartenenza, la affianca. Introduce il tema, ricorrente nel progetto, di chi guarda e da
+          dove guarda.
+        </p>
+      </article>
+
+      </div>
+
+    </section>
+
+    <!-- Richiesto dalle linee guida del corso: "index/home con tutta la struttura/architettura
+         visibile (anche se non con tutti i link attivi – usare placeholder)". Costruita a runtime
+         da data/progetti.json, non ridigitata a mano: stesso principio del resto del sito. Le voci
+         senza link (il ramo preistoria e le sue 8 citazioni) sono placeholder dichiarati — stesso
+         tratteggio già usato per il badge di stato nel catalogo, non un errore di navigazione. -->
+    <section id="architettura-sito" aria-label="Struttura del progetto">
+      <h2>Struttura del progetto</h2>
+      <p class="nota-vista">
+        Qui si può vedere l'architettura dell'atlante: i progetti che contiene, oltre alle ricerche
+        correlate a ciascuno. Le voci senza link sono progettate ma non ancora costruite:
+        placeholder dichiarati come tali, non pagine mancanti per errore.
+      </p>
+      <!-- Menu a tendina a due livelli (richiesto dallo studente, 2026-09-08): prima si vede solo
+           "Catalogo dei progetti", aprendolo compaiono i progetti, aprendo un progetto compaiono le
+           sue ricerche. <details>/<summary> nativi, non l'accordion Bootstrap già usato in
+           dati.html: qui bastano due livelli senza pannelli sincronizzati/gestione del focus fra
+           loro, quindi la semantica nativa (espandi/comprimi, tastiera e screen reader già
+           supportati dal browser) copre il bisogno senza aggiungere una dipendenza a una pagina che
+           oggi non ne ha nessuna — stessa logica "quale libreria per quale componente" già
+           documentata in docs/note-per-orale.md §6. -->
+      <nav aria-label="Mappa del sito">
+        <div id="sitemap">
+          <p>Caricamento&hellip;</p>
+        </div>
+      </nav>
+    </section>
+
+    <p class="crediti-immagini">
+      Foto nell'epigrafe di Popper: Heinrich Füger, <a href="https://commons.wikimedia.org/wiki/File:Heinrich_fueger_1817_prometheus_brings_fire_to_mankind.jpg"><em>Prometheus Brings Fire to Mankind</em></a>, 1817 — pubblico dominio (l'autore è morto nel 1818; riproduzione fotografica fedele di un'opera bidimensionale di pubblico dominio, Wikimedia Commons).<br>
+      Foto nell'epigrafe di Geertz: <a href="https://commons.wikimedia.org/wiki/File:%D0%9E%D1%85%D0%BE%D1%82%D0%B0_%D0%BD%D0%B0_%D0%B7%D0%B2%D0%B5%D1%80%D1%8F.jpg">"Охота на зверя"</a>,
+      Wikimedia Commons, licenza <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.en">CC BY-SA 4.0</a>.
+      Autore non indicato sulla pagina del file — attribuzione data come titolo file + fonte, come consentito dalla licenza in assenza di un nome.
+    </p>
+  </main>
+
+  <footer>
+    <p>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna, 2026.</p>
+  </footer>
+
+  <script>
+    const PAGINE_RAMO = {
+      "bacio": "ramo-bacio.html",
+      "preistoria": "ramo-preistoria.html" // non esiste ancora: per questo non diventa mai un <a>
+    };
+
+    // Stesso registro d'item già usato in ramo-bacio.html e dati.html — qui serve solo a
+    // decidere quali titoli, nella mappa del sito, diventano link e quali restano placeholder.
+    const PAGINE_ITEM = {
+      "barton-cylinder": "barton-cylinder.html",
+      "jankowiak-2015": "jankowiak-2015.html",
+      "watkins-2019": "watkins-2019.html",
+      "arboll-rasmussen-2023": "arboll-rasmussen-2023.html",
+      "murray-2016": "murray-2016.html",
+      "lee-devore-1968": "lee-devore-1968.html",
+      "gero-conkey-1991": "gero-conkey-1991.html",
+      "hedenstierna-jonson-2017": "hedenstierna-jonson-2017.html",
+      "price-et-al-2019": "price-et-al-2019.html",
+      "haas-et-al-2020": "haas-et-al-2020.html",
+      "moilanen-et-al-2022": "moilanen-et-al-2022.html",
+      "harari-2014": "harari-2014.html",
+      "graeber-wengrow-2021": "graeber-wengrow-2021.html"
+    };
+
+    // Nota per ramo, non presente in progetti.json perché è un dettaglio di presentazione
+    // (come si accede al ramo), non un dato sul progetto in sé — stesso principio già seguito
+    // per CENTROIDI in ramo-bacio.html.
+    const NOTA_RAMO = {
+      "bacio": "due viste sullo stesso indice di item: Lista, Mappa",
+      "preistoria": "otto citazioni bibliografiche schedate, non ancora ricondotte a nodi tematici"
+    };
+
+    fetch("data/progetti.json")
+      .then(risposta => {
+        if (!risposta.ok) throw new Error("HTTP " + risposta.status);
+        return risposta.json();
+      })
+      .then(dati => renderizzaSitemap(dati))
+      .catch(errore => {
+        document.getElementById("sitemap").innerHTML =
+          "<li>Impossibile caricare la mappa del sito (" + errore.message + "). " +
+          "Se stai aprendo questo file con un doppio click, serve un server locale.</li>";
+      });
+
+    function renderizzaSitemap(dati) {
+      const radice = document.getElementById("sitemap");
+      radice.innerHTML = "";
+
+      // Livello 1: <details> "Catalogo dei progetti", chiuso di default — aprendolo si vedono i
+      // progetti (livello 2, un <details> ciascuno), aprendo un progetto se ne vedono le ricerche
+      // (livello 3, <ul> semplice come prima). Il link al catalogo resta cliccabile dentro il
+      // <summary> (un <a> dentro <summary> è valido HTML): aprire la tendina e navigare alla
+      // pagina restano due azioni distinte, non alternative fra loro.
+      const dettagliCatalogo = document.createElement("details");
+      dettagliCatalogo.className = "sitemap-tendina sitemap-tendina-catalogo";
+      const riepilogoCatalogo = document.createElement("summary");
+      const aCatalogo = document.createElement("a");
+      aCatalogo.href = "catalogo.html";
+      aCatalogo.textContent = "Catalogo dei progetti";
+      riepilogoCatalogo.appendChild(aCatalogo);
+      dettagliCatalogo.appendChild(riepilogoCatalogo);
+
+      const ulProgetti = document.createElement("ul");
+      ulProgetti.className = "sitemap";
+      dati.progetti.forEach(progetto => {
+        const completo = progetto.stato_implementazione === "sito-interattivo-completo";
+        const itemDelProgetto = dati.item.filter(it => it.progetto === progetto.id);
+        const liProgetto = document.createElement("li");
+        liProgetto.className = completo ? "sitemap-attivo" : "sitemap-placeholder";
+
+        // Un progetto con ricerche da mostrare diventa a sua volta una tendina; un progetto
+        // senza item (caso non presente oggi, ma non escluso in futuro) resta una riga semplice.
+        const contenitoreProgetto = itemDelProgetto.length > 0
+          ? document.createElement("details")
+          : document.createElement("div");
+        if (itemDelProgetto.length > 0) contenitoreProgetto.className = "sitemap-tendina";
+
+        const etichettaProgetto = itemDelProgetto.length > 0
+          ? document.createElement("summary")
+          : document.createElement("div");
+
+        if (completo) {
+          const a = document.createElement("a");
+          a.href = PAGINE_RAMO[progetto.id];
+          a.textContent = progetto.nome;
+          etichettaProgetto.appendChild(a);
+        } else {
+          const span = document.createElement("span");
+          span.textContent = progetto.nome;
+          etichettaProgetto.appendChild(span);
+        }
+        contenitoreProgetto.appendChild(etichettaProgetto);
+
+        if (NOTA_RAMO[progetto.id]) {
+          const nota = document.createElement("p");
+          nota.className = "sitemap-nota";
+          nota.textContent = NOTA_RAMO[progetto.id];
+          contenitoreProgetto.appendChild(nota);
+        }
+
+        if (itemDelProgetto.length > 0) {
+          const ulItem = document.createElement("ul");
+          ulItem.className = "sitemap";
+          itemDelProgetto.forEach(it => {
+            const liItem = document.createElement("li");
+            if (PAGINE_ITEM[it.id]) {
+              liItem.className = "sitemap-attivo";
+              const a = document.createElement("a");
+              a.href = PAGINE_ITEM[it.id];
+              a.textContent = it.titolo;
+              liItem.appendChild(a);
+            } else {
+              liItem.className = "sitemap-placeholder";
+              const span = document.createElement("span");
+              span.textContent = it.titolo;
+              liItem.appendChild(span);
+            }
+            ulItem.appendChild(liItem);
+          });
+          contenitoreProgetto.appendChild(ulItem);
+        }
+
+        liProgetto.appendChild(contenitoreProgetto);
+        ulProgetti.appendChild(liProgetto);
+      });
+      dettagliCatalogo.appendChild(ulProgetti);
+      radice.appendChild(dettagliCatalogo);
+
+      // dati.html è trasversale ai due rami (riconcilia autorità di entrambi): non è figlia
+      // del catalogo nell'albero di navigazione, compare quindi come voce di pari livello,
+      // fuori dalla tendina — sempre visibile, non va aperta per trovarla.
+      const pDati = document.createElement("p");
+      pDati.className = "sitemap-dati-trasversale";
+      const aDati = document.createElement("a");
+      aDati.href = "dati.html";
+      aDati.textContent = "La pagina dei dati — riconciliazione delle autorità";
+      pDati.appendChild(aDati);
+      radice.appendChild(pDati);
+    }
+  </script>
+
+  <script src="ricerca-barra.js"></script>
+</body>
+</html>

@@ -1,0 +1,411 @@
+<title>Grafici del bacio</title>
+<style>
+  :root {
+    --paper: #eff1ee;
+    --surface: #ffffff;
+    --surface-2: #e7e9e3;
+    --ink: #20242a;
+    --ink-soft: #4b5259;
+    --ink-faint: #7a8189;
+    --rule: #d7d9d2;
+    --accent: #2e4057;
+    --accent-soft: #7c93b0;
+    --accent-wash: #e4e9ef;
+    --clay: #a6693b;
+    --clay-soft: #c99468;
+    --clay-wash: #f1e2d3;
+    --dubbio: #8a7a2e;
+    --dubbio-wash: #f0ecd6;
+    --focus: #2e4057;
+    --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+    --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #1b1e22; --surface: #23272c; --surface-2: #2b3036;
+      --ink: #ece9e2; --ink-soft: #b7bab4; --ink-faint: #8a8f8a;
+      --rule: #3a3f3b; --accent: #93a9c6; --accent-soft: #5b7091;
+      --accent-wash: #29323d; --clay: #cf9865; --clay-soft: #8a5c37; --clay-wash: #3a2f24;
+      --dubbio: #c9b567; --dubbio-wash: #363321; --focus: #93a9c6;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #1b1e22; --surface: #23272c; --surface-2: #2b3036;
+    --ink: #ece9e2; --ink-soft: #b7bab4; --ink-faint: #8a8f8a;
+    --rule: #3a3f3b; --accent: #93a9c6; --accent-soft: #5b7091;
+    --accent-wash: #29323d; --clay: #cf9865; --clay-soft: #8a5c37; --clay-wash: #3a2f24;
+    --dubbio: #c9b567; --dubbio-wash: #363321; --focus: #93a9c6;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--paper); color: var(--ink);
+    font-family: var(--font-serif); line-height: 1.55;
+  }
+  .pagina { max-width: 68rem; margin: 0 auto; padding: 2.5rem 1.75rem 4rem; }
+
+  .banner {
+    background: var(--accent-wash); border: 1px solid var(--accent-soft); border-radius: 6px;
+    padding: 1rem 1.3rem; font-family: var(--font-sans); font-size: 0.85rem; color: var(--ink);
+    line-height: 1.6; margin-bottom: 2.25rem;
+  }
+  .banner strong { color: var(--accent); }
+  .banner ul { margin: 0.6rem 0 0 0; padding-left: 1.3rem; }
+  .banner li { margin: 0.3rem 0; }
+
+  h1 {
+    font-family: var(--font-serif); font-weight: 600; font-size: clamp(1.7rem, 3.4vw, 2.15rem);
+    line-height: 1.2; margin: 0 0 0.35rem 0; text-wrap: balance;
+  }
+  .sottotitolo {
+    font-family: var(--font-sans); font-size: 0.95rem; color: var(--ink-soft);
+    max-width: 42rem; margin: 0 0 2.25rem 0;
+  }
+
+  .griglia-grafici {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr)); gap: 1.75rem;
+  }
+
+  .grafico-card {
+    background: var(--surface); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 1.5rem 1.6rem 1.4rem; display: flex; flex-direction: column;
+  }
+  .grafico-card h2 {
+    font-family: var(--font-serif); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.25rem 0;
+  }
+  .fonte-grafico {
+    font-family: var(--font-sans); font-size: 0.76rem; color: var(--ink-faint); margin: 0 0 1.2rem 0;
+    line-height: 1.5;
+  }
+
+  /* -------------------- Jankowiak: donut -------------------- */
+  .corpo-donut { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+  .donut-svg { flex: 0 0 auto; }
+  .legenda-donut { list-style: none; margin: 0; padding: 0; flex: 1 1 11rem; font-family: var(--font-sans); font-size: 0.86rem; }
+  .legenda-donut li { display: flex; align-items: center; gap: 0.55rem; padding: 0.35rem 0; }
+  .legenda-donut .pallino { width: 0.8rem; height: 0.8rem; border-radius: 50%; flex: 0 0 auto; }
+  .legenda-donut .valore { margin-left: auto; font-family: var(--font-mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  /* -------------------- Watkins: toggle + scatter/testo -------------------- */
+  .controlli-watkins { display: flex; gap: 0.5rem; margin-bottom: 1.1rem; }
+  .btn-toggle {
+    font: inherit; font-family: var(--font-sans); font-size: 0.8rem; padding: 0.4rem 0.85rem;
+    border: 1px solid var(--rule); border-radius: 5px; background: var(--surface); color: var(--ink-soft);
+    cursor: pointer;
+  }
+  .btn-toggle.attivo { border-color: var(--accent); color: var(--accent); font-weight: 600; background: var(--accent-wash); }
+  .btn-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .vista-watkins[hidden] { display: none; }
+  .svg-scatter { width: 100%; height: auto; display: block; font-family: var(--font-mono); }
+  .asse-scatter { stroke: var(--ink-faint); stroke-width: 1; }
+  .griglia-scatter { stroke: var(--rule); stroke-width: 1; }
+  .etichetta-asse { font-size: 9.5px; fill: var(--ink-faint); font-family: var(--font-sans); }
+  .titolo-asse { font-size: 10.5px; fill: var(--ink-soft); font-weight: 600; font-family: var(--font-sans); }
+  .linea-regressione { stroke: var(--accent); stroke-width: 1.4; stroke-dasharray: 5,3; fill: none; opacity: 0.75; }
+  .punto-scatter { stroke: var(--surface); stroke-width: 1; }
+  .etichetta-punto { font-size: 8.6px; fill: var(--ink-soft); font-family: var(--font-sans); }
+
+  .box-risultato {
+    background: var(--accent-wash); border-left: 3px solid var(--accent); border-radius: 0 6px 6px 0;
+    padding: 0.9rem 1.1rem; font-family: var(--font-sans); font-size: 0.85rem; color: var(--ink); line-height: 1.55;
+  }
+  .box-risultato .risultato-titolo {
+    font-weight: 600; margin: 0 0 0.45rem 0; font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 0.05em; color: var(--accent);
+  }
+  .box-risultato p { margin: 0 0 0.55rem 0; }
+  .box-risultato p:last-child { margin-bottom: 0; }
+
+  .nota-grafico {
+    font-family: var(--font-sans); font-size: 0.76rem; color: var(--ink-faint); font-style: italic;
+    margin: 1.1rem 0 0 0; padding-top: 0.75rem; border-top: 1px dashed var(--rule);
+  }
+
+  .legenda-gini { display: flex; align-items: center; gap: 0.4rem; margin: 0.75rem 0 0 0; font-family: var(--font-sans); font-size: 0.74rem; color: var(--ink-faint); }
+  .rampa-gini { width: 6rem; height: 0.55rem; border-radius: 3px; background: linear-gradient(90deg, var(--clay-wash), var(--clay)); flex: 0 0 auto; }
+
+  /* -------------------- Jankowiak: coppia di torte a confronto -------------------- */
+  .coppia-torte { display: flex; gap: 1.75rem; flex-wrap: wrap; justify-content: space-around; margin-bottom: 1.1rem; }
+  .torta-unita { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1 1 10rem; }
+  .etichetta-torta { margin: 0.6rem 0 0 0; font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+  .etichetta-torta span { display: block; font-weight: 400; font-size: 0.74rem; color: var(--ink-faint); margin-top: 0.15rem; }
+  .legenda-confronto .pallino.dubbio-pallino { background: var(--dubbio); }
+
+  /* -------------------- Watkins: spiegazione GINI -------------------- */
+  .spiega-gini {
+    background: var(--surface-2); border-radius: 6px; padding: 0.8rem 1rem;
+    font-family: var(--font-sans); font-size: 0.8rem; color: var(--ink-soft); line-height: 1.55;
+    margin-bottom: 1.1rem;
+  }
+  .spiega-gini strong { color: var(--ink); }
+
+  /* -------------------- Murray: barre verticali -------------------- */
+  .barre-murray { display: flex; gap: 2.5rem; align-items: flex-end; height: 7.5rem; margin: 0.4rem 0 0.9rem 0; }
+  .colonna-murray { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; flex: 1 1 0; }
+  .barra-verticale { width: 3.5rem; border-radius: 4px 4px 0 0; }
+  .valore-murray { margin: 0.4rem 0 0 0; font-family: var(--font-mono); font-weight: 600; font-size: 0.95rem; color: var(--ink); }
+  .etichetta-murray { margin: 0.15rem 0 0 0; font-family: var(--font-sans); font-size: 0.76rem; color: var(--ink-soft); text-align: center; line-height: 1.35; }
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<div class="pagina">
+
+  <div class="banner">
+    <strong>Bozza di lavoro, v3 — questa versione va nel sito vero.</strong> Jankowiak torna a due grafici a
+    torta (più impatto visivo, come richiesto), con gli stessi tre colori distinguibili di prima. Confermato:
+    <ul>
+      <li><strong>Colori Jankowiak</strong>: blu = presente, terracotta = assente, <strong>oro/ocra</strong> = dubbio
+        (i 23 casi ricodificati da "sconosciuto") — stessi tre colori che ora vanno anche sui pallini della
+        Mappa vera, appena la implemento.</li>
+      <li><strong>Idee di grafico non ancora costruite</strong> (proposte, non urgenti): una legenda colori
+        identica sopra la Mappa vera; un grafico a barre di Jankowiak per macro-continente. Dimmi se in futuro
+        ti interessano.</li>
+    </ul>
+  </div>
+
+  <h1>Grafici del ramo "Il bacio"</h1>
+  <p class="sottotitolo">
+    Tre delle quattro ricerche del ramo hanno ora un grafico — solo Arbøll &amp; Rasmussen resta senza: è un
+    saggio argomentativo senza dataset proprio, nessun numero da mostrare (lo stesso motivo già nella scheda
+    dell'item). Dati reali da <code>data/progetti.json</code>, nessun valore inventato per questa bozza.
+  </p>
+
+  <div class="griglia-grafici">
+
+    <!-- ============ JANKOWIAK: CONFRONTO DATO PUBBLICATO / RIANALISI BÅÅTH ============ -->
+    <div class="grafico-card">
+      <h2>Jankowiak, Volsche &amp; Garcia (2015) — due letture a confronto</h2>
+      <p class="fonte-grafico">
+        In alto il dato aggregato pubblicato nell'articolo (168 culture). In basso la rianalisi che alimenta
+        la vista Mappa di questo progetto: 164 delle stesse culture, geolocalizzate una per una dal widget di
+        Bååth &amp; Anikin (2015) — la critica pubblicata al dato di Jankowiak et al. Stessi numeri già citati
+        nella scheda dell'item, tabella "Il dato aggregato" e nota sul limite dichiarato.
+      </p>
+      <div class="coppia-torte">
+        <div class="torta-unita">
+          <svg class="donut-svg" width="140" height="140" viewBox="0 0 150 150" role="img" aria-label="Dato pubblicato: attestato in 77 culture su 168 (46%), non attestato in 91 (54%)">
+            <circle cx="75" cy="75" r="52" fill="none" stroke="var(--clay)" stroke-width="30"></circle>
+            <circle cx="75" cy="75" r="52" fill="none" stroke="var(--accent)" stroke-width="30"
+                    stroke-dasharray="149.75 176.98" stroke-dashoffset="0" transform="rotate(-90 75 75)"></circle>
+            <circle cx="75" cy="75" r="37" fill="var(--surface)"></circle>
+            <text x="75" y="71" text-anchor="middle" font-family="var(--font-mono)" font-size="18" fill="var(--ink)" font-weight="600">46%</text>
+            <text x="75" y="86" text-anchor="middle" font-family="var(--font-sans)" font-size="8" fill="var(--ink-faint)">attestato</text>
+          </svg>
+          <p class="etichetta-torta">Dato pubblicato<span>168 culture, intero campione</span></p>
+        </div>
+        <div class="torta-unita">
+          <svg class="donut-svg" width="140" height="140" viewBox="0 0 150 150" role="img" aria-label="Rianalisi Bååth e Anikin: presente in 76 culture su 164 (46%), assente in 65 (40%), dubbio in 23 (14%)">
+            <circle cx="75" cy="75" r="52" fill="none" stroke="var(--accent)" stroke-width="30"
+                    stroke-dasharray="151.41 175.32" stroke-dashoffset="0" transform="rotate(-90 75 75)"></circle>
+            <circle cx="75" cy="75" r="52" fill="none" stroke="var(--clay)" stroke-width="30"
+                    stroke-dasharray="129.49 197.23" stroke-dashoffset="-151.41" transform="rotate(-90 75 75)"></circle>
+            <circle cx="75" cy="75" r="52" fill="none" stroke="var(--dubbio)" stroke-width="30"
+                    stroke-dasharray="45.82 280.90" stroke-dashoffset="-280.90" transform="rotate(-90 75 75)"></circle>
+            <circle cx="75" cy="75" r="37" fill="var(--surface)"></circle>
+            <text x="75" y="71" text-anchor="middle" font-family="var(--font-mono)" font-size="18" fill="var(--ink)" font-weight="600">46%</text>
+            <text x="75" y="86" text-anchor="middle" font-family="var(--font-sans)" font-size="8" fill="var(--ink-faint)">presente</text>
+          </svg>
+          <p class="etichetta-torta">Rianalisi Bååth &amp; Anikin<span>164 culture geolocalizzate (vista Mappa)</span></p>
+        </div>
+      </div>
+      <ul class="legenda-donut legenda-confronto">
+        <li><span class="pallino" style="background:var(--accent)"></span> Presente / attestato <span class="valore">77 · 76</span></li>
+        <li><span class="pallino" style="background:var(--clay)"></span> Assente / non attestato <span class="valore">91 · 65</span></li>
+        <li><span class="pallino dubbio-pallino"></span> Dubbio (ricodificato da "sconosciuto") <span class="valore">— · 23</span></li>
+      </ul>
+      <p class="nota-grafico">
+        Le due percentuali (46% in entrambe le letture) sono vicine ma nascono da fonti diverse e da un
+        campione di dimensione diversa (168 contro 164): non vanno lette come lo stesso identico numero.
+        La rianalisi aggiunge la categoria "dubbio", assente nella pubblicazione originale — è la nostra
+        scelta dichiarata di non forzare in "assente" i 23 casi che il dato grezzo classificava come
+        "sconosciuto" (v. scheda dell'item per il dettaglio, inclusi i 3 casi in cui Bååth stesso argomenta
+        contro la ricodifica).
+      </p>
+    </div>
+
+    <!-- ============ WATKINS: TOGGLE SCATTER / TESTO ============ -->
+    <div class="grafico-card">
+      <h2>Watkins &amp; Leongómez (2019)</h2>
+      <p class="fonte-grafico">
+        13 paesi, 2.379 rispondenti — frequenza media del bacio (autovalutazione 0&ndash;100) per indice
+        GINI nazionale. Stessi 13 valori già usati per i pallini di questo studio sulla Mappa.
+      </p>
+
+      <div class="spiega-gini">
+        <strong>Cos'è l'indice GINI?</strong> Misura quanto è concentrato il reddito in un paese, da 0
+        (redistribuzione perfetta: tutti hanno lo stesso reddito) a 100 (un solo individuo possiede tutto
+        il reddito nazionale). Non misura la povertà assoluta, ma la disuguaglianza relativa. Nel campione
+        di questi 13 paesi va da 25,0 (Repubblica Ceca, il più egualitario) a 53,5 (Colombia, il più
+        diseguale) — la scala di colore sotto il grafico segue lo stesso indice: più scuro, più diseguale.
+      </div>
+
+      <div class="controlli-watkins" role="group" aria-label="Scegli come mostrare Watkins et al.">
+        <button type="button" class="btn-toggle attivo" id="btn-grafico" onclick="mostraVistaWatkins('grafico')">Grafico</button>
+        <button type="button" class="btn-toggle" id="btn-testo" onclick="mostraVistaWatkins('testo')">Solo testo</button>
+      </div>
+
+      <div class="vista-watkins" id="vista-grafico-watkins">
+        <svg class="svg-scatter" id="svg-scatter-watkins" viewBox="0 0 320 230" role="img"
+             aria-label="Grafico a dispersione: frequenza del bacio per indice GINI, 13 paesi"></svg>
+        <div class="legenda-gini">
+          <span>GINI basso</span><span class="rampa-gini"></span><span>GINI alto</span>
+        </div>
+        <p class="nota-grafico">
+          Retta di regressione calcolata sui 13 punti (non ricopiata da altrove): y = 0,234·GINI + 68,1.
+          Coefficiente di correlazione r = 0,67 (pubblicato; nostro ricalcolo sul dato grezzo: 0,673, verifica
+          riuscita — v. scheda dell'item). Una correlazione moderata-forte su 13 paesi, non una prova di causa.
+        </p>
+      </div>
+
+      <div class="vista-watkins" id="vista-testo-watkins" hidden>
+        <div class="box-risultato">
+          <p class="risultato-titolo">Cosa ha trovato davvero lo studio</p>
+          <p>
+            Come varia la <strong>frequenza</strong> del bacio romantico-sessuale (scala di autovalutazione
+            0&ndash;100) al variare della <strong>disuguaglianza economica nazionale</strong> (indice Gini):
+            più il paese è diseguale, più alta è, in media, la frequenza dichiarata.
+          </p>
+          <p>
+            Coefficiente di correlazione pubblicato: <strong>r = 0,67</strong>. Va da &minus;1 (relazione
+            opposta) a +1 (relazione concorde); 0,67 è una correlazione positiva moderata-forte — non una
+            prova di causa: le due variabili si muovono insieme in questo campione di 13 paesi, non è detto
+            che l'una provochi l'altra.
+          </p>
+        </div>
+        <p class="nota-grafico">
+          Versione della bozza di ieri: nessun grafico, solo il risultato spiegato a parole, perché allora
+          non era chiaro se i 13 valori per paese fossero dati completi e verificati. Ora lo sono.
+        </p>
+      </div>
+    </div>
+
+    <!-- ============ MURRAY ET AL.: BARRE VERTICALI (NUOVO) ============ -->
+    <div class="grafico-card">
+      <h2>Murray, Fessler, Kerry, White &amp; Marin (2016/2017)</h2>
+      <p class="fonte-grafico">
+        Non c'era un grafico per questa scheda — proposta nuova. Riusa lo stesso campione di 168 culture di
+        Jankowiak et al. (2015) per una domanda diversa: la minaccia storica di patogeni predice quanto
+        bacio romantico una cultura tollera? Statistica aggregata dalla pubblicazione stessa — non abbiamo
+        cercato il dato di prevalenza patogeni per singola cultura (v. scheda dell'item).
+      </p>
+      <div class="barre-murray" role="img" aria-label="Bacio romantico presente nel 63% delle culture a bassa prevalenza storica di patogeni, contro il 42% di quelle ad alta prevalenza">
+        <div class="colonna-murray">
+          <div class="barra-verticale" style="height:63%; background:var(--accent)"></div>
+          <p class="valore-murray">63%</p>
+          <p class="etichetta-murray">Prevalenza patogeni<br><strong>bassa</strong></p>
+        </div>
+        <div class="colonna-murray">
+          <div class="barra-verticale" style="height:42%; background:var(--clay)"></div>
+          <p class="valore-murray">42%</p>
+          <p class="etichetta-murray">Prevalenza patogeni<br><strong>alta</strong></p>
+        </div>
+      </div>
+      <p class="nota-grafico">
+        Percentuale di culture (sulle 168 del campione Jankowiak) in cui il bacio romantico è presente, per
+        livello storico di minaccia da patogeni. Effetto pubblicato: B = &minus;0,79, p = 0,01. Limiti
+        dichiarati dagli stessi autori: disegno correlazionale non causale, misure descritte come "crude and
+        noisy", nessun controllo per variabili terze, disallineamento temporale fra le stime di patogeni
+        (contemporanee) e il comportamento (storico) — v. scheda dell'item per il dettaglio completo.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function mostraVistaWatkins(quale) {
+    document.getElementById('vista-grafico-watkins').hidden = quale !== 'grafico';
+    document.getElementById('vista-testo-watkins').hidden = quale !== 'testo';
+    document.getElementById('btn-grafico').classList.toggle('attivo', quale === 'grafico');
+    document.getElementById('btn-testo').classList.toggle('attivo', quale === 'testo');
+  }
+
+  // Dati reali, copiati da data/progetti.json (item watkins-2019, aree_geografiche) — nessun valore inventato.
+  const PAESI_WATKINS = [
+    {nome:"Regno Unito", iso2:"GB", n:916, freq:80.7, gini:32.4},
+    {nome:"Colombia", iso2:"CO", n:284, freq:79.3, gini:53.5},
+    {nome:"Brasile", iso2:"BR", n:208, freq:80.3, gini:49.7},
+    {nome:"Cile", iso2:"CL", n:172, freq:81.2, gini:50.5},
+    {nome:"Australia", iso2:"AU", n:120, freq:75.9, gini:30.3},
+    {nome:"Polonia", iso2:"PL", n:106, freq:77.8, gini:30.8},
+    {nome:"Francia", iso2:"FR", n:100, freq:70.8, gini:29.2},
+    {nome:"Nigeria", iso2:"NG", n:99, freq:78.1, gini:48.8},
+    {nome:"Germania", iso2:"DE", n:90, freq:74.2, gini:27.0},
+    {nome:"Rep. Ceca", iso2:"CZ", n:85, freq:74.8, gini:25.0},
+    {nome:"Stati Uniti", iso2:"US", n:72, freq:81.1, gini:45.0},
+    {nome:"Italia", iso2:"IT", n:65, freq:74.3, gini:31.9},
+    {nome:"India", iso2:"IN", n:62, freq:72.0, gini:35.2}
+  ];
+  // Retta calcolata (minimi quadrati) sugli stessi 13 punti sopra, non un valore a mano.
+  const REGR = {slope: 0.23443, intercept: 68.138};
+
+  (function disegnaScatterWatkins() {
+    const svg = document.getElementById('svg-scatter-watkins');
+    const ns = "http://www.w3.org/2000/svg";
+    const W = 320, H = 230;
+    const margine = {top: 10, right: 14, bottom: 30, left: 30};
+    const larghezzaPlot = W - margine.left - margine.right;
+    const altezzaPlot = H - margine.top - margine.bottom;
+
+    const giniMin = 20, giniMax = 56;
+    const freqMin = 68, freqMax = 84;
+
+    function sx(g) { return margine.left + (g - giniMin) / (giniMax - giniMin) * larghezzaPlot; }
+    function sy(f) { return margine.top + altezzaPlot - (f - freqMin) / (freqMax - freqMin) * altezzaPlot; }
+
+    function el(tag, attrs) {
+      const e = document.createElementNS(ns, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      return e;
+    }
+
+    // Griglia orizzontale leggera sui tick di frequenza
+    [70, 75, 80].forEach(f => {
+      svg.appendChild(el("line", {class:"griglia-scatter", x1: margine.left, x2: W - margine.right, y1: sy(f), y2: sy(f)}));
+      svg.appendChild(el("text", {class:"etichetta-asse", x: margine.left - 5, y: sy(f) + 3, "text-anchor":"end"})).textContent = f;
+    });
+    [25, 35, 45, 55].forEach(g => {
+      svg.appendChild(el("text", {class:"etichetta-asse", x: sx(g), y: H - margine.bottom + 12, "text-anchor":"middle"})).textContent = g;
+    });
+
+    // Assi
+    svg.appendChild(el("line", {class:"asse-scatter", x1: margine.left, x2: margine.left, y1: margine.top, y2: H - margine.bottom}));
+    svg.appendChild(el("line", {class:"asse-scatter", x1: margine.left, x2: W - margine.right, y1: H - margine.bottom, y2: H - margine.bottom}));
+
+    // Titoli assi
+    const titoloX = el("text", {class:"titolo-asse", x: margine.left + larghezzaPlot / 2, y: H - 4, "text-anchor":"middle"});
+    titoloX.textContent = "Indice GINI (disuguaglianza economica)";
+    svg.appendChild(titoloX);
+    const titoloY = el("text", {class:"titolo-asse", x: -(margine.top + altezzaPlot / 2), y: 11, "text-anchor":"middle", transform:"rotate(-90)"});
+    titoloY.textContent = "Frequenza bacio (0–100)";
+    svg.appendChild(titoloY);
+
+    // Retta di regressione
+    const y1 = REGR.slope * giniMin + REGR.intercept;
+    const y2 = REGR.slope * giniMax + REGR.intercept;
+    svg.appendChild(el("line", {class:"linea-regressione", x1: sx(giniMin), y1: sy(y1), x2: sx(giniMax), y2: sy(y2)}));
+
+    // Punti, colorati in un gradiente terracotta per intensità GINI (stesso principio della mappa)
+    const giniValori = PAESI_WATKINS.map(p => p.gini);
+    const gMin = Math.min(...giniValori), gMax = Math.max(...giniValori);
+    function coloreGini(g) {
+      const t = (g - gMin) / (gMax - gMin);
+      // interpolazione fra clay-wash (#f1e2d3) e clay (#a6693b)
+      const c1 = [241, 226, 211], c2 = [166, 105, 59];
+      const rgb = c1.map((c, i) => Math.round(c + (c2[i] - c) * t));
+      return "rgb(" + rgb.join(",") + ")";
+    }
+
+    PAESI_WATKINS.forEach(p => {
+      const cx = sx(p.gini), cy = sy(p.freq);
+      const r = 3 + Math.sqrt(p.n) / 9;
+      svg.appendChild(el("circle", {class:"punto-scatter", cx, cy, r, fill: coloreGini(p.gini)}));
+      const dySopra = ["FR","DE","IT"].includes(p.iso2);
+      svg.appendChild(el("text", {class:"etichetta-punto", x: cx, y: dySopra ? cy - r - 3 : cy + r + 8, "text-anchor":"middle"})).textContent = p.iso2;
+    });
+  })();
+</script>

@@ -1,0 +1,1623 @@
+/* ==========================================================================
+   style.css — Atlante digitale della ricerca antropologica comparativa
+   ==========================================================================
+   AGGIORNAMENTO (2026-09-08): questo file è stato per gran parte del progetto
+   deliberatamente STRUTTURALE, non estetico — impalcatura in scala di grigi,
+   font di sistema, zero scelte di identità visiva, in attesa di una fase a
+   parte. Questa è quella fase: font (Spectral per i titoli e le citazioni,
+   IBM Plex Sans/Mono per l'interfaccia), una palette a due accenti (blu
+   "--accent", terracotta "--clay") e uno sfondo con un lieve alone di colore
+   ai bordi della pagina — la stessa combinazione già provata e approvata
+   nelle anteprime (anteprima-locale/anteprima-home-v1.html e
+   anteprima-catalogo-v1.html), qui riportata nell'UNICO foglio di stile
+   condiviso da tutte le pagine reali, non ricopiata pagina per pagina.
+
+   AGGIORNAMENTO (2026-09-08, seconda modifica): la Mappa di ramo-bacio.html è stata
+   ricolorata su richiesta esplicita dello studente (R1) — i marker di Jankowiak usano ora
+   tre colori distinguibili (--accent presente, --clay assente, --dubbio dubbio) al posto
+   della scala di grigi precedente, e i marker di Watkins un vero gradiente continuo su
+   --clay invece di tre fasce discrete. Resta invece deliberatamente in scala di grigi
+   quanto NON toccato da questa richiesta: il grafico a dispersione incorporato nella
+   scheda di Watkins (watkins-2019.html, classi .svg-scatter/.grafico-scatter più sotto) e
+   il grafo dei correlati — lì il colore resta codifica di un dato diverso, non ridiscusso.
+   Aggiunta anche una sezione "Vista Grafici" (terza scheda di ramo-bacio.html, dopo Lista
+   e Mappa): stessa palette, prefisso di classe "grafici-" per non toccare le regole sopra.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Spectral:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --paper: #eff1ee;
+  --surface: #ffffff;
+  --surface-2: #e7e9e3;
+  --ink: #20242a;
+  --ink-soft: #4b5259;
+  --ink-faint: #7a8189;
+  --rule: #d7d9d2;
+  --accent: #2e4057;
+  --accent-soft: #7c93b0;
+  --accent-wash: #e4e9ef;
+  --clay: #a6693b;
+  --clay-wash: #f1e2d3;
+  --dubbio: #8a7a2e;
+  --dubbio-wash: #f0ecd6;
+  --focus: #2e4057;
+  --font-serif: 'Spectral', Georgia, 'Times New Roman', serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+}
+
+/* Tema scuro: stessi token della preferenza di sistema del visitatore — il sito non ha
+   un selettore di tema proprio, segue solo prefers-color-scheme. Valori identici a quelli
+   già definiti nelle anteprime. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1b1e22;
+    --surface: #23272c;
+    --surface-2: #2b3036;
+    --ink: #ece9e2;
+    --ink-soft: #b7bab4;
+    --ink-faint: #8a8f8a;
+    --rule: #3a3f3b;
+    --accent: #93a9c6;
+    --accent-soft: #5b7091;
+    --accent-wash: #29323d;
+    --clay: #cf9865;
+    --clay-wash: #3a2f24;
+    --dubbio: #c9b567;
+    --dubbio-wash: #363321;
+    --focus: #93a9c6;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 1.5rem;
+  max-width: 60rem;      /* riga di lettura non troppo larga: leggibilità, non estetica */
+  margin-inline: auto;
+  font-family: var(--font-serif);
+  line-height: 1.55;
+  color: var(--ink);
+  /* "Contorni della pagina con colori tenui a sfumare il resto": due aloni radiali,
+     uno per accento, che sfumano nel colore di fondo neutro entro il primo terzo di
+     pagina — non un blocco di colore pieno, resta leggibile ovunque ci sia testo. */
+  background:
+    radial-gradient(ellipse 60rem 30rem at 10% -5%, var(--accent-wash) 0%, transparent 60%),
+    radial-gradient(ellipse 50rem 26rem at 100% 0%, var(--clay-wash) 0%, transparent 55%),
+    var(--paper);
+  background-attachment: fixed;
+}
+
+a {
+  color: var(--accent);      /* prima nero deliberatamente neutro; ora la scelta di brand è stata fatta */
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* -------------------- Struttura generale di pagina -------------------- */
+
+header {
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+header h1 {
+  margin-bottom: 0.5rem;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* Intestazione a due colonne (testo principale + citazione laterale),
+   usata nel catalogo: "in alto a lato", non impilata come le epigrafi
+   del proemio — è un rimando condensato, non un'epigrafe alla pari. */
+/* header-catalogo non è più un contenitore flex a due colonne: titolo, barra di ricerca e
+   sottotitolo ora occupano tutta la larghezza, impilati; solo la riga foto+citazione qui sotto
+   torna a due colonne (v. .riga-foto-citazione), su indicazione dello studente. */
+
+.riga-foto-citazione {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-top: 1.5rem;
+}
+
+.riga-foto-citazione .teaser-foto-progetto {
+  flex: 1 1 20rem;
+  margin: 0;
+}
+
+.citazione-laterale {
+  flex: 1 1 15rem;
+  font-size: 0.9rem;
+  font-family: var(--font-sans);
+  background: var(--clay-wash);
+  border-left: 3px solid var(--clay);
+  border-radius: 0 4px 4px 0;
+  padding: 1rem 1.15rem;
+}
+
+.citazione-laterale blockquote {
+  margin: 0 0 0.5rem 0;   /* azzera i margini di default del browser, tiene solo il bordo/indentazione */
+  border-left: none;      /* qui il riquadro stesso (bordo a sinistra) già segnala "citazione" */
+  padding-left: 0;
+}
+
+.citazione-laterale .fonte-citazione {
+  margin: 0 0 0.5rem 0;
+  font-weight: bold;
+}
+
+.citazione-laterale .contesto-breve {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+footer {
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.85rem;
+  font-family: var(--font-sans);
+  color: var(--ink-faint);
+}
+
+/* -------------------- Breadcrumb (componente vanilla/W3Schools) -------------------- */
+/* Sostituisce il vecchio singolo link "&larr; torna a X" con il percorso completo
+   Home > ... > pagina corrente: più informazione (l'intera gerarchia, non solo un passo
+   indietro) con la stessa quantità di markup. <nav><ol> invece del <div> non semantico
+   dell'esempio W3Schools "How To - Breadcrumbs": stessa idea (separatore via CSS
+   generato, nessuna libreria), ma con la semantica di lista corretta per chi naviga con
+   uno screen reader. Un livello della gerarchia senza pagina propria (es. il ramo
+   preistoria, ancora solo in progettazione) resta testo semplice, non un link — stesso
+   principio già usato per i placeholder della mappa del sito in index.html. */
+.breadcrumb {
+  margin-bottom: 1rem;
+  font-family: var(--font-sans);
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li:not(:first-child)::before {
+  content: "\203a";         /* "›" — solo un separatore visivo, non un dato */
+  margin: 0 0.5rem;
+  color: var(--ink-faint);
+}
+
+.breadcrumb a {
+  color: var(--ink-faint);
+}
+
+.breadcrumb a:hover,
+.breadcrumb a:focus {
+  color: var(--accent);
+}
+
+.breadcrumb li[aria-current="page"] {
+  color: var(--ink);
+  font-weight: bold;
+  /* Titoli di item lunghi (frequenti nel ramo preistoria) non devono spingere il
+     breadcrumb a spaccare il layout su una riga sola: può andare a capo. */
+  max-width: 30rem;
+}
+
+.breadcrumb-placeholder {
+  font-style: italic;   /* stesso segnale già usato altrove nel sito per "non ancora una pagina" */
+}
+
+/* -------------------- Testo di cornice (proemio/catalogo) -------------------- */
+/* Il bordo a sinistra è un segnale STRUTTURALE (questo è testo di cornice/
+   citazione, diverso dal corpo della pagina), non una scelta decorativa:
+   stesso principio con cui in TEI marchiamo <cit> diversamente dal resto. */
+
+#tesi-unificante,
+.cornice-redazionale,
+blockquote {
+  border-left: 3px solid var(--accent-soft);
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+}
+
+/* -------------------- Proemio: le epigrafi -------------------- */
+/* Ogni epigrafe è un blocco a sé (article), impilato come le card del
+   catalogo — stesso principio, non affiancato: qui l'ordine di lettura
+   è quello scelto in fase editoriale (v. tei/proemio-epigrafi.xml),
+   non un confronto side-by-side. */
+
+#epigrafi {
+  margin-top: 1.5rem;
+}
+
+/* Le epigrafi sono divise in due gruppi (v. index.html) dal pulsante "Vai al catalogo", su
+   indicazione dello studente — non più un'unica colonna di quattro: .lista-epigrafi porta lo
+   stesso layout impilato di prima, applicato a ciascuno dei due gruppi. */
+.lista-epigrafi {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.lista-epigrafi + .azione-principale,
+.azione-principale + .lista-epigrafi {
+  margin-top: 2rem;
+}
+
+.epigrafe {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);   /* separa un'epigrafe dalla successiva: struttura, non decoro */
+}
+
+.epigrafe:last-child {
+  border-bottom: none;
+}
+
+/* L'etichetta del tipo (da @type in TEI: epistemologia, teoria, ecc.) va
+   segnalata ma non enfatizzata graficamente: è un metadato di classificazione
+   della fonte, non un titolo. Maiuscolo variabile in CSS anziché nel testo
+   sorgente, cosi il dato resta pulito e la resa tipografica è separabile. */
+.tipo-epigrafe {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--clay);
+}
+
+/* .fonte-citazione e .didascalia-epigrafe non annidate in .citazione-laterale:
+   servono anche nel proemio, dove le epigrafi sono impilate a piena pagina
+   e non in un riquadro laterale. */
+.fonte-citazione {
+  margin: 0.75rem 0 0.5rem 0;
+  font-family: var(--font-sans);
+  font-weight: bold;
+  color: var(--ink-soft);
+}
+
+.didascalia-epigrafe {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.azione-principale {
+  margin-top: 2rem;
+}
+
+/* -------------------- Foto nelle epigrafi (proemio) -------------------- */
+/* Le foto restano a colori naturali — sono riproduzioni di un'opera e di una
+   fotografia, non elementi d'interfaccia: la palette qui sopra veste la cornice
+   attorno al contenuto, non il contenuto stesso. */
+.epigrafe-con-foto {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.epigrafe-con-foto.epigrafe-invertita {
+  flex-direction: row-reverse;
+}
+
+.epigrafe-foto {
+  flex: 0 0 12rem;
+  width: 12rem;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+
+.epigrafe-con-foto .epigrafe-corpo {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+@media (max-width: 40rem) {
+  .epigrafe-con-foto,
+  .epigrafe-con-foto.epigrafe-invertita {
+    flex-direction: column;
+  }
+  .epigrafe-foto {
+    width: 100%;
+    max-width: 16rem;
+  }
+}
+
+.crediti-immagini {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.crediti-immagini a {
+  color: var(--ink-faint);
+}
+
+/* -------------------- Catalogo dei progetti: le card -------------------- */
+
+#lista-progetti {
+  display: flex;
+  flex-direction: column;          /* impilate, non affiancate: l'ordine è editoriale (v. JSON),
+                                       non va confuso con un confronto side-by-side */
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.card-progetto {
+  border: 1px solid var(--rule);
+  border-radius: 4px;              /* angoli leggermente smussati: leggibilità del contenitore, non brand */
+  background: var(--surface);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-progetto h2 {
+  margin: 0;
+}
+
+/* -------------------- Badge (componente vanilla/W3Schools) -------------------- */
+/* Un'unica classe base .badge — riquadro, bordo, tre varianti che ne modificano solo
+   bordo/dimensione/comportamento secondo cosa etichettano. Bootstrap avrebbe risolto lo
+   stesso problema con un'unica classe .badge da cui estendere via modificatori
+   (.badge-primary ecc.): qui la stessa idea, senza il framework — coerente con la scelta
+   di lasciare Badge fra i componenti vanilla (v. Tooltip/Accordion per il caso opposto,
+   dove usiamo Bootstrap vendorizzato). */
+.badge {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 0.15rem 0.6rem;
+  border: 1px solid var(--ink-faint);
+  border-radius: 2px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+.badge-stato {
+  font-weight: bold;
+}
+
+/* I due stati si distinguono ANCHE per lo stile del bordo (continuo/tratteggiato), non
+   solo per il colore: il tratteggio resta il segnale primario "non ancora implementato"
+   (leggibile pure in scala di grigi, es. in stampa), il colore è un rinforzo secondario. */
+.stato-progettazione .badge-stato {
+  border-style: dashed;
+}
+
+.tesi-progetto {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  flex-grow: 1;                    /* spinge il link/pulsante in fondo alla card, anche a altezze diverse */
+}
+
+.conteggio-item {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* -------------------- Legenda degli strumenti (catalogo.html) -------------------- */
+/* Adattata dalla bozza anteprima-locale/anteprima-catalogo-v1.html — v. commento in catalogo.html
+   sul perché qui <details>/<summary> nativi e non l'accordion Bootstrap di dati.html: un solo
+   pannello, nessun bisogno del framework. */
+.legenda-strumenti {
+  margin: 0 0 1.5rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+}
+
+.legenda-strumenti > summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--ink);
+  padding: 0.4rem 0;
+}
+
+.legenda-strumenti > summary::marker {
+  color: var(--accent);
+}
+
+.nota-legenda-aperta {
+  font-size: 0.82rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin: 0.3rem 0 0.7rem 0;
+}
+
+.voce-legenda {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.voce-legenda:first-of-type {
+  border-top: none;
+}
+
+.voce-legenda p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.voce-legenda .nome-strumento {
+  display: block;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.1rem;
+}
+
+/* Il quadratino: stesso elemento sia nella legenda sia nelle card progetto, per riconoscibilità
+   reciproca — v. .gruppo-strumenti sotto. */
+.quadratino {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.3rem;
+  height: 1.3rem;
+  flex-shrink: 0;
+  background: var(--accent);
+  color: var(--surface);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.68rem;
+  border-radius: 3px;
+}
+
+.gruppo-strumenti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  margin: 0.1rem 0 0.3rem 0;
+}
+
+.badge-strumento {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+/* -------------------- Link come pulsante -------------------- */
+/* Un link che si comporta da azione principale della card deve SEMBRARE
+   un pulsante, non solo un testo sottolineato — pieno dell'accento del sito,
+   coerente con .link-progetto usato identicamente in ogni pagina. */
+
+.link-progetto {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--surface);
+  text-decoration: none;
+}
+
+.link-progetto:hover,
+.link-progetto:focus {
+  background: var(--accent-soft);
+  border-color: var(--accent-soft);
+}
+
+/* Stesso principio di .breadcrumb-placeholder: segnala "non ancora una pagina",
+   non un errore di stile del pulsante mancato. */
+.link-progetto-placeholder {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  font-family: var(--font-sans);
+  font-style: italic;
+  color: var(--ink-faint);
+}
+
+/* -------------------- Catalogo: foto della Venere di Willendorf -------------------- */
+/* Stesso principio delle foto nel proemio: contenuto illustrativo a licenza
+   verificata (credito in fondo pagina). Solo immagine + didascalia, niente
+   link: qui è un'illustrazione, non un rimando a un'altra pagina. */
+.teaser-foto-progetto {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  margin: 1rem 0 0 0;
+}
+
+.teaser-foto-progetto img {
+  flex: 0 0 10rem;
+  width: 10rem;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+
+.teaser-foto-progetto figcaption {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 30rem) {
+  .teaser-foto-progetto {
+    flex-direction: column;
+  }
+  .teaser-foto-progetto img {
+    width: 8rem;
+  }
+}
+
+/* -------------------- Pagina di ramo (bacio/preistoria): selettore viste -------------------- */
+
+.header-ramo {
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tesi-progetto-ramo {
+  font-family: var(--font-sans);
+  color: var(--ink-soft);
+  max-width: 45rem;
+}
+
+/* Didascalia estesa del ramo (v. ramo-bacio.html) — sostituisce .tesi-progetto-ramo quando la
+   pagina ha una narrazione propria invece della sola sintesi di progetti.json. */
+.sottotitolo-ramo {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ink-soft);
+  max-width: 54rem;
+  margin: 0.75rem 0 0 0;
+}
+
+.sottotitolo-ramo p {
+  margin: 0 0 1rem 0;
+}
+
+.sottotitolo-ramo p:last-child {
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+.sottotitolo-ramo a {
+  color: var(--accent);
+}
+
+.sottotitolo-ramo a.link-scheda-ricerca {
+  font-weight: 600;
+  color: var(--ink);
+  border-bottom: 1px solid var(--accent-soft);
+  text-decoration: none;
+}
+
+.sottotitolo-ramo a.link-scheda-ricerca:hover,
+.sottotitolo-ramo a.link-scheda-ricerca:focus {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+#epigrafe-apertura {
+  margin-bottom: 2rem;
+}
+
+/* Il selettore di vista è un gruppo di pulsanti, non un menu a tendina: le viste
+   restano sempre visibili come opzione, coerente col principio di "libera fruizione"
+   discusso per il progetto — non si nasconde Mappa dentro un menu. */
+.selettore-viste {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 1rem;
+}
+
+.btn-vista {
+  font: inherit;
+  font-family: var(--font-sans);
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+/* Stato attivo distinto per stile del bordo (più spesso, come prima) più il colore
+   d'accento: il bordo più spesso resta il segnale primario, leggibile anche senza colore. */
+.btn-vista.vista-attiva {
+  border-width: 2px;
+  border-color: var(--accent);
+  font-weight: bold;
+}
+
+.vista {
+  min-height: 10rem;
+}
+
+/* Necessario: senza questa regola, le viste con un display personalizzato per ID
+   (es. #vista-lista { display: flex }) vincono per specificità CSS sull'attributo
+   [hidden] del browser (che di suo equivale solo a "display: none" a bassa specificità),
+   e la vista nascosta dal JS resterebbe visibile lo stesso. Bug reale trovato in test,
+   non un'ipotesi. */
+.vista[hidden] {
+  display: none !important;
+}
+
+/* -------------------- Vista Lista: card per item -------------------- */
+
+#vista-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card-item {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.card-item h2 {
+  margin: 0;
+}
+
+.badge-tipo-risorsa {
+  border-color: var(--ink-faint);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.autori-item,
+.periodo-item {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* Contenitore delle marcature: prima un <p> di solo testo monospace unito da " · ", ora
+   badge cliccabili come nelle pagine item e nei placeholder preistoria — coerenza con
+   .badge/.badge-marcatura (v. più sotto), non più un font a sé. */
+.marcature-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.2rem;
+  margin: 0;
+}
+
+.link-riferimento-item {
+  margin: 0.5rem 0 0 0;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.link-piccolo {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+}
+
+/* -------------------- Vista Mappa -------------------- */
+/* NON ricolorata: il colore dei marker sotto è codifica funzionale del dato
+   (presente/assente/dubbio, intensità del GINI), non una scelta estetica di brand — per
+   questo l'intera sezione Mappa (disclaimer, controlli, legenda, popup) resta nella stessa
+   scala di grigi/neutra di prima, anche dopo l'introduzione della palette qui sopra: un
+   accento colorato qui confonderebbe "colore che significa qualcosa nei dati" con
+   "colore che è solo stile", che nel resto del sito restano ora deliberatamente distinti. */
+
+.disclaimer-mappa {
+  margin: 0 0 1rem 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-left: 3px solid #222;
+  border-radius: 0 4px 4px 0;
+  background: #fafafa;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #222;
+}
+
+.controlli-mappa {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0 0 0.75rem 0;
+  flex-wrap: wrap;
+}
+
+.btn-legenda {
+  font: inherit;
+  font-size: 0.85rem;
+  color: #222;
+  background: #fff;
+  border: 1px solid #666;
+  border-radius: 4px;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+}
+
+.btn-legenda:hover {
+  background: #eee;
+}
+
+.btn-legenda[aria-expanded="true"] {
+  background: #222;
+  color: #fff;
+}
+
+.pannello-legenda {
+  margin: 0 0 1rem 0;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #fafafa;
+  font-size: 0.85rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.pannello-legenda h4 {
+  margin: 0 0 0.5rem 0;
+  font-family: system-ui, sans-serif;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #222;
+}
+
+.pannello-legenda .voce-legenda {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.25rem 0;
+}
+
+.pallino-legenda {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  display: inline-block;
+  border: 1px solid #222;
+}
+
+/* Popup Leaflet: eredita il font del sito invece del default del browser. */
+.leaflet-popup-content {
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: #222;
+}
+
+.leaflet-popup-content a {
+  color: #222;
+}
+
+#mappa {
+  height: 28rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.nota-vista {
+  margin-top: 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Vista "Timeline" rimossa dal ramo bacio (2026-09-08, decisione dello studente — v. commento in
+   ramo-bacio.html sopra il tablist): le classi .titolo-asse/.asse-timeline/.linea-asse/
+   .punto-timeline/.barra-intervallo-timeline/.etichetta-timeline non sono più referenziate da
+   nessun file reale del sito e sono state rimosse da qui. Restano nell'anteprima
+   (anteprima-locale/), non toccata da questa pulizia.
+
+   ATTENZIONE — .titolo-asse-scatter (usata nello scatter di watkins-2019.html) è una classe
+   diversa, non riguardata da questa rimozione. */
+
+/* -------------------- Pagina item (es. Barton Cylinder) -------------------- */
+
+.header-item {
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sottotitolo-item {
+  font-family: var(--font-sans);
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.metadati-lista {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1rem;
+  margin: 1rem 0;
+  font-family: var(--font-sans);
+}
+
+.metadati-lista dt {
+  font-weight: bold;
+  color: var(--ink-soft);
+}
+
+.metadati-lista dd {
+  margin: 0;
+}
+
+.colonna-testo {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.colonna-testo h3 {
+  margin-top: 0;
+}
+
+.righe-testo {
+  margin: 0;
+  padding-left: 1.5rem;
+  font-family: var(--font-sans);
+}
+
+.righe-testo li {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.righe-testo .translit {
+  font-style: italic;
+}
+
+.righe-testo .traduzione {
+  color: var(--ink-soft);
+}
+
+/* La riga già citata in epigrafe va segnalata, non ripetuta silenziosamente: stesso
+   accento usato per .apparato-critico e .disclaimer-mappa per "presta attenzione qui". */
+.riga-bacio {
+  border-left: 3px solid var(--accent);
+  padding-left: 0.5rem !important;
+  margin-left: -0.5rem;
+}
+
+.lacuna {
+  margin: 0.5rem 0 0 0;
+  font-style: italic;
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+}
+
+/* -------------------- Pagina item: tabella di risultati (es. Jankowiak) -------------------- */
+
+.tabella-risultati {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+}
+
+.tabella-risultati caption {
+  text-align: left;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.tabella-risultati th,
+.tabella-risultati td {
+  text-align: left;
+  padding: 0.4rem 0.75rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tabella-risultati th {
+  border-bottom: 2px solid var(--ink);
+}
+
+/* -------------------- Pagina item: grafico a dispersione SVG (es. Watkins) -------------------- */
+/* NON ricolorato, stesso principio della Mappa: qui il colore/i punti sono il dato
+   (posizione = valore), non un elemento di interfaccia — resta in scala di grigi. */
+
+.grafico-scatter {
+  border: 1px solid #999;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.svg-scatter {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.asse-scatter {
+  stroke: #222;
+  stroke-width: 1;
+}
+
+.tick-scatter {
+  stroke: #666;
+  stroke-width: 1;
+}
+
+.etichetta-asse-scatter {
+  font-size: 11px;
+  fill: #444;
+}
+
+.titolo-asse-scatter {
+  font-size: 12px;
+  fill: #222;
+  font-weight: bold;
+}
+
+.punto-scatter {
+  fill: #222;
+  stroke: #fff;
+  stroke-width: 1;
+}
+
+.etichetta-punto-scatter {
+  font-size: 10px;
+  fill: #444;
+}
+
+/* -------------------- Mappa del sito (index.html) -------------------- */
+
+.sitemap,
+.sitemap ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  font-family: var(--font-sans);
+}
+
+.sitemap ul {
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+  border-left: 1px solid var(--rule);
+}
+
+.sitemap li {
+  margin: 0.6rem 0;
+}
+
+.sitemap-nota {
+  margin: 0.15rem 0 0 0;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+/* Stesso principio del tratteggio già usato per badge-stato: qui segnala una voce
+   progettata ma non ancora costruita, non un link rotto. */
+.sitemap-placeholder > span {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border: 1px dashed var(--ink-faint);
+  border-radius: 2px;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* Tendina a due livelli (Catalogo -> progetti -> ricerche), <details>/<summary> nativi — v.
+   commento in index.html sul perché niente Bootstrap qui. Il triangolo di apertura resta quello
+   nativo del browser (::marker), solo ricolorato/spaziato per intonarsi al resto del sito. */
+.sitemap-tendina {
+  margin: 0.4rem 0;
+}
+
+.sitemap-tendina > summary {
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  padding: 0.15rem 0;
+}
+
+.sitemap-tendina-catalogo > summary {
+  font-size: 1.05rem;
+}
+
+.sitemap-tendina > summary::marker {
+  color: var(--accent);
+}
+
+.sitemap-tendina > summary a {
+  color: inherit;
+}
+
+.sitemap-dati-trasversale {
+  margin: 0.9rem 0 0 0;
+  font-family: var(--font-sans);
+}
+
+/* -------------------- Pagina item: aside "item correlati" -------------------- */
+/* <aside> semantico richiesto dalle linee guida del corso: navigazione contestuale verso
+   item correlati. Sfondo leggermente diverso dal corpo pagina per segnalare "questo è un
+   blocco laterale/di navigazione", non testo principale. */
+
+#item-correlati {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+#item-correlati h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+#item-correlati ul {
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
+}
+
+#item-correlati li {
+  margin: 0.75rem 0;
+}
+
+.nota-correlato {
+  margin: 0.2rem 0 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* -------------------- Pagina item: grafo dei correlati (SVG, no libreria) -------------------- */
+/* NON ricolorato, stesso principio della Mappa e dello scatter: qui lo stile della linea
+   (continua/tratteggiata) e il nodo pieno/vuoto sono la codifica del dato (relazione
+   curata a mano vs. calcolata automaticamente), non un elemento estetico di pagina. */
+
+.svg-grafo-correlati {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  margin: 0 0 0.5rem 0;
+}
+
+.nodo-grafo {
+  fill: #fff;
+  stroke: #222;
+  stroke-width: 1.5;
+}
+
+.nodo-grafo--centro {
+  fill: #222;
+}
+
+.nodo-grafo--automatico {
+  stroke-dasharray: 3, 2;
+}
+
+.link-nodo-grafo {
+  cursor: pointer;
+}
+
+.link-nodo-grafo:hover .nodo-grafo,
+.link-nodo-grafo:focus .nodo-grafo {
+  stroke-width: 2.5;
+}
+
+.link-nodo-grafo:focus {
+  outline: 2px solid #222;
+  outline-offset: 2px;
+}
+
+.arco-grafo {
+  stroke: #999;
+  stroke-width: 1.5;
+}
+
+.arco-grafo--automatico {
+  stroke-dasharray: 4, 3;
+}
+
+.etichetta-nodo-grafo {
+  font-size: 0.55rem;
+  fill: #222;
+  font-family: system-ui, sans-serif;
+}
+
+.etichetta-nodo-grafo--centro {
+  fill: #fff;
+  font-weight: 600;
+}
+
+.legenda-grafo-correlati {
+  margin: 0 0 1rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.legenda-grafo-correlati .campione-linea {
+  display: inline-block;
+  width: 1.2rem;
+  height: 0;
+  border-top: 1.5px solid #999;
+  vertical-align: middle;
+  margin-right: 0.3rem;
+}
+
+.legenda-grafo-correlati .campione-linea--automatico {
+  border-top-style: dashed;
+}
+
+/* -------------------- Pagina item: apparato critico -------------------- */
+/* Stesso linguaggio visivo di #item-correlati (riquadro chiaro) più il bordo laterale
+   d'accento per segnalare "qui la fonte viene messa in discussione", non solo collegata. */
+.apparato-critico {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 4px 4px 0;
+  background: var(--surface-2);
+}
+
+.apparato-critico h2 {
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+
+.apparato-critico p {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.apparato-critico p:last-child {
+  margin-bottom: 0;
+}
+
+/* -------------------- Pagine placeholder ramo preistoria -------------------- */
+/* Banner esplicito: dichiara cosa manca invece di lasciarlo intuire da una pagina vuota.
+   Tratteggiato, stesso linguaggio già usato per badge-stato e sitemap-placeholder — coerenza
+   visiva del sito per "non ancora costruito". */
+.banner-non-disponibile {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px dashed var(--ink-faint);
+  border-radius: 4px;
+  font-family: var(--font-sans);
+  color: var(--ink-faint);
+  font-size: 0.9rem;
+}
+
+/* -------------------- Marcature come badge cliccabili -------------------- */
+/* Eredita display/padding/border-radius da .badge, va sempre usato insieme
+   (class="badge badge-marcatura") — ma interattivo: cursore a mano e un cambio di sfondo
+   al passaggio/focus segnalano che è cliccabile, non solo un'etichetta. Porta a
+   ricerca.html?marcatura=... — v. ricerca-barra.js e, per chi genera il link,
+   preistoria-render.js/ricerca.html/le pagine item del bacio. */
+.badge-marcatura {
+  margin: 0.15rem 0.3rem 0.15rem 0;
+  border-color: var(--accent-soft);
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.badge-marcatura:hover,
+.badge-marcatura:focus {
+  background: var(--accent);
+  color: var(--surface);
+}
+
+/* -------------------- Barra di ricerca globale (ricerca-barra.js) -------------------- */
+/* Spostata sotto il titolo di pagina (era sopra il breadcrumb) e resa piccola/allineata a
+   destra, su indicazione dello studente: un'utilità secondaria, non il primo elemento della
+   pagina — il breadcrumb e il titolo restano il primo contatto con il contenuto. */
+
+#barra-ricerca-globale {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 0 1.5rem 0;
+}
+
+.barra-ricerca {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface-2);
+}
+
+.input-ricerca {
+  flex: 0 1 9rem;
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid var(--ink-faint);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.btn-ricerca {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--surface);
+  cursor: pointer;
+}
+
+.btn-ricerca:hover,
+.btn-ricerca:focus {
+  background: var(--accent-soft);
+  border-color: var(--accent-soft);
+}
+
+.link-amplia-ricerca {
+  font-size: 0.78rem;
+  white-space: nowrap;
+}
+
+/* Sotto i 30rem la barra a destra non ha spazio per stare accanto a nulla: torna a piena
+   larghezza, altrimenti l'input si schiaccia a pochi caratteri. */
+@media (max-width: 30rem) {
+  #barra-ricerca-globale { justify-content: stretch; }
+  .barra-ricerca { width: 100%; }
+}
+
+/* -------------------- Pagina di ricerca (ricerca.html) -------------------- */
+
+.modulo-ricerca {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  font-family: var(--font-sans);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.campo-ricerca {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.campo-ricerca label,
+.etichetta-gruppo {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.campo-ricerca input,
+.campo-ricerca select {
+  font: inherit;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--ink-faint);
+  border-radius: 4px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.campo-periodo {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.campo-periodo .etichetta-gruppo {
+  flex-basis: 100%;
+}
+
+.etichetta-piccola {
+  font-weight: normal;
+  font-size: 0.85rem;
+}
+
+.campo-periodo input {
+  width: 6rem;
+}
+
+.nota-campo {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+}
+
+.lista-risultati-ricerca {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: var(--font-sans);
+}
+
+.risultato-ricerca {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--surface);
+}
+
+.titolo-risultato {
+  font-weight: bold;
+}
+
+.meta-risultato {
+  margin: 0.3rem 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* -------------------- Vista Grafici (ramo-bacio.html) --------------------
+   Prefisso di classe "grafici-" per non toccare le regole sopra (.svg-scatter ecc. restano
+   quelle della scheda di Watkins, deliberatamente in scala di grigi — v. commento in testa
+   al file). Nata come bozza collaborativa con lo studente (bozza-grafici-ramo-bacio.html),
+   qui riportata nel sito vero con gli stessi colori della Mappa aggiornata. */
+
+.grafici-griglia {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  gap: 1.75rem;
+  margin-top: 1rem;
+}
+
+.grafici-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 1.5rem 1.6rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.grafici-card h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem 0;
+}
+
+.grafici-fonte {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  line-height: 1.5;
+  margin: 0 0 1.1rem 0;
+}
+
+.grafici-coppia-torte {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+  min-height: 9rem;
+}
+
+.grafici-nota-caricamento {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+.grafici-torta-unita {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 10rem;
+}
+
+.grafici-etichetta-torta {
+  margin: 0.6rem 0 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.grafici-etichetta-torta span {
+  display: block;
+  font-weight: 400;
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+  margin-top: 0.15rem;
+}
+
+.grafici-legenda {
+  list-style: none;
+  margin: 0 0 1rem 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  font-size: 0.84rem;
+}
+
+.grafici-legenda li {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.3rem 0;
+}
+
+.grafici-pallino {
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  flex: 0 0 auto;
+}
+
+.grafici-nota {
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  font-style: italic;
+  margin: auto 0 0 0;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--rule);
+}
+
+.grafici-spiega-gini {
+  background: var(--surface-2);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 1.1rem;
+}
+
+.grafici-spiega-gini strong {
+  color: var(--ink);
+}
+
+.grafici-svg-scatter {
+  width: 100%;
+  height: auto;
+  display: block;
+  font-family: var(--font-mono);
+}
+
+.grafici-legenda-gini {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.75rem 0 1rem 0;
+  font-family: var(--font-sans);
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+}
+
+.grafici-rampa-gini {
+  width: 6rem;
+  height: 0.55rem;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--clay-wash), var(--clay));
+  flex: 0 0 auto;
+}
+
+.grafici-barre-murray {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-end;
+  height: 7.5rem;
+  margin: 0.4rem 0 1rem 0;
+}
+
+.grafici-colonna-murray {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  flex: 1 1 0;
+}
+
+.grafici-barra-verticale {
+  width: 3.5rem;
+  border-radius: 4px 4px 0 0;
+}
+
+.grafici-valore-murray {
+  margin: 0.4rem 0 0 0;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+.grafici-etichetta-murray {
+  margin: 0.15rem 0 0 0;
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.35;
+}
+
+/* -------------------- Responsività minima -------------------- */
+
+@media (max-width: 30rem) {
+  body {
+    padding: 1rem;
+  }
+
+  /* Traslitterazione e traduzione affiancate diventano illeggibili sotto i 30rem:
+     impilate invece che a due colonne. */
+  .righe-testo li {
+    grid-template-columns: 1fr;
+    gap: 0.1rem;
+  }
+}

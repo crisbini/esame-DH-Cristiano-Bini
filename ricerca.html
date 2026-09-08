@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ricerca — Atlante digitale della ricerca antropologica comparativa</title>
+  <meta name="description" content="Ricerca libera su tutti gli item dell'atlante, entrambi i rami: titolo, autore, marcatura, periodo storico, luogo, ente produttore.">
+
+  <!-- Dublin Core, richiesto dalle linee guida del corso nell'head di ogni pagina -->
+  <meta name="DC.title" content="Ricerca — Atlante digitale della ricerca antropologica comparativa">
+  <meta name="DC.creator" content="[NOME COGNOME], Università di Bologna">
+  <meta name="DC.subject" content="ricerca; marcature; indice; digital humanities">
+  <meta name="DC.description" content="Pagina di ricerca libera su titolo, autore, marcatura, periodo storico, luogo ed ente produttore, su tutti gli item di entrambi i rami dell'atlante.">
+  <meta name="DC.publisher" content="Progetto d'esame — Digital Humanities e Patrimonio Culturale, Università di Bologna">
+  <meta name="DC.date" content="2026">
+  <meta name="DC.type" content="Text">
+  <meta name="DC.format" content="text/html">
+  <meta name="DC.language" content="it">
+  <meta name="DC.relation" content="catalogo.html">
+  <meta name="DC.source" content="data/progetti.json">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header-item">
+    <nav class="breadcrumb" aria-label="Percorso di navigazione">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li aria-current="page">Ricerca</li>
+      </ol>
+    </nav>
+    <h1>Ricerca nell'atlante</h1>
+    <p class="sottotitolo-item">Su tutti gli item, entrambi i rami — anche quelli del ramo preistoria, ancora in sola progettazione</p>
+  </header>
+
+  <main>
+    <p class="nota-vista">
+      Nessun campo è obbligatorio: lasciarli tutti vuoti mostra tutti gli item. I criteri si
+      combinano fra loro (un item deve soddisfarli tutti, non almeno uno). Un item senza un dato
+      richiesto da un filtro (es. senza periodo storico dichiarato) non compare quando quel
+      filtro è attivo — non è un errore, è la stessa distinzione già dichiarata altrove nel
+      progetto fra "dato assente" e "dato non trovato".
+    </p>
+
+    <form id="modulo-ricerca" class="modulo-ricerca">
+      <div class="campo-ricerca">
+        <label for="campo-q">Titolo o parola chiave</label>
+        <input type="search" id="campo-q" name="q">
+      </div>
+
+      <div class="campo-ricerca">
+        <label for="campo-autore">Autore</label>
+        <input type="search" id="campo-autore" name="autore">
+      </div>
+
+      <div class="campo-ricerca">
+        <label for="campo-marcatura">Marcatura (tema)</label>
+        <select id="campo-marcatura" name="marcatura">
+          <option value="">(qualsiasi)</option>
+        </select>
+      </div>
+
+      <div class="campo-ricerca">
+        <label for="campo-luogo">Luogo o area</label>
+        <input type="search" id="campo-luogo" name="luogo" placeholder="es. Mesopotamia, Birka, Andes…">
+      </div>
+
+      <div class="campo-ricerca campo-periodo">
+        <span class="etichetta-gruppo">Periodo storico (anno, negativo = a.C.)</span>
+        <label for="campo-periodo-da" class="etichetta-piccola">da</label>
+        <input type="number" id="campo-periodo-da" name="da" placeholder="es. -2500">
+        <label for="campo-periodo-a" class="etichetta-piccola">a</label>
+        <input type="number" id="campo-periodo-a" name="a" placeholder="es. 2026">
+      </div>
+
+      <div class="campo-ricerca">
+        <label for="campo-ente">Ente produttore o detentore del dato</label>
+        <select id="campo-ente" name="ente">
+          <option value="">(qualsiasi, nessun filtro)</option>
+          <option value="qualsiasi">Con un ente collegato (di qualunque tipo)</option>
+          <option value="ente-dati">Ente dati</option>
+          <option value="deposito-dati">Deposito dati</option>
+          <option value="cdli">Registro specialistico (es. CDLI)</option>
+          <option value="museo">Museo</option>
+        </select>
+        <p class="nota-campo">
+          Solo enti che detengono o producono il dato/oggetto (musei, registri, depositi dati) —
+          non le riviste che pubblicano lo studio, un'altra cosa. Oggi pochi item hanno un ente
+          collegato: dichiarato nei risultati, non nascosto.
+        </p>
+      </div>
+
+      <button type="submit" class="link-progetto">Cerca</button>
+    </form>
+
+    <section id="risultati-ricerca" aria-label="Risultati">
+      <h2 id="titolo-risultati">Risultati</h2>
+      <ul id="lista-risultati" class="lista-risultati-ricerca">
+        <li>Caricamento&hellip;</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna, 2026.</p>
+  </footer>
+
+  <script>
+    // Stesso registro d'item già usato in tutto il sito — ora completo, 12 item bacio+preistoria
+    // costruiti più gli 8 segnaposto preistoria: nessun risultato di ricerca porta più a un
+    // vicolo cieco testuale "non ancora online".
+    const PAGINE_ITEM = {
+      "barton-cylinder": "barton-cylinder.html",
+      "jankowiak-2015": "jankowiak-2015.html",
+      "watkins-2019": "watkins-2019.html",
+      "arboll-rasmussen-2023": "arboll-rasmussen-2023.html",
+      "murray-2016": "murray-2016.html",
+      "lee-devore-1968": "lee-devore-1968.html",
+      "gero-conkey-1991": "gero-conkey-1991.html",
+      "hedenstierna-jonson-2017": "hedenstierna-jonson-2017.html",
+      "price-et-al-2019": "price-et-al-2019.html",
+      "haas-et-al-2020": "haas-et-al-2020.html",
+      "moilanen-et-al-2022": "moilanen-et-al-2022.html",
+      "harari-2014": "harari-2014.html",
+      "graeber-wengrow-2021": "graeber-wengrow-2021.html"
+    };
+
+    const NOME_PROGETTO = { "bacio": "il bacio", "preistoria": "sesso, genere e lavoro nella preistoria" };
+
+    // Stessa classificazione dichiarata allo studente prima di costruire questo campo: "ente
+    // produttore" = chi detiene/produce il dato o l'oggetto, non chi pubblica lo studio.
+    const TIPI_ENTE = ["ente-dati", "deposito-dati", "cdli", "museo"];
+    const ETICHETTA_TIPO_ENTE = { "ente-dati": "Ente dati", "deposito-dati": "Deposito dati", "cdli": "Registro (CDLI)", "museo": "Museo" };
+
+    let TUTTI_ITEM = [];
+    let PROGETTO_PER_ID = {};
+
+    fetch("data/progetti.json")
+      .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(dati => {
+        TUTTI_ITEM = dati.item;
+        dati.progetti.forEach(p => { PROGETTO_PER_ID[p.id] = p; });
+        // Le marcature possono vivere a due livelli: sul singolo item, o sul progetto
+        // nel suo complesso (es. "problema-di-galton" descrive l'intero ramo bacio come
+        // cornice epistemologica, non un item specifico). Il filtro cerca su entrambi —
+        // altrimenti una marcatura di progetto sarebbe scritta in progetti.json ma
+        // invisibile alla ricerca, un dato tecnicamente presente ma di fatto irraggiungibile.
+        popolaMarcature(TUTTI_ITEM, dati.progetti);
+        precompilaDaQuery();
+        eseguiRicerca();
+      })
+      .catch(errore => {
+        document.getElementById("lista-risultati").innerHTML =
+          "<li>Impossibile caricare i dati (" + errore.message + "). " +
+          "Se stai aprendo questo file con un doppio click, serve un server locale.</li>";
+      });
+
+    document.getElementById("modulo-ricerca").addEventListener("submit", function (ev) {
+      ev.preventDefault();
+      eseguiRicerca();
+      const params = new URLSearchParams(new FormData(ev.target));
+      history.replaceState(null, "", "ricerca.html?" + params.toString());
+    });
+
+    function popolaMarcature(item, progetti) {
+      const marcatureUniche = new Set();
+      item.forEach(it => (it.marcature || []).forEach(m => marcatureUniche.add(m)));
+      (progetti || []).forEach(p => (p.marcature || []).forEach(m => marcatureUniche.add(m)));
+      const select = document.getElementById("campo-marcatura");
+      Array.from(marcatureUniche).sort().forEach(m => {
+        const opt = document.createElement("option");
+        opt.value = m;
+        opt.textContent = m;
+        select.appendChild(opt);
+      });
+    }
+
+    function precompilaDaQuery() {
+      const params = new URLSearchParams(location.search);
+      if (params.get("q")) document.getElementById("campo-q").value = params.get("q");
+      if (params.get("autore")) document.getElementById("campo-autore").value = params.get("autore");
+      if (params.get("marcatura")) document.getElementById("campo-marcatura").value = params.get("marcatura");
+      if (params.get("luogo")) document.getElementById("campo-luogo").value = params.get("luogo");
+      if (params.get("da")) document.getElementById("campo-periodo-da").value = params.get("da");
+      if (params.get("a")) document.getElementById("campo-periodo-a").value = params.get("a");
+      if (params.get("ente")) document.getElementById("campo-ente").value = params.get("ente");
+    }
+
+    function eseguiRicerca() {
+      const q = document.getElementById("campo-q").value.trim().toLowerCase();
+      const autore = document.getElementById("campo-autore").value.trim().toLowerCase();
+      const marcatura = document.getElementById("campo-marcatura").value;
+      const luogo = document.getElementById("campo-luogo").value.trim().toLowerCase();
+      const periodoDaStr = document.getElementById("campo-periodo-da").value;
+      const periodoAStr = document.getElementById("campo-periodo-a").value;
+      const periodoDa = periodoDaStr === "" ? null : Number(periodoDaStr);
+      const periodoA = periodoAStr === "" ? null : Number(periodoAStr);
+      const ente = document.getElementById("campo-ente").value;
+
+      const risultati = TUTTI_ITEM.filter(it => {
+        // Il campo si chiama "Titolo o parola chiave", ma cercava solo nel titolo: chi cerca
+        // "bacio" (il nome stesso del ramo, in italiano) non trova nulla, perché nessun titolo
+        // dei 5 item lo contiene alla lettera (sono titoli di articoli, quasi tutti in inglese).
+        // Bug reale, trovato dallo studente. Corretto includendo nel confronto anche il nome del
+        // progetto (es. "Il bacio", già un campo esistente in progetti.json — non un'etichetta
+        // inventata) e le marcature dell'item: un vero campo "parola chiave", non solo titolo.
+        if (q) {
+          const progetto = PROGETTO_PER_ID[it.progetto];
+          const testoRicercabile = [
+            it.titolo,
+            progetto ? progetto.nome : "",
+            (it.marcature || []).join(" ")
+          ].join(" ").toLowerCase();
+          if (!testoRicercabile.includes(q)) return false;
+        }
+
+        if (autore) {
+          const autori = (it.autori || []).map(a => a.nome.toLowerCase());
+          if (!autori.some(nome => nome.includes(autore))) return false;
+        }
+
+        if (marcatura) {
+          const itemHaLaMarcatura = (it.marcature || []).includes(marcatura);
+          const progettoHaLaMarcatura = (PROGETTO_PER_ID[it.progetto] && PROGETTO_PER_ID[it.progetto].marcature || []).includes(marcatura);
+          if (!itemHaLaMarcatura && !progettoHaLaMarcatura) return false;
+        }
+
+        if (luogo) {
+          const aree = (it.aree_geografiche || []).map(a => a.nome.toLowerCase());
+          if (!aree.some(nome => nome.includes(luogo))) return false;
+        }
+
+        if (periodoDa !== null || periodoA !== null) {
+          if (it.periodo_da === null || it.periodo_da === undefined) return false;
+          if (periodoDa !== null && it.periodo_a < periodoDa) return false;
+          if (periodoA !== null && it.periodo_da > periodoA) return false;
+        }
+
+        if (ente === "qualsiasi") {
+          if (!(it.link_riferimento || []).some(lr => TIPI_ENTE.includes(lr.tipo))) return false;
+        } else if (ente) {
+          if (!(it.link_riferimento || []).some(lr => lr.tipo === ente)) return false;
+        }
+
+        return true;
+      });
+
+      renderizzaRisultati(risultati);
+    }
+
+    function formattaAnno(anno) {
+      if (anno === null || anno === undefined) return null;
+      return anno < 0 ? Math.abs(anno) + " a.C." : String(anno) + " d.C.";
+    }
+
+    function renderizzaRisultati(risultati) {
+      document.getElementById("titolo-risultati").textContent =
+        "Risultati (" + risultati.length + " su " + TUTTI_ITEM.length + ")";
+
+      const lista = document.getElementById("lista-risultati");
+      lista.innerHTML = "";
+
+      if (risultati.length === 0) {
+        const li = document.createElement("li");
+        li.textContent = "Nessun risultato con questi criteri.";
+        lista.appendChild(li);
+        return;
+      }
+
+      risultati.forEach(it => {
+        const li = document.createElement("li");
+        li.className = "risultato-ricerca";
+
+        const a = document.createElement("a");
+        a.href = PAGINE_ITEM[it.id] || "#";
+        a.textContent = it.titolo;
+        a.className = "titolo-risultato";
+        li.appendChild(a);
+
+        const meta = document.createElement("p");
+        meta.className = "meta-risultato";
+        const pezzi = [NOME_PROGETTO[it.progetto] || it.progetto];
+        if (it.autori && it.autori.length > 0) pezzi.push(it.autori.map(a => a.nome).join("; "));
+        const periodoDaF = formattaAnno(it.periodo_da);
+        const periodoAF = formattaAnno(it.periodo_a);
+        if (periodoDaF) pezzi.push(periodoDaF === periodoAF ? periodoDaF : periodoDaF + " – " + periodoAF);
+        const entiCollegati = (it.link_riferimento || []).filter(lr => TIPI_ENTE.includes(lr.tipo));
+        if (entiCollegati.length > 0) {
+          pezzi.push("ente: " + entiCollegati.map(lr => ETICHETTA_TIPO_ENTE[lr.tipo] || lr.tipo).join(", "));
+        }
+        meta.textContent = pezzi.join(" — ");
+        li.appendChild(meta);
+
+        // Mostra sia le marcature dell'item sia quelle ereditate dal progetto: altrimenti un
+        // risultato trovato per una marcatura di progetto (es. "problema-di-galton") apparirebbe
+        // senza quel badge, come se il match fosse un errore invece che una ricerca su due livelli.
+        const marcatureProgetto = (PROGETTO_PER_ID[it.progetto] && PROGETTO_PER_ID[it.progetto].marcature) || [];
+        const tutteLeMarcature = Array.from(new Set([...(it.marcature || []), ...marcatureProgetto]));
+        if (tutteLeMarcature.length > 0) {
+          const marc = document.createElement("p");
+          tutteLeMarcature.forEach(m => {
+            const b = document.createElement("a");
+            b.href = "ricerca.html?marcatura=" + encodeURIComponent(m);
+            b.className = "badge badge-marcatura";
+            b.textContent = m;
+            marc.appendChild(b);
+          });
+          li.appendChild(marc);
+        }
+
+        lista.appendChild(li);
+      });
+    }
+  </script>
+
+</body>
+</html>

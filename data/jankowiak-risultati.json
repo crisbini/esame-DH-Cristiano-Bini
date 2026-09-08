@@ -1,0 +1,59 @@
+{
+  "studio": "jankowiak-2015",
+  "unita_di_analisi": "macro-regione geografica (aggregato — non singola cultura, per assenza di accesso a eHRAF)",
+  "dato_globale": {
+    "culture_totali_campionate": 168,
+    "culture_con_bacio_romantico_attestato": 77,
+    "percentuale": 46,
+    "fonte": "Jankowiak, Volsche & Garcia 2015, American Anthropologist 117(3), 535-539",
+    "stato_dato": "documentato"
+  },
+  "nota_layer_galton": "Il layer interpretativo (tipo_relazione / confidenza_attribuzione) non è applicato qui: a risoluzione macro-regionale non abbiamo base testuale sufficiente nel paper per sostenere affermazioni specifiche su diffusione/discendenza/indipendenza tra regioni, senza inventarle. Verrà applicato dove i dati lo permettono (es. confronto tra i tre nodi, o dataset Watkins a livello di singola nazione).",
+  "regioni": [
+    {
+      "id": "medio-oriente",
+      "nome": "Medio Oriente",
+      "area_wikidata": "https://www.wikidata.org/wiki/Q7204",
+      "valore": "presenza",
+      "stato_dato": "documentato",
+      "fonte_primaria": "citata nel testo dell'articolo, non riprodotta",
+      "note": "Regione nominata esplicitamente nel paper tra quelle ad alta attestazione."
+    },
+    {
+      "id": "asia",
+      "nome": "Asia",
+      "area_wikidata": "https://www.wikidata.org/wiki/Q48",
+      "valore": "presenza",
+      "stato_dato": "documentato",
+      "fonte_primaria": "citata nel testo dell'articolo, non riprodotta",
+      "note": "Regione nominata esplicitamente nel paper tra quelle ad alta attestazione."
+    },
+    {
+      "id": "africa-subsahariana",
+      "nome": "Africa subsahariana",
+      "area_wikidata": "https://www.wikidata.org/wiki/Q132959",
+      "valore": "assenza-prevalente",
+      "stato_dato": "documentato",
+      "fonte_primaria": "citata nel testo dell'articolo, non riprodotta",
+      "note": "Regione nominata tra quelle a bassa/assente attestazione."
+    },
+    {
+      "id": "amazzonia",
+      "nome": "Amazzonia",
+      "area_wikidata": "https://www.wikidata.org/wiki/Q2841453",
+      "valore": "assenza-prevalente",
+      "stato_dato": "documentato",
+      "fonte_primaria": "citata nel testo dell'articolo, non riprodotta",
+      "note": "Regione nominata tra quelle a bassa/assente attestazione. ATTENZIONE: tre entità Wikidata simili esistono (Q2841453 'Amazonia', Q130183 'Amazon natural region', Q16489635 'Amazonian region') — scelto Q2841453 come più diretto, ma non sono riuscito a leggerne la descrizione completa per disambiguare con certezza: apri il link e conferma prima di darlo per definitivo."
+    },
+    {
+      "id": "america-centrale",
+      "nome": "America Centrale",
+      "area_wikidata": "https://www.wikidata.org/wiki/Q27611",
+      "valore": "assenza-prevalente",
+      "stato_dato": "documentato",
+      "fonte_primaria": "citata nel testo dell'articolo, non riprodotta",
+      "note": "Regione nominata tra quelle a bassa/assente attestazione."
+    }
+  ]
+}

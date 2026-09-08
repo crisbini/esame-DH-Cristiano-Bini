@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="studio-arboll-rasmussen2023" xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>The Ancient History of Kissing</title>
+        <author>
+          <persName ref="https://orcid.org/0000-0001-9641-503X">Arbøll, Troels Pank</persName>
+        </author>
+        <author>
+          <persName ref="https://orcid.org/0000-0002-2975-678X">Rasmussen, Sophie Lund</persName>
+        </author>
+        <respStmt>
+          <resp>scheda di studio codificata per il progetto "Atlante digitale della ricerca antropologica comparativa"</resp>
+          <name>[NOME COGNOME], Università di Bologna</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>American Association for the Advancement of Science (Science)</publisher>
+        <date when="2023">2023</date>
+        <idno type="DOI">10.1126/science.adf0512</idno>
+        <availability status="restricted">
+          <p>Articolo originale ad accesso riservato (Science/AAAS). Copia in repository istituzionale ad accesso aperto: Oxford University Research Archive (ORA). Questa scheda non riproduce il testo dell'articolo: riporta solo i metadati bibliografici e gli argomenti principali, citati per estratto a fini di studio.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl>
+          Arbøll, T. P., Rasmussen, S. L. (2023). "The Ancient History of Kissing."
+          <title level="j">Science</title> 380(6646), 688–690.
+          <idno type="DOI">10.1126/science.adf0512</idno>
+        </bibl>
+        <ref target="https://www.science.org/journal/science" type="rivista">Science (AAAS)</ref>
+        <ref target="https://ora.ox.ac.uk/objects/uuid:2e8950ba-4c94-4b0b-9dab-68f8d42d1c91" type="testo-integrale">Oxford University Research Archive — copia ad accesso aperto (titolo/DOI incrociati su tre fonti indipendenti; verifica finale di apertura diretta non eseguita per un limite tecnico dello strumento, dichiarato in revisionDesc)</ref>
+        <p rend="unità-di-analisi">Unità di analisi: <term>sintesi testuale e argomentativa</term>, non dato empirico raccolto dagli autori. Genere: Perspective (articolo di commento/sintesi), non ricerca originale — distinzione dichiarata perché rilevante per come va letto rispetto agli altri nodi del ramo bacio.</p>
+        <p rend="metodologia">Gli autori rileggono fonti testuali già note sul bacio nell'antica Mesopotamia (inclusi testi medici e, indirettamente, testi come il Barton Cylinder) insieme alla letteratura epidemiologica su patogeni trasmissibili per via orale (HSV-1, virus di Epstein-Barr, parvovirus B19 umano), per sostenere che il bacio romantico-sessuale fosse pratica comune già oltre 4.000 anni fa e che la sua diffusione di patogeni sia stata gradualmente cronica, non un "innesco biologico improvviso" nell'età del Bronzo — posizione esplicitamente polemica verso un'altra ipotesi in circolazione.</p>
+        <p rend="nota-di-accesso">
+          <note type="editoriale">Nodo diverso dagli altri tre del ramo bacio per natura della fonte: Jankowiak e Watkins presentano dati originali raccolti dagli autori; Arbøll e Rasmussen presentano un'argomentazione secondaria su fonti testuali già pubblicate (incluso, indirettamente, lo stesso Barton Cylinder che apre la scheda del progetto). Il layer Galton (tipo_relazione/confidenza_attribuzione) non è applicato qui: il testo discute continuità entro un'unica tradizione mesopotamica, non una comparazione fra culture diverse — la stessa ragione per cui non è applicato al nodo Jankowiak a risoluzione macro-regionale.</note>
+        </p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Scheda di studio (solo teiHeader). Autori normalizzati via ORCID (nessun VIAF atteso, non sono autori di monografie catalogate dalle biblioteche nazionali). ORCID di Rasmussen verificato manualmente dallo studente su orcid.org (nome completo: Sophie Lund Rasmussen).</p>
+      </projectDesc>
+      <editorialDecl>
+        <p>Sottoinsieme TEI Lite. Standard di codifica del progetto per questo nodo: TEI (questa scheda) + Dublin Core. Nessun file di Risultati JSON: a differenza di Jankowiak/Watkins, questo nodo non produce record puntuali per mappa/grafico — è testo argomentativo, non dato osservazionale per cultura o area.</p>
+      </editorialDecl>
+    </encodingDesc>
+    <profileDesc>
+      <settingDesc>
+        <listPlace>
+          <place>
+            <placeName ref="https://www.wikidata.org/wiki/Q11767">Mesopotamia</placeName>
+            <note>QID verificato solo per assenza di candidati alternativi/ambigui in una ricerca mirata (nessun'altra voce "Mesopotamia" in competizione, a differenza del caso "Nippur" per il Barton Cylinder, dove due entità Wikidata simili coesistono e la scelta resta perciò sospesa) — non per apertura diretta della pagina Wikidata, non raggiungibile con gli strumenti di verifica disponibili in questa sessione (stesso limite tecnico già dichiarato per il link ORA sopra).</note>
+          </place>
+        </listPlace>
+      </settingDesc>
+      <textClass>
+        <keywords scheme="#vocabolario-marcature-progetto">
+          <term ref="https://www.wikidata.org/wiki/Q35760">essay</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-08-29" who="#claude">Creazione della scheda. Autori normalizzati via ORCID (Arbøll confermato su portale istituzionale di Copenaghen; Rasmussen da riverificare). Genere di fonte (Perspective, non ricerca originale) dichiarato esplicitamente per non appiattirlo sugli altri tre nodi del ramo.</change>
+      <change when="2026-08-29" who="#claude">ORCID di Rasmussen confermato manualmente dallo studente.</change>
+      <change when="2026-08-30" who="#claude">Aggiunti collegamenti tipizzati a rivista (Science/AAAS) e a testo-integrale (copia ad accesso aperto su Oxford University Research Archive). Il record ORA è stato individuato e incrociato su tre fonti indipendenti (ORA stesso, PubMed, Science.org — titolo e contesto coerenti), ma la verifica finale di apertura diretta della pagina non è stata possibile per un limite di sessione dello strumento di fetch: livello di confidenza alto ma non massimo, dichiarato come tale nel ref stesso.</change>
+      <change when="2026-08-30" who="#claude">Aggiunto profileDesc/settingDesc/listPlace con placeName a QID Wikidata (Q11767, "Mesopotamia") — nessun candidato ambiguo trovato in ricerca mirata, ma verifica non completabile per apertura diretta della pagina (wikidata.org non fetchabile con gli strumenti disponibili in questa sessione): livello di confidenza dichiarato esplicitamente, non presentato come verifica piena.</change>
+      <change when="2026-09-02" who="#claude">Aggiunto profileDesc/textClass/keywords con il termine Wikidata per la marcatura con corrispondenza reale (sintesi-argomentativa → "essay", coerente con la classificazione "Perspective" dell'articolo originale). Le altre due marcature di questo item (epidemiologia-storica, collegamento-barton-cylinder) non hanno una corrispondenza esterna difendibile o non sono soggetti — dichiarato in data/progetti.json → vocabolario_marcature.</change>
+    </revisionDesc>
+  </teiHeader>
+</TEI>

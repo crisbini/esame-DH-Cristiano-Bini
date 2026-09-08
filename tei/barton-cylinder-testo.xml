@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="barton-cylinder-testo" xml:lang="it">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Barton Cylinder (CDLI P222183 / Penn Museum CBS 8383) — testo integrale, colonne I-II</title>
+        <author>[NOME COGNOME], Università di Bologna</author>
+        <respStmt>
+          <resp>codifica TEI del testo cuneiforme</resp>
+          <name>[NOME COGNOME]</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Progetto d'esame — Digital Humanities e Patrimonio Culturale, prof.ssa F. Tomasi, Università di Bologna</publisher>
+        <date when="2026">2026</date>
+        <availability status="free">
+          <p>Materiale prodotto per finalità didattiche. Traslitterazione e traduzione sono riprese, con verifica incrociata, dall'edizione di Lisman 2016-2017 indicata in &lt;bibl&gt;; nessun diritto è rivendicato su di esse.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <p>
+          Fonte primaria: cilindro d'argilla sumerico, Dinastico Arcaico IIIb (ca. 2500-2400 a.C.),
+          <ref target="https://cdli.earth/artifacts/222183" type="cdli">CDLI P222183</ref>,
+          conservato al <ref target="https://collections.penn.museum/collections/object/521698" type="museum">Penn Museum, CBS 8383</ref>.
+        </p>
+        <p>
+          Testo integrale a stampa: Lisman, J.J.W., "The Barton Cylinder: A Lament for Keš?",
+          <title level="j">Jaarbericht van het Vooraziatisch-Egyptisch Genootschap "Ex Oriente Lux"</title>
+          (JEOL) 46 (2016-2017), pp. 146-172, sez. 5 "Transcription and translation" — PDF liberamente
+          scaricabile da <ref target="https://www.exorientelux.nl/download/JEOL/JEOL_46_09_Lisman.pdf">exorientelux.nl</ref>,
+          nessun accesso riservato. Edizione precedente di riferimento: Alster, B. &amp; Westenholz, A.,
+          "The Barton Cylinder", <title level="j">Acta Sumerologica</title> 16 (1994), pp. 15-46 (non
+          reperita in accesso aperto, citata solo come precedente storiografico, non consultata
+          direttamente per questo file).
+        </p>
+        <p>
+          <emph>Metodo di verifica</emph>: le righe 7-8 della colonna II (il passo già citato in
+          <ref target="bacio-epigrafe-barton.xml">bacio-epigrafe-barton.xml</ref>) sono state
+          controllate su tre fonti indipendenti — l'epigrafe già pubblicata in questo atlante,
+          l'edizione digitale CDLI (formato ATF, consultata tramite strumento di estrazione
+          automatica, non lettura diretta del file grezzo), e il PDF di Lisman (letto direttamente,
+          parola per parola) — con risultato identico su tutte e tre. Le colonne I e II qui sotto sono
+          trascritte dalla lettura diretta del PDF di Lisman, il metodo più affidabile fra quelli
+          disponibili in questa sessione di lavoro.
+        </p>
+        <p>
+          <emph>Limite dichiarato di scopo</emph>: il cilindro ha (secondo Lisman e CDLI) 20 colonne,
+          con la colonna XI interamente perduta; il Penn Museum, sulla propria scheda dell'oggetto,
+          dichiara invece 21 colonne — discrepanza reale fra fonti, qui segnalata e non risolta
+          d'autorità. Di queste 20-21 colonne, in questo file ne sono trascritte per intero solo due
+          (I-II): quelle già lette col metodo di verifica più solido, e che contengono comunque
+          un'unità narrativa compiuta (l'invocazione d'apertura e l'unione fra An/Ninḫursaĝa che
+          include il passo del bacio). Il testo integrale delle colonne III-XX è consultabile
+          sull'edizione <ref target="https://cdli.earth/artifacts/222183">CDLI P222183</ref>, non
+          ritrascritto qui: la trascrizione manuale dell'intero testo, passando dallo stesso strumento
+          di estrazione automatica usato per il controllo incrociato (non una lettura diretta del
+          file), avrebbe un rischio di errore più alto di quanto il metodo di questo progetto accetti
+          senza una verifica più solida — scelta dichiarata su indicazione dello studente, non
+          un'omissione silenziosa.
+        </p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Testo autonomo, pensato per alimentare la futura pagina-item del Barton Cylinder (metadata HTML+DC, con questo testo TEI collegato) — il testo TEI a pieno richiesto dalle linee guida del corso per almeno un item dell'atlante.</p>
+      </projectDesc>
+      <editorialDecl>
+        <p>
+          Ogni riga (&lt;l&gt;) contiene due &lt;seg&gt;: la traslitterazione sumerica
+          (@type="translit", @xml:lang="sux") e la traduzione inglese di Lisman
+          (@type="translation", @xml:lang="en") — l'italiano non è stato aggiunto per non introdurre
+          un terzo livello di mediazione traduttiva non verificato. Le lacune sono marcate con
+          &lt;gap reason="lost" unit="line"&gt; e la quantità stimata dichiarata da Lisman, non
+          inventata. La colonna è un &lt;div type="textpart" subtype="column"&gt;.
+        </p>
+      </editorialDecl>
+    </encodingDesc>
+    <profileDesc>
+      <settingDesc>
+        <listPlace>
+          <place>
+            <placeName ref="https://www.wikidata.org/wiki/Q188395">Nippur</placeName>
+            <note>QID disambiguato dopo una ricerca mirata: un secondo candidato Wikidata per "Nippur" (Q530686, "Nippur de Lagash") è risultato essere un personaggio di fumetto argentino (Robin Wood), non il sito mesopotamico — scartato dopo osservazione dello studente, confermata incrociando più fonti indipendenti (Wikipedia, Fandom, GoodReads, GitHub, tutte concordi sulla natura fumettistica). Q188395 resta l'unico candidato reale per la città sumerica, ma non è stato possibile aprire direttamente la pagina Wikidata per una verifica finale (wikidata.org non fetchabile in questa sessione) — livello di confidenza alto ma non massimo, dichiarato come tale.</note>
+          </place>
+        </listPlace>
+      </settingDesc>
+      <textClass>
+        <keywords scheme="#vocabolario-marcature-progetto">
+          <term ref="https://www.wikidata.org/wiki/Q112754">primary source</term>
+          <term ref="https://www.wikidata.org/wiki/Q12680174">Sumerian writing</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-08-30" who="#claude">Creazione del file: colonne I-II trascritte per intero dalla lettura diretta di Lisman 2016-2017, verificate anche su CDLI; colonne III-XX non trascritte, linkate a CDLI — scelta di scopo dichiarata su indicazione dello studente.</change>
+      <change when="2026-09-02" who="#claude">Aggiunto profileDesc/settingDesc/listPlace con placeName per Nippur (Q188395), disambiguato da un candidato omonimo rivelatosi un personaggio di fumetto (v. nota nel place). Aggiunto profileDesc/textClass/keywords con i termini Wikidata per le marcature del progetto (data/progetti.json → vocabolario_marcature) che hanno una corrispondenza reale verificata: fonte-primaria, testo-cuneiforme. Le altre marcature di questo item (attestazione-più-antica) restano etichette interne, dichiarate come tali nel vocabolario invece di forzare una corrispondenza esterna inesistente.</change>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="edition">
+
+        <div type="textpart" subtype="column" n="I">
+          <head>Colonna I</head>
+          <l n="1"><seg type="translit" xml:lang="sux">u4-ri2-a u4-ri2-še3</seg><seg type="translation" xml:lang="en">On that remote day, until that remote day,</seg></l>
+          <l n="2"><seg type="translit" xml:lang="sux">na-nam</seg><seg type="translation" xml:lang="en">it was indeed;</seg></l>
+          <l n="3"><seg type="translit" xml:lang="sux">ĝi6-ri2-a ĝi6-ri2-še3</seg><seg type="translation" xml:lang="en">in that remote night, until that remote night,</seg></l>
+          <l n="4"><seg type="translit" xml:lang="sux">na-nam</seg><seg type="translation" xml:lang="en">it was indeed;</seg></l>
+          <l n="5"><seg type="translit" xml:lang="sux">mu-ri2-a mu-ri2-še3</seg><seg type="translation" xml:lang="en">in that remote year, back to that remote year,</seg></l>
+          <l n="6"><seg type="translit" xml:lang="sux">na-nam</seg><seg type="translation" xml:lang="en">it was indeed.</seg></l>
+          <l n="7"><seg type="translit" xml:lang="sux">u4 na-du7-du7</seg><seg type="translation" xml:lang="en">Then gales were blowing,</seg></l>
+          <l n="8"><seg type="translit" xml:lang="sux">nin na-ĝir2-ĝir2</seg><seg type="translation" xml:lang="en">there were flashes of lightning.</seg></l>
+          <l n="9"><seg type="translit" xml:lang="sux">eš3-nibru{ki}</seg><seg type="translation" xml:lang="en">Then, at the sanctuary of Nippur,</seg></l>
+          <l n="10"><seg type="translit" xml:lang="sux">u4 na-du7-du7</seg><seg type="translation" xml:lang="en">gales were blowing,</seg></l>
+          <l n="11"><seg type="translit" xml:lang="sux">nin na-ĝir2-ĝir2</seg><seg type="translation" xml:lang="en">there were flashes of lightning.</seg></l>
+          <l n="12"><seg type="translit" xml:lang="sux">an-ne2 ki-da</seg><seg type="translation" xml:lang="en">An-heaven is shouting (l. 13) with Ki-earth;</seg></l>
+          <l n="13"><seg type="translit" xml:lang="sux">gu3 am6-dab6-e</seg><seg type="translation" xml:lang="en">—</seg></l>
+          <l n="14"><seg type="translit" xml:lang="sux">ki an-da gu3 am6-dab6-e</seg><seg type="translation" xml:lang="en">Ki-earth is shouting with An-heaven.</seg></l>
+          <l n="15"><seg type="translit" xml:lang="sux">[…]</seg><seg type="translation" xml:lang="en">[…]</seg></l>
+          <gap reason="lost" unit="line" quantity="7"/>
+        </div>
+
+        <div type="textpart" subtype="column" n="II">
+          <head>Colonna II</head>
+          <l n="1"><seg type="translit" xml:lang="sux">igi-zi-gal-an-n[a]</seg><seg type="translation" xml:lang="en">With the true, great Queen of heaven,</seg></l>
+          <l n="2"><seg type="translit" xml:lang="sux">nin-gal-den-lil2</seg><seg type="translation" xml:lang="en">the older sister of Enlil,</seg></l>
+          <l n="3"><seg type="translit" xml:lang="sux">dnin-ḫur-saĝ</seg><seg type="translation" xml:lang="en">Ninḫursaĝa,</seg></l>
+          <l n="4"><seg type="translit" xml:lang="sux">igi-zi-gal-an-na</seg><seg type="translation" xml:lang="en">with the true, great Queen of heaven,</seg></l>
+          <l n="5"><seg type="translit" xml:lang="sux">nin-gal-den-lil2</seg><seg type="translation" xml:lang="en">the older sister of Enlil,</seg></l>
+          <l n="6"><seg type="translit" xml:lang="sux">dnin-ḫur-saĝ-ra</seg><seg type="translation" xml:lang="en">Ninḫursaĝa,</seg></l>
+          <l n="7"><seg type="translit" xml:lang="sux">ĝiš3 mu-ni-du11</seg><seg type="translation" xml:lang="en">he has had intercourse;</seg></l>
+          <l n="8"><seg type="translit" xml:lang="sux">ne mu-ni-sub5</seg><seg type="translation" xml:lang="en">he has kissed her;</seg></l>
+          <l n="9"><seg type="translit" xml:lang="sux">a-maš-imin</seg><seg type="translation" xml:lang="en">the seed for a set of septuplets</seg></l>
+          <l n="10"><seg type="translit" xml:lang="sux">ša3 mu-ni-ru</seg><seg type="translation" xml:lang="en">he has poured into her womb.</seg></l>
+          <l n="11"><seg type="translit" xml:lang="sux">ki muš-ĝir2-da</seg><seg type="translation" xml:lang="en">"Earth chatted cheerily (l. 12) with the muš-ĝir2-snake:</seg></l>
+          <l n="12"><seg type="translit" xml:lang="sux">bal-bal am6-da-za</seg><seg type="translation" xml:lang="en">—</seg></l>
+          <l n="13"><seg type="translit" xml:lang="sux">did2-maḫ</seg><seg type="translation" xml:lang="en">'Exalted Divine River,</seg></l>
+          <l n="14"><seg type="translit" xml:lang="sux">niĝ2-tur-zu a mu-da-de6</seg><seg type="translation" xml:lang="en">you made your small things bring along water with you;</seg></l>
+          <l n="15"><seg type="translit" xml:lang="sux">pa5-ra diĝir-id2-da-ke4</seg><seg type="translation" xml:lang="en">in the canals, the god of the river</seg></l>
+          <l n="16"><seg type="translit" xml:lang="sux">[…] mu […]</seg><seg type="translation" xml:lang="en">[…] has? […]'</seg></l>
+          <l n="17"><seg type="translit" xml:lang="sux">[…]</seg><seg type="translation" xml:lang="en">[…]</seg></l>
+          <gap reason="lost" unit="line" quantity="6"/>
+        </div>
+
+        <note type="didascalia">
+          Il testo si apre con una formula d'invocazione tipica della letteratura sumerica ("in quei
+          giorni remoti..."), poi passa alla scena dell'unione fra Igizigalana/Ninḫursaĝa e una
+          figura maschile non nominata in queste righe (l'attribuzione a An o a Enki resta dibattuta
+          fra le edizioni, come già segnalato nell'epigrafe), da cui nasce un settuplo di gemelli. Le
+          righe 7-8 della colonna II sono le stesse già in epigrafe di apertura del progetto: qui si
+          leggono nel loro contesto narrativo diretto, non isolate.
+        </note>
+
+      </div>
+    </body>
+  </text>
+</TEI>

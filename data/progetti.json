@@ -1,0 +1,1846 @@
+{
+  "_readme": "Indice condiviso: alimenta la pagina-catalogo dei progetti, le viste Lista/Mappa/Timeline del ramo bacio, la ricerca per marcatura dalla pagina principale e la pagina dei dati (dati.html). Non sostituisce i teiHeader (bibliografia/metodo) né i JSON di Risultati per studio (dato osservazionale): è il livello sopra, un record per progetto e uno per item. Schema descritto in docs/modello-dati.md. Ogni autore con un identificativo esterno (VIAF/ORCID/Wikidata) porta anche 'verifica' (e talvolta 'nota_verifica'): il livello di certezza con cui quell'identificativo è stato confermato, prima solo in prosa in docs/preistoria-bibliografia-normalizzata.md e nei revisionDesc TEI, ora strutturato qui perché la pagina dei dati lo legga invece di duplicarlo a mano. Aggiunto 'vocabolario_marcature': riconciliazione di ciascuna marcatura[] con un'autorità esterna (Wikidata), dove ne esiste una difendibile — verificata via WebSearch incrociando titolo/descrizione su più fonti indipendenti (wikidata.org non è fetchabile direttamente in questa sessione). Dove non esiste, 'stato' lo dichiara esplicitamente invece di forzare un match falso; alcune marcature sono etichette interne di progetto o toponimi, non soggetti — anche questo dichiarato per categoria. Aggiunto anche 'nota_tipo_risorsa' (opzionale, per item): dettaglio editoriale sul tipo di risorsa che il vocabolario chiuso di tipo_risorsa non cattura (es. la sezione di rivista in cui è uscito un saggio) — mostrato come riga propria nella scheda item, sullo stesso modello di nota_periodo/nota_geografica; oggi valorizzato solo per arboll-rasmussen-2023 ('Perspective').",
+  "progetti": [
+    {
+      "id": "bacio",
+      "nome": "Il bacio",
+      "stato_implementazione": "sito-interattivo-completo",
+      "tesi_comune": "Con questo studio si vuole mostrare come la scienza comparata costruisce ipotesi su un comportamento umano quasi-universale, le sottopone a verifica incrociando fonti di natura diversissima — dato etnografico, survey quantitativo, testo antico, sintesi epidemiologica — e mostra dove quelle fonti si confermano o si scontrano. La scelta della tematica del bacio nasce dall'abitudine con cui oggi viviamo questo gesto: una risposta culturale fra le tante possibili per noi esseri umani.",
+      "marcature": [
+        "comparazione-interculturale",
+        "corpo-e-affetti",
+        "problema-di-galton"
+      ],
+      "item": [
+        "jankowiak-2015",
+        "watkins-2019",
+        "arboll-rasmussen-2023",
+        "murray-2016",
+        "barton-cylinder"
+      ]
+    },
+    {
+      "id": "preistoria",
+      "nome": "Sesso, genere e lavoro nella preistoria",
+      "stato_implementazione": "solo-progettazione",
+      "tesi_comune": "La scienza rivede se stessa nel tempo: nuove tecniche (genomica antica, isotopi) e nuove domande (dove sono le donne nella narrazione della preistoria?) rimettono in discussione assunzioni date per scontate per decenni sulla divisione del lavoro e i ruoli di genere nella preistoria.",
+      "marcature": [
+        "revisione-storiografica",
+        "genere-e-lavoro",
+        "archeologia"
+      ],
+      "item": [
+        "lee-devore-1968",
+        "gero-conkey-1991",
+        "hedenstierna-jonson-2017",
+        "price-et-al-2019",
+        "haas-et-al-2020",
+        "moilanen-et-al-2022",
+        "harari-2014",
+        "graeber-wengrow-2021"
+      ],
+      "nota": "Elenco a livello di singola citazione bibliografica (8 voci), non ancora ricondotto alla struttura a sei nodi tematici dello schema originale del progetto preistoria — riconciliazione da fare se/quando il ramo verrà sviluppato oltre la sola progettazione. Non è un errore, è un lavoro non ancora fatto, dichiarato come tale."
+    }
+  ],
+  "item": [
+    {
+      "id": "jankowiak-2015",
+      "titolo": "Is the Romantic–Sexual Kiss a Near Human Universal?",
+      "progetto": "bacio",
+      "tipo_risorsa": "studio-primario",
+      "autori": [
+        {
+          "nome": "Jankowiak, William",
+          "ref": "http://viaf.org/viaf/66561888",
+          "verifica": "confermato-dallo-studente"
+        },
+        {
+          "nome": "Volsche, Shelly",
+          "ref": "http://viaf.org/viaf/17156917093554791254",
+          "verifica": "confermato-dallo-studente"
+        },
+        {
+          "nome": "Garcia, Justin R.",
+          "ref": "http://viaf.org/viaf/264060878",
+          "verifica": "confermato-dallo-studente"
+        }
+      ],
+      "periodo_da": 2015,
+      "periodo_a": 2015,
+      "nota_periodo": "Sintesi comparativa su dato etnografico presente/recente (168 culture), non uno studio storico: periodo = anno di pubblicazione usato come proxy dichiarato, non una datazione storica.",
+      "anno_pubblicazione": 2015,
+      "risoluzione_geografica": "singola cultura (164 di 168 nel campione)",
+      "aree_geografiche": [
+        {
+          "nome": "Amish",
+          "lat": 40.4278,
+          "lng": -82.701,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Americans",
+          "lat": 39.761,
+          "lng": -100.6308,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Aleut",
+          "lat": 52.0818,
+          "lng": -173.5,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Alutiiq",
+          "lat": 58.3422,
+          "lng": -154.5627,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Chipewyans",
+          "lat": 62.6293,
+          "lng": -128.3757,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Copper Inuit",
+          "lat": 66.166,
+          "lng": -108.0191,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Innu",
+          "lat": 50.5251,
+          "lng": -66.5879,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Kaska",
+          "lat": 59.3941,
+          "lng": -127.4126,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Ojibwa",
+          "lat": 47.9581,
+          "lng": -90.4361,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Cherokee",
+          "lat": 36.0254,
+          "lng": -84.6877,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Iroquois",
+          "lat": 42.7778,
+          "lng": -76.2725,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Seminole",
+          "lat": 29.3278,
+          "lng": -82.029,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Mikmaq",
+          "lat": 45.6085,
+          "lng": -63.8568,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Nuxaik",
+          "lat": 52.3709,
+          "lng": -126.7551,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Pomo",
+          "lat": 39.4843,
+          "lng": -123.4922,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Yuki",
+          "lat": 39.805,
+          "lng": -123.2525,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Tlingit",
+          "lat": 57.1294,
+          "lng": -133.825,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Yurok",
+          "lat": 41.1847,
+          "lng": -123.7014,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Assiniboine",
+          "lat": 49.444,
+          "lng": -106.0146,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Blackfoot",
+          "lat": 50.8571,
+          "lng": -113.0505,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Gros Ventre",
+          "lat": 48.221,
+          "lng": -108.5884,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Omaha",
+          "lat": 42.1668,
+          "lng": -96.5172,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Pawnee",
+          "lat": 40.493,
+          "lng": -98.2666,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Eastern Apache",
+          "lat": 36.2953,
+          "lng": -103.9592,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Hopi",
+          "lat": 35.8436,
+          "lng": -110.5283,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Pauite",
+          "lat": 38.0282,
+          "lng": -113.1119,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Navajo",
+          "lat": 37.0081,
+          "lng": -109.045,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Havaspai",
+          "lat": 36.2363,
+          "lng": -112.6942,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "O'odham",
+          "lat": 31.8994,
+          "lng": -111.8596,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Zuni",
+          "lat": 35.0682,
+          "lng": -108.8445,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Western Apache",
+          "lat": 33.9132,
+          "lng": -110.1282,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Yte/Ute",
+          "lat": 40.2778,
+          "lng": -109.8672,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Tewa Pueblos",
+          "lat": 35.95,
+          "lng": -105.822,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Tiwi",
+          "lat": -11.6314,
+          "lng": 130.9368,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Trobrianders",
+          "lat": -8.5308,
+          "lng": 151.1309,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Palu",
+          "lat": -8.3229,
+          "lng": 121.7186,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Alor",
+          "lat": -8.2938,
+          "lng": 124.7398,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Arande / Aranda",
+          "lat": -23.6996,
+          "lng": 133.8823,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Ifaluk / Ifalik",
+          "lat": 7.247,
+          "lng": 144.4558,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Yapps / Yap",
+          "lat": 9.5274,
+          "lng": 138.1126,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Orokavia / Orokaiva",
+          "lat": -9.043,
+          "lng": 148.2378,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Sepik",
+          "lat": -3.951,
+          "lng": 141.7707,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Wogeo",
+          "lat": -3.2248,
+          "lng": 144.097,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Hawaiians",
+          "lat": 21.3324,
+          "lng": -157.7961,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Fijians",
+          "lat": -17.9282,
+          "lng": 177.9976,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Marquesas",
+          "lat": -9.7718,
+          "lng": -138.9987,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Samoans",
+          "lat": -13.658,
+          "lng": -172.455,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Tonga",
+          "lat": -21.2021,
+          "lng": -175.1892,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Ulithi",
+          "lat": 9.946,
+          "lng": 139.6871,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Basseri",
+          "lat": 29.202,
+          "lng": 53.2481,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Bedwan / Bedouin",
+          "lat": 26.2749,
+          "lng": 18.1701,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Iran Village",
+          "lat": 32.6479,
+          "lng": 53.9687,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Kurds",
+          "lat": 36.4059,
+          "lng": 44.387,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Lur",
+          "lat": 33.512,
+          "lng": 49.4846,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Israeli",
+          "lat": 31.8064,
+          "lng": 34.8394,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Palestinian",
+          "lat": 31.9998,
+          "lng": 35.3164,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Turks",
+          "lat": 39.1733,
+          "lng": 32.6941,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Rwanda Bedwan / Bedouin",
+          "lat": -2.2108,
+          "lng": 29.8642,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Goajiro / Wayuu",
+          "lat": 11.9233,
+          "lng": -71.758,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Nambicuara / Nambikwara",
+          "lat": -10.8987,
+          "lng": -58.37,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Pume / Yaruro",
+          "lat": 6.779,
+          "lng": -67.5038,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Maya 1990s",
+          "lat": 20.3465,
+          "lng": -88.9011,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Ndyuka",
+          "lat": 4.1604,
+          "lng": -54.5329,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Wanano",
+          "lat": 1.3207,
+          "lng": -69.4795,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Saramaka",
+          "lat": 3.9125,
+          "lng": -54.2532,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Tukano",
+          "lat": 1.0032,
+          "lng": -70.6255,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Guarano / guarani",
+          "lat": -25.2938,
+          "lng": -57.5661,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Aymar",
+          "lat": -16.5934,
+          "lng": -68.6384,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Inka",
+          "lat": -13.5785,
+          "lng": -71.9478,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Mapuche",
+          "lat": -39.8281,
+          "lng": -72.8947,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Otabalo / Quichua",
+          "lat": 0.3696,
+          "lng": -78.2347,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Quito / Quichua",
+          "lat": -0.1907,
+          "lng": -78.4544,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Bahia",
+          "lat": -12.9379,
+          "lng": -38.4821,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Ona",
+          "lat": -53.7915,
+          "lng": -68.3136,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Jivao / Jivaro?",
+          "lat": -3.4321,
+          "lng": -71.7413,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Quichea Maya",
+          "lat": 15.444,
+          "lng": -90.9823,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Yahagan / Fuegian",
+          "lat": -54.0882,
+          "lng": -68.4934,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Puerto Rico",
+          "lat": 18.2261,
+          "lng": -66.479,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Garfuna / Garifuna",
+          "lat": 15.8616,
+          "lng": -87.694,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Kuna",
+          "lat": 9.5705,
+          "lng": -78.8227,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Tsimane",
+          "lat": -15.0501,
+          "lng": -67.4651,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Mehinku / Mehinaku",
+          "lat": -10.7711,
+          "lng": -53.1011,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Meskito / Miskito",
+          "lat": 13.9641,
+          "lng": -83.465,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Talamancan / Bribri",
+          "lat": 9.6258,
+          "lng": -82.8524,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Naua / Nahua",
+          "lat": 22.1686,
+          "lng": -100.9976,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Zapotec",
+          "lat": 17.0611,
+          "lng": -96.7264,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Mayan / Tzeltal",
+          "lat": 16.7499,
+          "lng": -93.1061,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Taramumara / Tarahumara",
+          "lat": 25.9613,
+          "lng": -107.0443,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "British",
+          "lat": 51.4941,
+          "lng": -0.1429,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Saami / Lapps",
+          "lat": 68.3994,
+          "lng": 22.5439,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Albanians",
+          "lat": 41.3212,
+          "lng": 19.8339,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Bosnian Muslim",
+          "lat": 43.8512,
+          "lng": 18.4014,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Croats",
+          "lat": 45.8238,
+          "lng": 15.9684,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Greeks",
+          "lat": 37.9707,
+          "lng": 23.7419,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Montenegrins",
+          "lat": 42.8274,
+          "lng": 19.2528,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Serbs",
+          "lat": 44.7587,
+          "lng": 20.4479,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Basque",
+          "lat": 43.0696,
+          "lng": -2.6862,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Imperial Rome",
+          "lat": 41.864,
+          "lng": 12.4937,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Gikuyu",
+          "lat": 0.6994,
+          "lng": 37.7289,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Aka pygmy",
+          "lat": 4.5258,
+          "lng": 29.8064,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Hadza",
+          "lat": -3.5483,
+          "lng": 35.0114,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Barundi",
+          "lat": -3.4012,
+          "lng": 29.914,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Azande",
+          "lat": 5.1158,
+          "lng": 27.4331,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Bmuti / Mbuti",
+          "lat": 2.4085,
+          "lng": 30.6175,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Aka / Bayaka",
+          "lat": 1.4557,
+          "lng": 16.7791,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Teda",
+          "lat": 22.5426,
+          "lng": 15.3205,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Amharma / Amhara",
+          "lat": 11.5405,
+          "lng": 37.8802,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Bamileke 1980s",
+          "lat": 4.9403,
+          "lng": 10.2117,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Turkana",
+          "lat": 3.8574,
+          "lng": 35.1422,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Banyoro",
+          "lat": 1.3058,
+          "lng": 31.4179,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Chagga",
+          "lat": -3.1358,
+          "lng": 37.5979,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Ganda / Baganda",
+          "lat": 0.3446,
+          "lng": 32.5782,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Kaffa",
+          "lat": 7.2692,
+          "lng": 36.2455,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Maasai",
+          "lat": -1.9851,
+          "lng": 35.6995,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Nuer",
+          "lat": 4.8548,
+          "lng": 31.5448,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Somali",
+          "lat": 2.0647,
+          "lng": 45.3072,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Berbers",
+          "lat": 32.4781,
+          "lng": -1.1895,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Faline",
+          "lat": 9.3128,
+          "lng": 13.3794,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Shluh",
+          "lat": 32.1322,
+          "lng": -5.7276,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Tuareg",
+          "lat": 18.9718,
+          "lng": 4.4597,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "San / Kung",
+          "lat": -18.3763,
+          "lng": 20.1865,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Shona",
+          "lat": -17.8456,
+          "lng": 31.0298,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Tsonga",
+          "lat": -23.7606,
+          "lng": 33.6043,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Zulu",
+          "lat": -29.8399,
+          "lng": 30.9042,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Akan",
+          "lat": 5.6402,
+          "lng": -0.1604,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Igbo",
+          "lat": 5.0988,
+          "lng": 7.3751,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Mossi",
+          "lat": 11.5998,
+          "lng": -0.76,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Abkhazians",
+          "lat": 43.0966,
+          "lng": 41.0915,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Inner Mongolia",
+          "lat": 43.569,
+          "lng": 115.0519,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Khazakh",
+          "lat": 51.1164,
+          "lng": 71.4359,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Mongols",
+          "lat": 47.9061,
+          "lng": 106.8784,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Pashtun",
+          "lat": 32.4783,
+          "lng": 69.2612,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Tibetans",
+          "lat": 29.6557,
+          "lng": 91.1494,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Ainu",
+          "lat": 43.4614,
+          "lng": 142.809,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Koreans",
+          "lat": 37.5395,
+          "lng": 126.9775,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Manchus",
+          "lat": 41.8025,
+          "lng": 123.4171,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Odish / Odisha",
+          "lat": 20.3508,
+          "lng": 84.414,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Ming Dynasty",
+          "lat": 39.8718,
+          "lng": 116.4162,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Han Chinese",
+          "lat": 39.8718,
+          "lng": 116.4162,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Lahu",
+          "lat": 22.6418,
+          "lng": 99.9923,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Miano",
+          "lat": -5.147,
+          "lng": 141.638,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Monguor",
+          "lat": 37.3056,
+          "lng": 101.7528,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Okinawans",
+          "lat": 26.5911,
+          "lng": 128.0085,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Chuxi / Chukchi",
+          "lat": 66.9371,
+          "lng": 174.269,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Nenets",
+          "lat": 66.0597,
+          "lng": 73.0462,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Nivkh / Gylyak",
+          "lat": 53.0845,
+          "lng": 139.8445,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Yakuts",
+          "lat": 62.0308,
+          "lng": 129.6911,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Japan",
+          "lat": 35.6182,
+          "lng": 139.7072,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Andamans",
+          "lat": 12.5148,
+          "lng": 92.7406,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Badaga",
+          "lat": 11.4044,
+          "lng": 76.6948,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Bengali",
+          "lat": 23.792,
+          "lng": 90.3802,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Garo",
+          "lat": 25.4894,
+          "lng": 91.2488,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Gond / Mora",
+          "lat": 18.9086,
+          "lng": 72.9232,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Khasi",
+          "lat": 25.5261,
+          "lng": 91.3776,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Santal / Santhal",
+          "lat": 23.7791,
+          "lng": 85.3061,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Tamil",
+          "lat": 9.9279,
+          "lng": 78.1457,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Balinesian",
+          "lat": -8.3427,
+          "lng": 115.1059,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Burmese",
+          "lat": 19.7637,
+          "lng": 96.0782,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Central Thai",
+          "lat": 13.7763,
+          "lng": 100.4615,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Javanese",
+          "lat": -6.2619,
+          "lng": 106.8475,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Malaya",
+          "lat": 3.0844,
+          "lng": 101.7278,
+          "presenza_bacio": true
+        },
+        {
+          "nome": "Semai",
+          "lat": 4.5314,
+          "lng": 101.5301,
+          "presenza_bacio": false
+        },
+        {
+          "nome": "Torja / Toraja",
+          "lat": -2.834,
+          "lng": 119.3707,
+          "presenza_bacio": null,
+          "ricodificato_da_unknown": true
+        },
+        {
+          "nome": "Vietnam",
+          "lat": 20.9064,
+          "lng": 105.8781,
+          "presenza_bacio": true
+        }
+      ],
+      "nota_geografica": "AGGIORNATO — 164 delle 168 culture del campione (4 non geocodificate nella fonte), coordinate e classificazione lette dai dati grezzi del widget Leaflet della mappa interattiva di Bååth & Anikin (sumsar.net/files/academia/map_of_romantic_kissing, CC BY 4.0), non da una ricostruzione nostra: verificate per allineamento indice-per-indice fra i due layer del widget (\"Original data\" e \"Data as in Jankowiak et al.\") e per plausibilità geografica di ogni caso.",
+      "marcature": [
+        "comparazione-interculturale",
+        "fonte-aggregata",
+        "genere-e-corpo"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.1111/aman.12286",
+          "tipo": "doi"
+        },
+        {
+          "url": "https://anthrosource.onlinelibrary.wiley.com/journal/15481433",
+          "tipo": "rivista"
+        },
+        {
+          "url": "https://hraf.yale.edu/resources/library-information/ehraf-world-cultures-library-info/",
+          "tipo": "ente-dati"
+        },
+        {
+          "url": "https://www.sumsar.net/files/academia/map_of_romantic_kissing",
+          "tipo": "critica-pubblicata"
+        }
+      ],
+      "correlati": [
+        {
+          "id": "watkins-2019",
+          "motivo": "Stessa famiglia di studio: entrambi indagano la prevalenza cross-culturale del bacio romantico-sessuale, con metodi diversi (dato etnografico aggregato contro survey individuale). Non è una citazione reciproca verificata — solo la stessa domanda di ricerca, dichiarato come tale."
+        },
+        {
+          "id": "murray-2016",
+          "motivo": "Riusa lo stesso dataset a 168 culture per una domanda diversa (soglia di patogeni), non lo mette in discussione: una terza lettura dello stesso dato, dopo l'uso originale degli autori e la critica di Bååth & Anikin sulla ricodifica."
+        }
+      ]
+    },
+    {
+      "id": "watkins-2019",
+      "titolo": "National income inequality predicts cultural variation in mouth to mouth kissing",
+      "progetto": "bacio",
+      "tipo_risorsa": "studio-primario",
+      "autori": [
+        {
+          "nome": "Watkins, Christopher D.",
+          "ref": "https://orcid.org/0000-0002-1207-6331",
+          "verifica": "standard-non-incrociato"
+        },
+        {
+          "nome": "Leongómez, Juan David",
+          "ref": "https://orcid.org/0000-0002-0092-6298",
+          "verifica": "standard-non-incrociato"
+        }
+      ],
+      "periodo_da": 2019,
+      "periodo_a": 2019,
+      "nota_periodo": "Survey su dati individuali raccolti ca. 2018-2019, presente/recente: periodo = anno di pubblicazione usato come proxy dichiarato.",
+      "anno_pubblicazione": 2019,
+      "risoluzione_geografica": "nazione",
+      "aree_geografiche": [
+        {
+          "nome": "Regno Unito",
+          "iso2": "GB",
+          "n": 916,
+          "kiss_freq_medio": 80.7,
+          "gini": 32.4,
+          "gdp": 43600.0
+        },
+        {
+          "nome": "Colombia",
+          "iso2": "CO",
+          "n": 284,
+          "kiss_freq_medio": 79.3,
+          "gini": 53.5,
+          "gdp": 14500.0
+        },
+        {
+          "nome": "Brasile",
+          "iso2": "BR",
+          "n": 208,
+          "kiss_freq_medio": 80.3,
+          "gini": 49.7,
+          "gdp": 15500.0
+        },
+        {
+          "nome": "Cile",
+          "iso2": "CL",
+          "n": 172,
+          "kiss_freq_medio": 81.2,
+          "gini": 50.5,
+          "gdp": 24600.0
+        },
+        {
+          "nome": "Australia",
+          "iso2": "AU",
+          "n": 120,
+          "kiss_freq_medio": 75.9,
+          "gini": 30.3,
+          "gdp": 49900.0
+        },
+        {
+          "nome": "Polonia",
+          "iso2": "PL",
+          "n": 106,
+          "kiss_freq_medio": 77.8,
+          "gini": 30.8,
+          "gdp": 29300.0
+        },
+        {
+          "nome": "Francia",
+          "iso2": "FR",
+          "n": 100,
+          "kiss_freq_medio": 70.8,
+          "gini": 29.2,
+          "gdp": 43600.0
+        },
+        {
+          "nome": "Nigeria",
+          "iso2": "NG",
+          "n": 99,
+          "kiss_freq_medio": 78.1,
+          "gini": 48.8,
+          "gdp": 5900.0
+        },
+        {
+          "nome": "Germania",
+          "iso2": "DE",
+          "n": 90,
+          "kiss_freq_medio": 74.2,
+          "gini": 27.0,
+          "gdp": 50200.0
+        },
+        {
+          "nome": "Repubblica Ceca",
+          "iso2": "CZ",
+          "n": 85,
+          "kiss_freq_medio": 74.8,
+          "gini": 25.0,
+          "gdp": 35200.0
+        },
+        {
+          "nome": "Stati Uniti",
+          "iso2": "US",
+          "n": 72,
+          "kiss_freq_medio": 81.1,
+          "gini": 45.0,
+          "gdp": 59500.0
+        },
+        {
+          "nome": "Italia",
+          "iso2": "IT",
+          "n": 65,
+          "kiss_freq_medio": 74.3,
+          "gini": 31.9,
+          "gdp": 38000.0
+        },
+        {
+          "nome": "India",
+          "iso2": "IN",
+          "n": 62,
+          "kiss_freq_medio": 72.0,
+          "gini": 35.2,
+          "gdp": 7200.0
+        }
+      ],
+      "nota_geografica": "13 paesi e relativo N per paese ricalcolati dal dato individuale grezzo nel deposito OSF (Kissing_submitted_data.csv, colonna Country_Res filtrata su Ex_Cross==0, il criterio di eleggibilità cross-nazionale dichiarato nell'articolo): somma = 2.379, identica al numero riportato nel paper. Frequenza media del bacio (scala di autovalutazione 0-100, non conteggio oggettivo — vedi Codebook OSF, variabile Kiss_Freq: \"frequency of kissing, in general, within romantic relationships\"), GINI e GDP (CIA World Factbook) per nazione, dallo stesso CSV grezzo OSF. Questi 13 valori aggregati sono già documentati e verificati in data/watkins-risultati.json (cross-check indipendente contro Aggregated_Correlation_tests.csv, sempre dal deposito OSF, corrispondenza a due decimali): il ricalcolo qui riportato lo conferma, non lo sostituisce né lo presenta come una scoperta nuova. Correlazione GINI/frequenza a livello di nazione: r = 0.673 nel nostro ricalcolo, r = 0.67 nel valore pubblicato e in watkins-risultati.json — verifica riuscita. Attenzione a non leggere questi 13 punti come dello stesso tipo dei punti di Jankowiak sopra: qui è un campione di individui contemporanei via survey online in nazioni moderne, un autoreport soggettivo di frequenza — non una codifica etnografica di presenza/assenza in società tradizionali. Stesso avviso già presente nei 'correlati' fra i due studi.",
+      "marcature": [
+        "comparazione-interculturale",
+        "dato-quantitativo-individuale",
+        "disuguaglianza-economica"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.1038/s41598-019-43267-7",
+          "tipo": "doi"
+        },
+        {
+          "url": "https://osf.io/pbqwm",
+          "tipo": "deposito-dati"
+        },
+        {
+          "url": "https://www.nature.com/srep/",
+          "tipo": "rivista"
+        }
+      ],
+      "correlati": [
+        {
+          "id": "jankowiak-2015",
+          "motivo": "Stessa famiglia di studio: entrambi indagano la prevalenza cross-culturale del bacio romantico-sessuale, con metodi diversi (survey individuale contro dato etnografico aggregato). Non è una citazione reciproca verificata — solo la stessa domanda di ricerca, dichiarato come tale."
+        }
+      ]
+    },
+    {
+      "id": "arboll-rasmussen-2023",
+      "titolo": "The Ancient History of Kissing",
+      "progetto": "bacio",
+      "tipo_risorsa": "saggio-di-sintesi",
+      "nota_tipo_risorsa": "Pubblicato nella sezione \"Perspective\" di Science: un genere editoriale di sintesi/commento su ricerche altrui, non uno studio con dati originali propri — distinzione persa se si mostra solo l'etichetta generica \"Saggio di sintesi\".",
+      "autori": [
+        {
+          "nome": "Arbøll, Troels Pank",
+          "ref": "https://orcid.org/0000-0001-9641-503X",
+          "verifica": "doppia-fonte-o-istituzionale",
+          "nota_verifica": "Confermato sul portale istituzionale dell'Università di Copenaghen."
+        },
+        {
+          "nome": "Rasmussen, Sophie Lund",
+          "ref": "https://orcid.org/0000-0002-2975-678X",
+          "verifica": "confermato-dallo-studente"
+        }
+      ],
+      "periodo_da": -2500,
+      "periodo_a": -600,
+      "nota_periodo": "Stima approssimativa, non verificata fonte per fonte: il saggio discute testi mesopotamici che vanno indicativamente dal Barton Cylinder (ca. 2500 a.C.) a testi medici assiri più tardi. Usato anche per i filtri di ricerca per periodo — non è un intervallo confermato con la stessa cura degli altri campi di questo file.",
+      "anno_pubblicazione": 2023,
+      "risoluzione_geografica": "macro-regione",
+      "aree_geografiche": [
+        {
+          "nome": "Mesopotamia (Iraq e Siria attuali)"
+        }
+      ],
+      "nota_geografica": "CORRETTO da 'sito-puntuale' a 'macro-regione' dopo verifica sul testo integrale del saggio (Oxford Research Archive, versione accettata): il saggio non nomina mai un sito specifico, parla sempre di 'Mesopotamia' come area lungo Eufrate e Tigri. Assegnare un punto preciso sulla mappa avrebbe affermato una precisione che la fonte non fornisce.",
+      "marcature": [
+        "sintesi-argomentativa",
+        "epidemiologia-storica",
+        "collegamento-barton-cylinder"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.1126/science.adf0512",
+          "tipo": "doi"
+        },
+        {
+          "url": "https://www.science.org/journal/science",
+          "tipo": "rivista"
+        },
+        {
+          "url": "https://ora.ox.ac.uk/objects/uuid:2e8950ba-4c94-4b0b-9dab-68f8d42d1c91",
+          "tipo": "testo-integrale"
+        }
+      ],
+      "correlati": [
+        {
+          "id": "barton-cylinder",
+          "motivo": "Citazione reale: questo saggio discute il Barton Cylinder come una delle fonti primarie della sua argomentazione."
+        },
+        {
+          "id": "murray-2016",
+          "motivo": "Marcatura condivisa e tema di fondo comune — relazione fra bacio e trasmissione di malattia — ma con registri incompatibili fra loro: qui una fonte testuale antica (un incantesimo assiro contro un contagio orale), là una correlazione statistica su dati contemporanei. Non è una verifica reciproca: sono due modi diversi di porre la stessa domanda, a duemila anni di distanza."
+        }
+      ]
+    },
+    {
+      "id": "murray-2016",
+      "titolo": "The Kiss of Death: Three Tests of the Relationship between Disease Threat and Ritualized Physical Contact within Traditional Cultures",
+      "progetto": "bacio",
+      "tipo_risorsa": "studio-primario",
+      "nota_tipo_risorsa": "Scheda volutamente più leggera delle altre tre di questo ramo: qui usata solo come collegamento argomentativo (riuso del dataset di Jankowiak et al. 2015 per una domanda diversa), non come voce mappata — non abbiamo cercato il dato di prevalenza patogeni per singola cultura, solo la statistica aggregata pubblicata.",
+      "autori": [
+        {
+          "nome": "Murray, Damian R."
+        },
+        {
+          "nome": "Fessler, Daniel M. T."
+        },
+        {
+          "nome": "Kerry, Nicholas"
+        },
+        {
+          "nome": "White, Claire"
+        },
+        {
+          "nome": "Marin, Maya"
+        }
+      ],
+      "nota_autori": "ORCID non cercati in questa fase (voce di supporto, non scheda piena) — nomi riportati senza link di verifica, non un'omissione nascosta.",
+      "periodo_da": 2017,
+      "periodo_a": 2017,
+      "nota_periodo": "Pubblicazione online anticipata nel 2016 (così citata da HRAF e altre fonti secondarie), fascicolo a stampa Evolution and Human Behavior 38(1) nel 2017 — data qui presa dal fascicolo definitivo, verificata via Crossref e dalla pagina pubblicazioni dell'autore Fessler, non da una sola fonte secondaria.",
+      "anno_pubblicazione": 2017,
+      "marcature": [
+        "comparazione-interculturale",
+        "epidemiologia-storica",
+        "riuso-dataset"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.1016/j.evolhumbehav.2016.06.008",
+          "tipo": "doi"
+        },
+        {
+          "url": "https://www.sciencedirect.com/journal/evolution-and-human-behavior",
+          "tipo": "rivista"
+        }
+      ],
+      "correlati": [
+        {
+          "id": "jankowiak-2015",
+          "motivo": "Riusa lo stesso dataset a 168 culture di Jankowiak et al. 2015 per testare una domanda diversa (soglia di patogeni), non lo mette in discussione: una terza lettura dello stesso dato, dopo l'uso originale e la critica di Bååth & Anikin sulla ricodifica dei casi incerti."
+        },
+        {
+          "id": "arboll-rasmussen-2023",
+          "motivo": "Marcatura condivisa e tema di fondo comune — relazione fra bacio e trasmissione di malattia — ma con registri incompatibili fra loro: qui correlazione statistica su dati contemporanei, là una fonte testuale antica. Non è una verifica reciproca."
+        }
+      ]
+    },
+    {
+      "id": "barton-cylinder",
+      "titolo": "Barton Cylinder (col. II, ll. 7-8)",
+      "progetto": "bacio",
+      "tipo_risorsa": "fonte-primaria-testuale",
+      "autori": [],
+      "nota_autori": "Testo anonimo dell'antica Mesopotamia; l'attribuzione dei protagonisti dell'atto narrato resta dibattuta fra le edizioni (v. bibl in tei/bacio-epigrafe-barton.xml).",
+      "periodo_da": -2500,
+      "periodo_a": -2500,
+      "risoluzione_geografica": "sito-puntuale",
+      "aree_geografiche": [
+        {
+          "nome": "Nippur (mod. Nuffar)"
+        }
+      ],
+      "nota_geografica": "Provenienza come registrata da CDLI (P222183): 'Nippur (mod. Nuffar) [uncertain]', con ipotesi alternativa segnalata dalla stessa scheda ('Kesh?'). Non è un findspot da scavo scientifico controllato: è un'attribuzione con margine di dubbio dichiarato dall'istituzione che cataloga il pezzo, coerente con l'incertezza già segnalata in tei/bacio-epigrafe-barton.xml su chi bacia chi nel testo.",
+      "marcature": [
+        "fonte-primaria",
+        "testo-cuneiforme",
+        "attestazione-più-antica"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://cdli.earth/P222183",
+          "tipo": "cdli"
+        },
+        {
+          "url": "https://collections.penn.museum/collections/object/521698",
+          "tipo": "museo"
+        },
+        {
+          "url": "https://www.exorientelux.nl/download/JEOL/JEOL_46_09_Lisman.pdf",
+          "tipo": "rivista"
+        }
+      ],
+      "correlati": [
+        {
+          "id": "arboll-rasmussen-2023",
+          "motivo": "Citazione reale: il saggio discute questo testo come una delle fonti primarie della sua argomentazione."
+        }
+      ]
+    },
+    {
+      "id": "lee-devore-1968",
+      "titolo": "Man the Hunter",
+      "progetto": "preistoria",
+      "tipo_risorsa": "volume-curato",
+      "autori": [
+        {
+          "nome": "Lee, Richard B.",
+          "ref": "https://www.wikidata.org/wiki/Q4260657",
+          "verifica": "wikidata-sostitutivo"
+        },
+        {
+          "nome": "DeVore, Irven",
+          "ref": "https://www.wikidata.org/wiki/Q6074210",
+          "verifica": "wikidata-sostitutivo"
+        }
+      ],
+      "periodo_da": null,
+      "periodo_a": null,
+      "nota_periodo": "Opera teorico-metodologica fondativa, non ancorata a un singolo periodo storico rappresentato. Lasciato deliberatamente non compilato piuttosto che forzare un numero senza base.",
+      "marcature": [
+        "volume-fondativo",
+        "cacciatori-raccoglitori",
+        "modello-man-the-hunter"
+      ],
+      "link_riferimento": []
+    },
+    {
+      "id": "gero-conkey-1991",
+      "titolo": "Engendering Archaeology: Women and Prehistory",
+      "progetto": "preistoria",
+      "tipo_risorsa": "volume-curato",
+      "autori": [
+        {
+          "nome": "Gero, Joan M.",
+          "ref": "https://www.wikidata.org/wiki/Q29913454",
+          "verifica": "wikidata-sostitutivo"
+        },
+        {
+          "nome": "Conkey, Margaret W.",
+          "ref": "https://www.wikidata.org/wiki/Q6759293",
+          "verifica": "wikidata-sostitutivo"
+        }
+      ],
+      "periodo_da": null,
+      "periodo_a": null,
+      "nota_periodo": "Opera teorico-metodologica, non ancorata a un singolo periodo storico rappresentato.",
+      "marcature": [
+        "volume-fondativo",
+        "archeologia-di-genere",
+        "critica-metodologica"
+      ],
+      "link_riferimento": []
+    },
+    {
+      "id": "hedenstierna-jonson-2017",
+      "titolo": "A female Viking warrior confirmed by genomics",
+      "progetto": "preistoria",
+      "tipo_risorsa": "studio-primario",
+      "autori": [
+        {
+          "nome": "Hedenstierna-Jonson, Charlotte",
+          "ref": "https://orcid.org/0000-0003-2250-0463",
+          "verifica": "doppia-fonte-o-istituzionale",
+          "nota_verifica": "Confermato via DiVA portal, Uppsala University — fonte istituzionale diretta."
+        }
+      ],
+      "periodo_da": 940,
+      "periodo_a": 950,
+      "nota_periodo": "Datazione via dirham d'argento di Nasr ibn Ahmad presente nella tomba, coniato dopo il 913-933 d.C.: colloca la sepoltura verosimilmente al 940-950 d.C. (v. Wikipedia 'Birka grave Bj 581', verificato).",
+      "marcature": [
+        "genomica-antica",
+        "genere-e-guerra",
+        "birka"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.1002/ajpa.23308",
+          "tipo": "doi"
+        }
+      ]
+    },
+    {
+      "id": "price-et-al-2019",
+      "titolo": "Viking warrior women? Reassessing Birka chamber grave Bj.581",
+      "progetto": "preistoria",
+      "tipo_risorsa": "studio-primario",
+      "autori": [
+        {
+          "nome": "Price, Neil",
+          "ref": "https://www.wikidata.org/wiki/Q13430531",
+          "verifica": "standard-non-incrociato",
+          "nota_verifica": "Wikidata scelto deliberatamente per disambiguare da altri 'Neil Price' (voce specifica: 'Neil Price, archaeologist'), non per assenza di VIAF/ORCID mai cercato."
+        },
+        {
+          "nome": "Hedenstierna-Jonson, Charlotte",
+          "ref": "https://orcid.org/0000-0003-2250-0463",
+          "verifica": "doppia-fonte-o-istituzionale",
+          "nota_verifica": "Confermato via DiVA portal, Uppsala University — fonte istituzionale diretta."
+        }
+      ],
+      "periodo_da": 940,
+      "periodo_a": 950,
+      "nota_periodo": "Stessa tomba di cui sopra (Bj.581, Birka) — stesso periodo, stessa fonte di verifica.",
+      "marcature": [
+        "genomica-antica",
+        "genere-e-guerra",
+        "birka",
+        "risposta-a-critiche"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.15184/aqy.2018.258",
+          "tipo": "doi"
+        }
+      ]
+    },
+    {
+      "id": "haas-et-al-2020",
+      "titolo": "Female hunters of the early Americas",
+      "progetto": "preistoria",
+      "tipo_risorsa": "studio-primario",
+      "autori": [
+        {
+          "nome": "Haas, Randall",
+          "ref": "https://orcid.org/0000-0002-7742-2127",
+          "verifica": "doppia-fonte-o-istituzionale",
+          "nota_verifica": "Doppia conferma indipendente: pagina istituzionale (Università del Wyoming) e snippet orcid.org — il livello di certezza più alto raggiunto in questa ricognizione."
+        }
+      ],
+      "periodo_da": -7050,
+      "periodo_a": -6750,
+      "nota_periodo": "Datazione radiocarbonio 9.000-8.700 BP (Before Present, base 1950), convertita in anni a.C. Verificato su Wikipedia 'Wilamaya Patjxa', che cita il dato radiocarbonio dell'articolo originale.",
+      "marcature": [
+        "cacciatrici",
+        "ande",
+        "isotopi-e-osteologia"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.1126/sciadv.abd0310",
+          "tipo": "doi"
+        }
+      ]
+    },
+    {
+      "id": "moilanen-et-al-2022",
+      "titolo": "A Woman with a Sword? — Weapon Grave at Suontaka Vesitorninmäki, Finland",
+      "progetto": "preistoria",
+      "tipo_risorsa": "studio-primario",
+      "autori": [
+        {
+          "nome": "Moilanen, Ulla",
+          "ref": "https://orcid.org/0000-0002-9800-7889",
+          "verifica": "da-riverificare",
+          "nota_verifica": "Trovato solo tramite snippet di ricerca su orcid.org, non confermato con un secondo accesso diretto — da verificare manualmente."
+        }
+      ],
+      "periodo_da": 1040,
+      "periodo_a": 1174,
+      "nota_periodo": "ATTENZIONE, correzione rispetto a un'assunzione iniziale sbagliata: non è alto medioevo (VII secolo, come la stampa divulgativa lascia intendere genericamente) ma molto più tardo. Datazione tipologica: 'tardo XI o inizio XII secolo d.C.'; datazione radiocarbonio calibrata su frammento di femore: 1040-1174 d.C. (95,4% di confidenza) — periodo delle Crociate nella cronologia finlandese occidentale. Verificato sull'abstract dell'articolo originale (Cambridge Core).",
+      "marcature": [
+        "identità-di-genere",
+        "riesame-metodologico",
+        "corredo-funerario"
+      ],
+      "link_riferimento": [
+        {
+          "url": "https://doi.org/10.1017/eaa.2021.30",
+          "tipo": "doi"
+        }
+      ]
+    },
+    {
+      "id": "harari-2014",
+      "titolo": "Sapiens: A Brief History of Humankind",
+      "progetto": "preistoria",
+      "tipo_risorsa": "saggio-di-sintesi",
+      "autori": [
+        {
+          "nome": "Harari, Yuval Noah",
+          "ref": "https://viaf.org/viaf/316756655",
+          "verifica": "standard-non-incrociato"
+        }
+      ],
+      "periodo_da": null,
+      "periodo_a": null,
+      "nota_periodo": "Opera divulgativa che ripercorre l'intera storia della specie: nessun singolo periodo rappresentato, deliberatamente non compilato.",
+      "marcature": [
+        "sintesi-divulgativa",
+        "rivoluzione-cognitiva"
+      ],
+      "link_riferimento": []
+    },
+    {
+      "id": "graeber-wengrow-2021",
+      "titolo": "The Dawn of Everything: A New History of Humanity",
+      "progetto": "preistoria",
+      "tipo_risorsa": "saggio-di-sintesi",
+      "autori": [
+        {
+          "nome": "Graeber, David",
+          "ref": "https://viaf.org/viaf/12531284",
+          "verifica": "standard-non-incrociato"
+        },
+        {
+          "nome": "Wengrow, David",
+          "ref": "https://viaf.org/viaf/5227330",
+          "verifica": "standard-non-incrociato"
+        }
+      ],
+      "periodo_da": null,
+      "periodo_a": null,
+      "nota_periodo": "Opera che ripercorre gran parte della preistoria e protostoria umana: nessun singolo periodo rappresentato, deliberatamente non compilato.",
+      "marcature": [
+        "sintesi-divulgativa",
+        "critica-a-modelli-evolutivi-lineari"
+      ],
+      "link_riferimento": [
+        {
+          "url": "isbn:9780374157357",
+          "tipo": "isbn"
+        }
+      ]
+    }
+  ],
+  "vocabolario_marcature": {
+    "comparazione-interculturale": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q621368",
+      "etichetta": "cross-cultural studies"
+    },
+    "corpo-e-affetti": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Nessun concetto Wikidata unico per il tag composto; solo 'human body' (Q23852), generico, perde la componente di genere/affetti — non forzato."
+    },
+    "problema-di-galton": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q5519373",
+      "etichetta": "Galton's problem"
+    },
+    "revisione-storiografica": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Solo 'historiography' (Q50675) disponibile, la disciplina generale — perde la sfumatura specifica di 'revisione'."
+    },
+    "genere-e-lavoro": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q7458769",
+      "etichetta": "sexual division of labour"
+    },
+    "archeologia": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q23498",
+      "etichetta": "archaeology"
+    },
+    "fonte-aggregata": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Vicino più prossimo: 'secondary source' (Q905511) — riguarda la distanza storiografica, non l'aggregazione statistica di dati; categoria diversa, non forzato."
+    },
+    "genere-e-corpo": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Nessun concetto Wikidata unico per il tag composto; stesso limite di 'corpo-e-affetti'."
+    },
+    "dato-quantitativo-individuale": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q730675",
+      "etichetta": "quantitative research",
+      "nota": "Corrispondenza parziale: perde la sfumatura 'individuale' (dato a livello di singolo partecipante, non solo aggregato)."
+    },
+    "disuguaglianza-economica": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q5055020",
+      "etichetta": "income inequality",
+      "nota": "Scelto invece del generico 'economic inequality' perché più preciso: coincide con l'indice GINI usato nello studio."
+    },
+    "sintesi-argomentativa": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q35760",
+      "etichetta": "essay",
+      "nota": "Genere testuale, coerente con la classificazione 'Perspective' dell'articolo originale su Science."
+    },
+    "epidemiologia-storica": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Vicino più prossimo: 'paleopathology' (Q676092) — concetto adiacente (patologia su resti), non equivalente a una storia della trasmissione epidemiologica; non forzato."
+    },
+    "collegamento-barton-cylinder": {
+      "stato": "non-applicabile-etichetta-interna",
+      "nota": "Etichetta di navigazione interna al progetto, non un soggetto — la stessa relazione è già codificata in modo esplicito da item.correlati."
+    },
+    "fonte-primaria": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q112754",
+      "etichetta": "primary source"
+    },
+    "testo-cuneiforme": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q12680174",
+      "etichetta": "Sumerian writing",
+      "nota": "Preferito al più generico 'cuneiform' (Q401): il Barton Cylinder è specificamente sumerico, non solo cuneiforme in senso lato (script condiviso anche da accadico, elamita, persiano antico)."
+    },
+    "attestazione-più-antica": {
+      "stato": "non-applicabile-etichetta-interna",
+      "nota": "Giudizio comparativo interno al corpus del progetto (\"la più antica fra i quattro item bacio\"), non un soggetto generalizzabile all'esterno."
+    },
+    "volume-fondativo": {
+      "stato": "non-applicabile-etichetta-interna",
+      "nota": "Classificazione bibliografica di progetto (ruolo dell'opera nella storiografia del ramo preistoria), non un soggetto da vocabolario esterno."
+    },
+    "cacciatori-raccoglitori": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q27443",
+      "etichetta": "hunter-gatherer"
+    },
+    "modello-man-the-hunter": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q6746454",
+      "etichetta": "Man the Hunter"
+    },
+    "archeologia-di-genere": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q637003",
+      "etichetta": "gender archaeology",
+      "nota": "Preferito a 'feminist archaeology' (Q3403690, concetto affine ma più specificamente politico) come termine disciplinare più neutro."
+    },
+    "critica-metodologica": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Descrittore metodologico generico, nessun concetto Wikidata distinto trovato."
+    },
+    "genomica-antica": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q290447",
+      "etichetta": "ancient DNA",
+      "nota": "Preferito a 'archeogenetics' (Q636489, la disciplina più ampia) perché più aderente a cosa fanno concretamente gli studi citati (determinazione genomica del sesso)."
+    },
+    "genere-e-guerra": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q8031595",
+      "etichetta": "women in warfare and the military in the medieval era",
+      "nota": "Scelto il sotto-periodo medievale (non 'ancient era', Q8031593) per coerenza con la datazione della tomba di Birka, 940-950 d.C."
+    },
+    "birka": {
+      "stato": "non-applicabile-luogo",
+      "nota": "Toponimo (Birka, Svezia), non un soggetto concettuale — da riconciliare eventualmente come placeName, non in questo vocabolario. Non ancora fatto: limite dichiarato, non omissione."
+    },
+    "risposta-a-critiche": {
+      "stato": "non-applicabile-etichetta-interna",
+      "nota": "Descrittore della funzione testuale dell'articolo (Price et al. risponde a critiche a Hedenstierna-Jonson et al.) interno al progetto, non un soggetto esterno."
+    },
+    "cacciatrici": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Nessun concetto Wikidata distinto trovato per 'donne cacciatrici' nonostante l'ampia copertura giornalistica del tema (Haas et al. 2020); solo articoli di stampa, non voci Wikidata."
+    },
+    "ande": {
+      "stato": "non-applicabile-luogo",
+      "nota": "Toponimo (Ande), stesso caso di 'birka' — da riconciliare come placeName, non fatto in questo passaggio."
+    },
+    "isotopi-e-osteologia": {
+      "stato": "corrispondenza-trovata-composita",
+      "vocabolario": "wikidata",
+      "componenti": [
+        {
+          "uri": "https://www.wikidata.org/wiki/Q119874659",
+          "etichetta": "isotope analysis in archaeology"
+        },
+        {
+          "uri": "https://www.wikidata.org/wiki/Q819121",
+          "etichetta": "osteology"
+        }
+      ],
+      "nota": "Tag composto, spezzato in due concetti distinti: non esiste un concetto unico che li unisca."
+    },
+    "identità-di-genere": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q48264",
+      "etichetta": "gender identity"
+    },
+    "riesame-metodologico": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Descrittore metodologico generico, stesso limite di 'critica-metodologica'."
+    },
+    "corredo-funerario": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q1399692",
+      "etichetta": "grave good"
+    },
+    "sintesi-divulgativa": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q1129795",
+      "etichetta": "popular science literature"
+    },
+    "rivoluzione-cognitiva": {
+      "stato": "nessuna-corrispondenza-difendibile",
+      "nota": "Vicino più prossimo: 'behavioral modernity' (Q2706556) — concetto accademico affine ma non equivalente al termine divulgativo di Harari ('Cognitive Revolution'); non forzato."
+    },
+    "critica-a-modelli-evolutivi-lineari": {
+      "stato": "corrispondenza-trovata",
+      "vocabolario": "wikidata",
+      "uri": "https://www.wikidata.org/wiki/Q1382550",
+      "etichetta": "unilineal evolution"
+    }
+  }
+}

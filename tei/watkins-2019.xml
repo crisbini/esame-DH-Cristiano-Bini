@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="studio-watkins2019" xml:lang="en">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>National income inequality predicts cultural variation in mouth to mouth kissing</title>
+        <author>
+          <persName ref="https://orcid.org/0000-0002-1207-6331">Watkins, Christopher D.</persName>
+        </author>
+        <author>
+          <persName ref="https://orcid.org/0000-0002-0092-6298">Leongómez, Juan David</persName>
+        </author>
+        <author>Bovet, Jeanne</author>
+        <author>Żelaźniewicz, Agnieszka</author>
+        <author>Korbmacher, Max</author>
+        <author>Correa Varella, Marco Antonio</author>
+        <author>Fernandez, Ana Maria</author>
+        <author>Wagstaff, Danielle</author>
+        <author>Bolgan, Samuela</author>
+        <respStmt>
+          <resp>scheda di studio codificata per il progetto "Atlante digitale della ricerca antropologica comparativa"</resp>
+          <name>[NOME COGNOME], Università di Bologna</name>
+        </respStmt>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Springer Nature (Scientific Reports)</publisher>
+        <date when="2019">2019</date>
+        <idno type="DOI">10.1038/s41598-019-43267-7</idno>
+        <availability status="free">
+          <p>Articolo ad accesso aperto. Dati individuali depositati dagli autori su Open Science Framework (osf.io/pbqwm), usati in questo progetto solo in forma aggregata per paese.</p>
+        </availability>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl>
+          Watkins, C. D., Leongómez, J. D., Bovet, J., Żelaźniewicz, A., Korbmacher, M., Correa Varella, M. A., Fernandez, A. M., Wagstaff, D., Bolgan, S. (2019).
+          "National income inequality predicts cultural variation in mouth to mouth kissing."
+          <title level="j">Scientific Reports</title> 9, 6698.
+          <idno type="DOI">10.1038/s41598-019-43267-7</idno>
+        </bibl>
+        <ref target="https://www.nature.com/srep/" type="rivista">Scientific Reports (Springer Nature)</ref>
+        <ref target="https://osf.io/pbqwm" type="deposito-dati">Deposito dati OSF</ref>
+        <p rend="unità-di-analisi">Unità di analisi: <term>individuo, entro paese</term> (survey). Scala: individuale-nazionale, 13 paesi, 6 continenti.</p>
+        <p rend="metodologia">N = 2379 partecipanti idonei per l'analisi cross-culturale (su 2988 raccolti; esclusioni documentate dagli stessi autori nel dataset). Variabili chiave: indice GINI (disuguaglianza di reddito), GDP, HPP_9 (storica prevalenza di patogeni), frequenza del bacio romantico auto-riportata. Correlazione GINI × frequenza bacio: r = 0,67.</p>
+        <p rend="nota-di-accesso">
+          <note type="editoriale">A differenza del nodo Jankowiak, qui i dati individuali sono realmente aperti (OSF). Il file <ref target="../data/watkins-risultati.json">watkins-risultati.json</ref> riporta valori aggregati per paese, ricalcolati indipendentemente da noi a partire dal dataset individuale e verificati per coincidenza con la tabella aggregata già pubblicata dagli autori nello stesso deposito — non un dato preso per buono senza controllo incrociato.</note>
+        </p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <projectDesc>
+        <p>Scheda di studio (solo teiHeader). Autori normalizzati solo per i primi due (Watkins, Leongómez) via ORCID, per proporzionalità con un progetto a nove firmatari — scelta dichiarata, non omissione.</p>
+      </projectDesc>
+      <editorialDecl>
+        <p>Sottoinsieme TEI Lite. Standard di codifica del progetto per questo nodo: TEI (questa scheda) + Dublin Core + JSON (risultati, 13 record per paese).</p>
+      </editorialDecl>
+    </encodingDesc>
+    <profileDesc>
+      <settingDesc>
+        <listPlace>
+          <head>I 13 paesi del campione, con QID Wikidata identici a quelli già usati in data/watkins-risultati.json (entità-stato canoniche e stabili, non riverificate una per una via apertura diretta della pagina per lo stesso limite tecnico dichiarato altrove nel progetto — rischio di ambiguità comunque molto basso per questo tipo di entità, a differenza del caso Amazzonia di Jankowiak).</head>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q145">Regno Unito</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q739">Colombia</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q155">Brasile</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q298">Cile</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q408">Australia</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q36">Polonia</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q142">Francia</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q1033">Nigeria</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q183">Germania</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q213">Repubblica Ceca</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q30">Stati Uniti</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q38">Italia</placeName></place>
+          <place><placeName ref="https://www.wikidata.org/wiki/Q668">India</placeName></place>
+        </listPlace>
+      </settingDesc>
+      <textClass>
+        <keywords scheme="#vocabolario-marcature-progetto">
+          <term ref="https://www.wikidata.org/wiki/Q621368">cross-cultural studies</term>
+          <term ref="https://www.wikidata.org/wiki/Q730675">quantitative research</term>
+          <term ref="https://www.wikidata.org/wiki/Q5055020">income inequality</term>
+        </keywords>
+      </textClass>
+    </profileDesc>
+    <revisionDesc>
+      <change when="2026-08-29" who="#claude">Creazione della scheda. Primi due autori normalizzati via ORCID (nessun VIAF trovato, atteso per autori solo di articoli). Dati di risultato ricostruiti e verificati dal deposito OSF reale.</change>
+      <change when="2026-08-30" who="#claude">Aggiunto collegamento tipizzato a rivista (Scientific Reports/Springer Nature), su richiesta dello studente di marcare esplicitamente ogni riferimento collegabile a enti e riviste esterne. Il deposito dati OSF, già presente nel record JSON, è stato reso esplicito anche qui come ref tipizzato.</change>
+      <change when="2026-08-30" who="#claude">Aggiunto profileDesc/settingDesc/listPlace con placeName a QID Wikidata per i 13 paesi del campione — riconciliazione geografica anche nel codice XML, non solo in JSON/HTML. QID riusati da watkins-risultati.json, non ricercati una seconda volta.</change>
+      <change when="2026-09-02" who="#claude">Aggiunto profileDesc/textClass/keywords con i termini Wikidata per tutte e tre le marcature di questo item, tutte con corrispondenza reale verificata (comparazione-interculturale, dato-quantitativo-individuale — corrispondenza parziale, perde la sfumatura "individuale" — e disuguaglianza-economica, riconciliata su "income inequality" perché coincide esattamente con l'indice GINI usato nello studio).</change>
+    </revisionDesc>
+  </teiHeader>
+</TEI>

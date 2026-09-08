@@ -1,0 +1,27 @@
+{
+  "studio": "watkins-2019",
+  "unita_di_analisi": "paese (aggregato da dati individuali, N=2379 partecipanti, 13 paesi, 6 continenti)",
+  "provenienza_dato": "Dati individuali scaricati dal deposito OSF ufficiale degli autori (osf.io/pbqwm), filtrati su Ex_Cross==0 (=2379, corrisponde esattamente al campione del paper) e aggregati per paese da noi; il risultato è stato incrociato con la tabella 'Aggregated_Correlation_tests.csv' fornita nello stesso deposito, coincidenza confermata a due decimali su tutte le variabili (GINI, GDP, HPP_9, Kiss_Freq).",
+  "stato_dato": "documentato",
+  "correlazione_globale": {
+    "variabili": "GINI (disuguaglianza di reddito) x Kiss_Freq (frequenza del bacio romantico)",
+    "r": 0.67,
+    "fonte": "Watkins et al. 2019, Scientific Reports 9:6698, Figura 2"
+  },
+  "paesi": [
+    {"paese": "Regno Unito", "area_wikidata": "https://www.wikidata.org/wiki/Q145", "n": 916, "gini": 32.4, "gdp": 43600, "kiss_freq": 80.73, "hpp9": -1.06},
+    {"paese": "Colombia", "area_wikidata": "https://www.wikidata.org/wiki/Q739", "n": 284, "gini": 53.5, "gdp": 14500, "kiss_freq": 79.27, "hpp9": 0.27},
+    {"paese": "Brasile", "area_wikidata": "https://www.wikidata.org/wiki/Q155", "n": 208, "gini": 49.7, "gdp": 15500, "kiss_freq": 80.29, "hpp9": 0.93},
+    {"paese": "Cile", "area_wikidata": "https://www.wikidata.org/wiki/Q298", "n": 172, "gini": 50.5, "gdp": 24600, "kiss_freq": 81.19, "hpp9": -0.45},
+    {"paese": "Australia", "area_wikidata": "https://www.wikidata.org/wiki/Q408", "n": 120, "gini": 30.3, "gdp": 49900, "kiss_freq": 75.88, "hpp9": -0.25},
+    {"paese": "Polonia", "area_wikidata": "https://www.wikidata.org/wiki/Q36", "n": 106, "gini": 30.8, "gdp": 29300, "kiss_freq": 77.84, "hpp9": -0.87},
+    {"paese": "Francia", "area_wikidata": "https://www.wikidata.org/wiki/Q142", "n": 100, "gini": 29.2, "gdp": 43600, "kiss_freq": 70.75, "hpp9": -0.46},
+    {"paese": "Nigeria", "area_wikidata": "https://www.wikidata.org/wiki/Q1033", "n": 99, "gini": 48.8, "gdp": 5900, "kiss_freq": 78.08, "hpp9": 1.16},
+    {"paese": "Germania", "area_wikidata": "https://www.wikidata.org/wiki/Q183", "n": 90, "gini": 27.0, "gdp": 50200, "kiss_freq": 74.19, "hpp9": -0.87},
+    {"paese": "Rep. Ceca", "area_wikidata": "https://www.wikidata.org/wiki/Q213", "n": 85, "gini": 25.0, "gdp": 35200, "kiss_freq": 74.82, "hpp9": -0.87},
+    {"paese": "Stati Uniti", "area_wikidata": "https://www.wikidata.org/wiki/Q30", "n": 72, "gini": 45.0, "gdp": 59500, "kiss_freq": 81.11, "hpp9": -0.89},
+    {"paese": "Italia", "area_wikidata": "https://www.wikidata.org/wiki/Q38", "n": 65, "gini": 31.9, "gdp": 38000, "kiss_freq": 74.31, "hpp9": 0.16},
+    {"paese": "India", "area_wikidata": "https://www.wikidata.org/wiki/Q668", "n": 62, "gini": 35.2, "gdp": 7200, "kiss_freq": 72.02, "hpp9": 0.94}
+  ],
+  "nota_wikidata": "I QID dei 13 stati sono identificativi standard e stabili (le entità-paese sono tra le più canoniche di Wikidata); non li ho verificati uno per uno via fetch diretto per gli stessi limiti tecnici già segnalati su viaf.org/wikidata.org, ma sono di gran lunga meno ambigui del caso 'Amazonia' — rischio di errore molto basso."
+}
